@@ -35,4 +35,16 @@
     .team-img::after{
         display: none;
     }
+    .title{
+        font-size: 20px;
+    }
+    .display-6{
+        font-size: 20px;
+    }
+    .sub_title{
+        font-size: 15px !important;
+    }
+    .recent_work_item h4{
+       font-size: 18px;
+    }
 }
