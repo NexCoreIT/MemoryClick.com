@@ -317,7 +317,7 @@ body{
 @media (min-width: 576px) {
     .flex-sm-row .team-img::after,
     .flex-lg-row-reverse .team-img::after {
-        top: 50%;
+        top: 17%;
         right: 0;
         bottom: auto;
         left: auto;
@@ -328,7 +328,7 @@ body{
 
 @media (min-width: 576px) and (max-width: 991.98px) {
     .flex-sm-row-reverse .team-img::after {
-        top: 50%;
+        top: 17%;
         right: auto;
         bottom: auto;
         left: 0;
@@ -340,7 +340,7 @@ body{
 @media (min-width: 992px) {
     .flex-lg-row-reverse .team-img::after,
     .flex-sm-row-reverse .team-img::after {
-        top: 50%;
+        top: 80%;
         right: auto;
         bottom: auto;
         left: 0;
@@ -349,7 +349,7 @@ body{
     }
 
     .flex-sm-row-reverse.flex-lg-row .team-img::after {
-        top: 50%;
+        top: 80%;
         right: 0;
         bottom: auto;
         left: auto;
