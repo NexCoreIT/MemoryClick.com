@@ -1,0 +1,127 @@
+![image](https://github.com/user-attachments/assets/1ac777bc-831a-47b4-9bf9-cb08c417c7fa)
+
+
+
+![screencapture-127-0-0-1-8000-our-work-2025-03-07-21_24_39](https://github.com/user-attachments/assets/7e1d1694-d0ca-462c-9e5b-a1549c67f14a)
+
+
+![screencapture-127-0-0-1-8000-auth-login-2025-03-07-21_25_26](https://github.com/user-attachments/assets/1e2cdfa9-039f-490f-89a6-5d9f6c9a7b42)
+
+
+![image](https://github.com/user-attachments/assets/5cd5fb1a-7ef6-4a4e-a9dc-1808d338d0da)
+
+
+
+
+# Laravel Project Setup Guide
+
+This guide will walk you through the process of cloning and running a Laravel project. Follow these steps to get your project up and running.
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed on your machine:
+
+- [PHP](https://www.php.net/downloads.php) (version 7.3 or higher)
+- [Composer](https://getcomposer.org/download/)
+- [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/get-npm)
+- [Git](https://git-scm.com/downloads)
+- A web server like [Apache](https://httpd.apache.org/download.cgi) or [Nginx](https://nginx.org/en/download.html)
+- [MySQL](https://dev.mysql.com/downloads/installer/) or another database management system
+
+## Step 1: Clone the Repository
+
+First, clone the repository to your local machine using Git:
+
+```bash
+git clone https://github.com/zidankhan86/Real-Ested-Photo-Edit-Web-App.git
+cd Real-Ested-Photo-Edit-Web-App
+```
+
+## Step 2: Install Dependencies
+
+Next, install the project dependencies using Composer:
+
+```bash
+composer update
+```
+
+## Step 2: Set Up Environment Variables
+
+Copy the `.env.example` file to create your own environment configuration:
+
+```bash
+cp .env.example .env
+```
+
+## Step 3:Generate Key
+
+```bash
+php artisan key:generate
+```
+
+Open the `.env` file and update the following lines to match your environment:
+
+```env
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_database_user
+DB_PASSWORD=your_database_password
+```
+
+Generate the application key:
+
+```bash
+php artisan key:generate
+```
+
+## Step 4: Set Up the Database
+
+Create a new database for the project in your database management system (e.g., MySQL).
+
+Run the database migrations to set up the database schema:
+
+```bash
+php artisan migrate
+```
+
+(Optional) Seed the database with sample data:
+
+```bash
+php artisan db:seed
+```
+
+## Step 5: Serve the Application
+
+You can now serve the application using the built-in PHP server:
+
+```bash
+php artisan serve
+```
+
+By default, this will start the server at `http://localhost:8000`.
+
+## Additional Steps
+
+If you're working in a team or deploying to production, consider these additional steps:
+
+- **Version Control**: Ensure your `.env` file is not committed to version control by adding it to your `.gitignore` file.
+- **Caching**: Optimize your configuration and routes for better performance:
+  ```bash
+  php artisan config:cache
+  php artisan route:cache
+  ```
+
+## Conclusion
+
+You should now have your Laravel project up and running. For more information on Laravel, visit the [official documentation](https://laravel.com/docs).
+
+Happy coding!!!!
+# Bridal.com
