@@ -1,0 +1,337 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\properties;
+use Illuminate\Support\Str;
+use App\Models\ImageGallery;
+use Illuminate\Http\Request;
+use PhpParser\Builder\Property;
+
+class PropertyController extends Controller
+{
+
+
+    public function property_create()
+    {
+        $data['title'] = 'Property Create';
+
+       return view('backend.admin.properties.property_create',$data);
+    }
+
+
+    public function property_index()
+    {
+       $data['title'] = 'Property List';
+
+       $data['row'] = Properties::orderBy('id', 'desc')->get();
+
+       return view('backend.admin.properties.property_index', $data);
+    }
+
+
+    public function property_edit($slug)
+     {
+        $data['title']      = 'Service Edit';
+
+        $data['property'] = properties::where('slug', $slug)->firstOrFail();
+
+        return view('backend.admin.properties.edit', $data);
+     }
+
+     public function property_show($slug)
+     {
+        $data['title'] = 'Service Show';
+
+        $data['property'] = properties::where('slug', $slug)->firstOrFail();
+
+        return view('backend.admin.properties.show', $data);
+     }
+
+
+
+    public function property_store(Request $request)
+    {
+        $request->validate([
+            'title'             => 'required|string|max:255',
+            'description'       => 'nullable|string',
+            'before_image'      => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
+            'after_image'       => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
+            'video'             => 'nullable|mimes:mp4,mov,avi,wmv|max:10240',
+            'status'            => 'required',
+        ]);
+
+        $property = new Properties();
+        $property->title        = $request->title;
+        $property->description  = $request->description;
+        $property->status       = $request->status;
+        $property->slug         = Str::slug($request->title);
+
+        if ($request->hasFile('before_image')) {
+            $beforeImageName = time() . '_before.' . $request->file('before_image')->extension();
+            $request->file('before_image')->storeAs('uploads/property', $beforeImageName, 'public');
+            $property->before_image = 'public/uploads/property/' . $beforeImageName;
+        }
+
+        if ($request->hasFile('after_image')) {
+            $afterImageName = time() . '_after.' . $request->file('after_image')->extension();
+            $request->file('after_image')->storeAs('uploads/property', $afterImageName, 'public');
+            $property->after_image = 'public/uploads/property/' . $afterImageName;
+        }
+        if ($request->hasFile('video')) {
+            $videoName = time() . '_video.' . $request->file('video')->extension();
+            $request->file('video')->storeAs('uploads/property', $videoName, 'public');
+            $property->video = 'public/uploads/property/' . $videoName;
+        }
+
+        $property->save();
+
+        return redirect()->route('property_index')->with('success', 'Property created successfully.');
+    }
+
+    public function property_update(Request $request, $id)
+    {
+        $request->validate([
+            'title'             => 'required|string|max:255',
+            'description'       => 'nullable|string',
+            'before_image'      => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
+            'after_image'       => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
+            'video'             => 'nullable|mimes:mp4,mov,avi,wmv|max:10240',
+            'status'            => 'required',
+        ]);
+
+        $property = Properties::findOrFail($id);
+        $property->title = $request->title;
+        $property->description = $request->description;
+        $property->status = $request->status;
+        $property->slug = Str::slug($request->title);
+
+        if ($request->hasFile('before_image')) {
+            // Delete old image if exists
+            if ($property->before_image && file_exists(storage_path('app/public/' . str_replace('public/', '', $property->before_image)))) {
+                unlink(storage_path('app/public/' . str_replace('public/', '', $property->before_image)));
+            }
+
+            $beforeImageName = time() . '_before.' . $request->file('before_image')->extension();
+            $request->file('before_image')->storeAs('uploads/property', $beforeImageName, 'public');
+            $property->before_image = 'public/uploads/property/' . $beforeImageName;
+        }
+
+        if ($request->hasFile('after_image')) {
+            // Delete old image if exists
+            if ($property->after_image && file_exists(storage_path('app/public/' . str_replace('public/', '', $property->after_image)))) {
+                unlink(storage_path('app/public/' . str_replace('public/', '', $property->after_image)));
+            }
+
+            $afterImageName = time() . '_after.' . $request->file('after_image')->extension();
+            $request->file('after_image')->storeAs('uploads/property', $afterImageName, 'public');
+            $property->after_image = 'public/uploads/property/' . $afterImageName;
+        }
+
+        if ($request->hasFile('video')) {
+            // Delete old video if exists
+            if ($property->video && file_exists(storage_path('app/public/' . str_replace('public/', '', $property->video)))) {
+                unlink(storage_path('app/public/' . str_replace('public/', '', $property->video)));
+            }
+
+            $videoName = time() . '_video.' . $request->file('video')->extension();
+            $request->file('video')->storeAs('uploads/property', $videoName, 'public');
+            $property->video = 'public/uploads/property/' . $videoName;
+        }
+
+        $property->save();
+
+        return redirect()->route('property_index')->with('success', 'Property updated successfully.');
+    }
+
+     public function property_delete($id)
+     {
+         try {
+             $property = Properties::findOrFail($id);
+             $property->delete();
+
+             return redirect()->back()->with('success', 'Property deleted successfully.');
+         } catch (\Exception $e) {
+             return redirect()->back()->with('error', 'Failed to delete property.');
+         }
+     }
+
+
+    public function create()
+    {
+        $data['title'] = 'Service Create';
+        $data['categories'] = Category::where('status', '1')->get();
+       return view('backend.admin.service.create',$data);
+    }
+
+
+
+     public function index()
+     {
+        $data['products'] = Product::orderBy('id', 'desc')->paginate(12);
+        $data['title'] = 'Service List';
+
+        return view('backend.admin.service.index', $data);
+     }
+
+
+     public function show($slug)
+     {
+        $data['title'] = 'Service view';
+        $data['product'] = Product::where('slug',$slug)->firstOrFail();
+        return view('backend.admin.service.show', $data);
+     }
+
+
+    public function store(Request $request)
+    {
+
+        //  dd($request->all());
+        $request->validate([
+            'name' => 'required|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5024',
+            'description' => 'required',
+           'images' => 'nullable|array|max:10', // Ensure it's an array and max 10 images
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10600',
+            'youtube_link' => 'nullable',
+            'steps' => 'required'
+
+        ]);
+
+        $imageName = null;
+        if ($request->hasFile('image')) {
+            $imageName = date('YmdHis') . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('uploads', $imageName, 'public');
+        }
+
+        // Create a new Product instance
+        $product = new Product;
+        $product->name          = $request->name;
+        $product->slug          = Str::slug($request->name);
+        $product->status        = $request->status;
+        $product->image         = 'public/uploads/'.$imageName;
+        $product->description   = $request->description;
+        $product->category_id   = $request->category_id;
+        $product->steps         = json_encode($request->steps);
+        $product->youtube_link = $request->youtube_link;
+
+        $product->save();
+
+
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                if ($file->isValid()) {
+                    $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                    $filePath = $file->storeAs('uploads', $filename, 'public');
+                    ImageGallery::create([
+                        'product_id' => $product->id,
+                        'images' => 'public/uploads/' . $filename,
+                    ]);
+                }
+            }
+        }
+
+        return redirect()->route('product.index')->with('success', 'Product created successfully');
+
+    }
+
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'name'          => 'required|max:255',
+        'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5024',
+        'description'   => 'required',
+        'category_id'   => 'required|exists:categories,id',
+        'status'        => 'required|in:0,1',
+        'steps' => 'required'
+    ]);
+
+    $product = Product::findOrFail($id);
+
+    // Handle updating the product's main image
+    $imageName = $product->image; // Keep old image if not replaced
+       if ($request->hasFile('image')) {
+        $oldImagePath = public_path($product->image);
+    
+        // Ensure the old image is a valid file before deleting
+        if (!empty($product->image) && file_exists($oldImagePath) && is_file($oldImagePath)) {
+            unlink($oldImagePath);
+        }
+    
+        // Upload new image
+        $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+        $request->file('image')->storeAs('uploads', $imageName, 'public');
+        $imageName = 'public/uploads/' . $imageName; // Correct path format
+    }
+
+
+    // Update product details
+    $product->name          = $request->name;
+    $product->slug          = Str::slug($request->name);
+    $product->status        = $request->status;
+    $product->image         = $imageName;
+    $product->description   = $request->description;
+    $product->category_id   = $request->category_id;
+    $product->steps         = json_encode($request->steps);
+    $product->youtube_link = $request->youtube_link;
+    $product->save();
+
+    // Handle multiple images for the product
+    if ($request->hasFile('images')) {
+        // Remove old images from ImageGallery
+        foreach ($product->images as $image) {
+            if (file_exists(public_path($image->images))) {
+                unlink(public_path($image->images));
+            }
+            $image->delete();
+        }
+
+        // Upload and store new images
+        foreach ($request->file('images') as $file) {
+            if ($file->isValid()) {
+                $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                $file->storeAs('uploads', $filename, 'public');
+
+                ImageGallery::create([
+                    'product_id' => $product->id,
+                    'images' => 'public/uploads/' . $filename,
+                ]);
+            }
+        }
+    }
+
+    return redirect()->route('product.index')->with('success', 'Product updated successfully');
+}
+
+
+public function edit($slug)
+{
+    $data['title']      = 'Service Edit';
+    $data['product']    = Product::where('slug', $slug)->firstOrFail();
+    $data['categories'] = Category::all();
+
+    // Ensure steps is an array
+    $data['product']->steps = !empty($data['product']->steps) ? json_decode($data['product']->steps, true) : [];
+
+    return view('backend.admin.service.edit', $data);
+}
+
+
+    public function delete($id)
+    {
+        try {
+            $service = Product::findOrFail($id);
+            $service->delete();
+
+            return redirect()->back()->with('success', 'Service deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to delete Service.');
+        }
+    }
+
+
+
+}

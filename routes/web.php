@@ -1,0 +1,214 @@
+<?php
+
+use App\Models\BlogCategory;
+use Illuminate\Support\Facades\Route;;
+use Illuminate\Support\Facades\Artisan;
+use Spatie\Honeypot\ProtectAgainstSpam;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\CustomPageController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\RolePermissionController;
+use App\Http\Controllers\HomePageContentController;
+use App\Http\Controllers\frontend\WebsiteServiceController;
+use App\Http\Controllers\frontend\AuthController as FrontendAuthController;
+use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
+use App\Http\Controllers\SliderController;
+
+  // =================================
+    //CACHE CLEARING ROUTE     //=====
+    // ===============================
+    Route::get('/cc', function() {
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('view:clear');
+        Artisan::call('route:clear');
+
+        return redirect()->back()->with('success', 'Cache Cleared Successfully!');
+    })->name('cache.clear');
+
+
+
+    // ===============================
+    // FRONTEND ROUTES         //=====
+    // ===============================
+
+    //Pages
+    Route::prefix('/')->group(function () {
+        Route::get('/', [FrontendHomeController::class, 'index'])->name('home');
+        Route::get('about', [FrontendHomeController::class, 'about'])->name('about.page');
+        Route::get('portfolio', [FrontendHomeController::class, 'portfolio'])->name('ourWorkIndex');
+        Route::get('frontend-logout', [FrontendAuthController::class, 'frontendLogout'])->name('frontend.logout');
+        Route::get('/bulk-order', [FrontendHomeController::class, 'bulkOrder'])->name('bulkOrder');
+        // Service Routes
+        Route::get('/service/page', [WebsiteServiceController::class, 'index'])->name('service.page');
+        Route::get('/service/details/{slug}', [WebsiteServiceController::class, 'details'])->name('service.details');
+        Route::get('/cat-wise-service/{slug}', [WebsiteServiceController::class, 'CatWiseService'])->name('CatWiseService');
+
+    });
+
+    Route::prefix('user')->middleware('auth')->group(function () {
+        // ===============================
+        // USER MANAGEMENT       //====
+        // ===============================
+        Route::get('/dashboard', [FrontendHomeController::class, 'dashboardIndex'])->name('user.dashboard');
+        Route::post('/update-user-password/{id}', [FrontendHomeController::class, 'update'])->name('update.user.password');
+        Route::get('change-profile', [FrontendHomeController::class, 'changeProfile'])->name('change.profile');
+        Route::get('change-web-password', [FrontendHomeController::class, 'changePassword'])->name('change.web.password');
+        Route::post('customerUpdate/{id}', [FrontendHomeController::class, 'customerUpdate'])->name('change.web.customerUpdate');
+
+
+    });
+    // ===============================
+    // AUTHENTICATION ROUTES   //=====
+    // ===============================
+    Route::prefix('auth')->group(function () {
+        Route::get('/login', [AuthController::class, 'index'])->name('login');
+        Route::post('/store', [AuthController::class, 'store'])->name('store');
+        Route::post('/update-user-password/{id}', [ChangePasswordController::class, 'update'])->name('update.user.password');
+        // Registration Routes
+        Route::get('/register', [RegistrationController::class, 'index'])->name('registration');
+        Route::post('/registration/store', [RegistrationController::class, 'store'])->name('registration.store')->middleware(ProtectAgainstSpam::class);
+    });
+
+    // ===============================
+    // BACKEND ROUTES          //=====
+    // ===============================
+    Route::prefix('admin')->middleware('auth','admin')->group(function () {
+
+    // ===============================
+    // DASHBOARD & CUSTOM PAGES // ===
+    // ===============================
+    Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/custom/page', [CustomPageController::class, 'index'])->name('custom.page.index');
+    Route::get('/custom/page/edit/{id}', [CustomPageController::class, 'edit'])->name('custom.page.edit');
+    Route::post('/custom/page/update/{id}', [CustomPageController::class, 'update'])->name('custom.page.update');
+
+    // ===============================
+    // Service MANAGEMENT       //====
+    // ===============================
+
+    Route::prefix('service')->name('product.')->group(function(){
+        Route::get('/create', [PropertyController::class, 'create'])->name('create');
+        Route::post('/store', [PropertyController::class, 'store'])->name('store');
+        Route::get('/index', [PropertyController::class, 'index'])->name('index');
+        Route::get('/edit/{slug}', [PropertyController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [PropertyController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [PropertyController::class, 'delete'])->name('delete');
+        Route::get('/show/{slug}', [PropertyController::class, 'show'])->name('show');
+    });
+
+
+
+    // ===============================//
+    // AUTH & USER MANAGEMENT         //
+    // ===============================//
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::prefix('user')->name('user.')->group(function(){
+        Route::get('list', [UserController::class, 'index'])->name('list');
+        Route::get('create', [UserController::class, 'create'])->name('create');
+        Route::post('store', [UserController::class, 'store'])->name('store');
+        Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit');
+        Route::get('delete/{id}', [UserController::class, 'delete'])->name('delete');
+        Route::put('update/{id}', [UserController::class, 'update'])->name('update');
+        Route::get('show/{id}', [UserController::class, 'show'])->name('show');
+    });
+
+
+    // ===============================//
+    // CATEGORY MANAGEMENT            //
+    // ===============================//
+
+    Route::prefix('category')->name('category.')->group(function(){
+        Route::get('index', [CategoryController::class, 'index'])->name('index');
+        Route::get('create', [CategoryController::class, 'create'])->name('create');
+        Route::post('save', [CategoryController::class, 'store'])->name('store');
+        Route::get('edit/{slug}', [CategoryController::class, 'edit'])->name('edit');
+        Route::post('update/{id}', [CategoryController::class, 'update'])->name('update');
+        Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('destroy');
+        Route::get('show/{slug}', [CategoryController::class, 'show'])->name('show');
+    });
+
+
+    // ===============================//
+    // PROPERTIES MANAGEMENT          //
+    // ===============================//
+    Route::prefix('property')->group(function(){
+        Route::get('index', [PropertyController::class, 'property_index'])->name('property_index');
+        Route::get('create', [PropertyController::class, 'property_create'])->name('property_create');
+        Route::post('save', [PropertyController::class, 'property_store'])->name('property_store');
+        Route::get('edit/{slug}', [PropertyController::class, 'property_edit'])->name('property_edit');
+        Route::get('show/{slug}', [PropertyController::class, 'property_show'])->name('property_show');
+        Route::delete('delete/{id}', [PropertyController::class, 'property_delete'])->name('property_delete');
+        Route::put('update/{id}', [PropertyController::class, 'property_update'])->name('property_update');
+    });
+
+
+
+
+
+
+    // ===============================//
+    // SETTINGS & PASSWORD MANAGEMENT //
+    // ===============================//
+    Route::get('/settings', [SettingController::class, 'index'])->name('setting');
+    Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change.password');
+    Route::post('/update-password/{id}', [ChangePasswordController::class, 'update'])->name('update.password');
+
+    // ===============================//
+    // PROFILE MANAGEMENT             //
+    // ===============================//
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
+    // ===============================//
+    // REGISTRATION UPDATE            //
+    // ===============================//
+    Route::post('/registration/update/{id}', [RegistrationController::class, 'update'])->name('registration.update');
+
+    // ===============================//
+    // ROLE & PERMISSION MANAGEMENT   //
+    // ===============================//
+    Route::get('/roles', [RolePermissionController::class, 'createRole'])->name('roles.permission.create');
+    Route::get('/roles/permission/index', [RolePermissionController::class, 'index'])->name('roles.permission.index');
+    Route::post('/roles/store', [RolePermissionController::class, 'storeRole'])->name('store.roles');
+    Route::post('/permissions/store', [RolePermissionController::class, 'createPermission'])->name('permissions.create');
+    Route::post('/roles/assign', [RolePermissionController::class, 'assignRole'])->name('assign.role');
+    Route::post('/permissions/assign', [RolePermissionController::class, 'assignPermission'])->name('assign.permission');
+
+
+
+
+    // ===============================//
+    //  Home Page Content Management  //
+    // ===============================//
+    Route::prefix('home')->group(function(){
+        Route::get('/page-content', [HomePageContentController::class,'index'])->name('home.page.index');
+        Route::get('/edit', [HomePageContentController::class,'edit'])->name('home.page.edit');
+        Route::post('/update', [HomePageContentController::class,'update'])->name('home.page.update');
+    });
+
+
+
+     // ===============================//
+    // SLIDER MANAGEMENT          //
+    // ===============================//
+    Route::prefix('slider/')->name('slider.')->group(function () {
+        Route::get('index', [SliderController::class, 'index'])->name('index');
+        Route::get('create', [SliderController::class, 'create'])->name('create');
+        Route::post('store', [SliderController::class, 'store'])->name('store');
+        Route::get('edit/{slug}', [SliderController::class, 'edit'])->name('edit');
+        Route::delete('delete/{id}', [SliderController::class, 'delete'])->name('delete');
+        Route::put('update/{id}', [SliderController::class, 'update'])->name('update');
+    });
+
+
+});
+
+
