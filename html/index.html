@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bridal - Photo Studio Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="assets/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white border-bottom navbar-light sticky-top px-4 px-lg-5">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <h1 class="text-primary">Bridal</h1>
+            </a>
+            <button type="button" class="navbar-toggler shadow-none p-2" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-align-right-icon lucide-align-right">
+                    <path d="M21 12H9" />
+                    <path d="M21 18H7" />
+                    <path d="M21 6H3" />
+                </svg>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <div class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle"
+                            data-bs-toggle="dropdown">Protfolio</a>
+                        <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0 py-2 dropdown-menu-end">
+                            <a href="photography.html" class="dropdown-item py-2">Photography</a>
+                            <a href="cinematography.html" class="dropdown-item py-2">Cinematography</a>
+                        </div>
+                    </div>
+                    <a href="package.html" class="nav-item nav-link">Package</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- mobile menu -->
+    <div class="mobile_menu d-block d-lg-none">
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Bridal</h5>
+                <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body p-0">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="about.html" class="nav-item nav-link">About</a>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header nav-item nav-link">
+                            <button class="accordion-button p-0 border-0 shadow-none collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                aria-controls="collapseThree">
+                                Protfolio
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse ps-4 border-bottom border-light"
+                            data-bs-parent="#accordionExample">
+                            <a href="photography.html" class="dropdown-item py-2 small">Photography</a>
+                            <a href="cinematography.html" class="dropdown-item py-2 small">Cinematography</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="package.html" class="nav-item nav-link">Package</a>
+                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    <div class="hero-header">
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/img/slider/1.jpg" class="w-100" alt="Image">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/slider/2.jpg" class="w-100" alt="Image">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/slider/3.jpg" class="w-100" alt="Image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- About Start -->
+    <div class="about_sec pt-4 mt-4 pt-lg-5 mt-lg-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <div class="count_items bg-light p-3 p-lg-5 rounded text-center">
+                                <h5 class="text-dark fs-6">Since</h5>
+                                <h2 class="fs-1 fw-bold" data-toggle="counter-up">2013</h2>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="count_items bg-light p-3 p-lg-5 rounded text-center">
+                                <h5 class="text-dark fs-6">Events</h5>
+                                <h2 class="fs-1 fw-bold">
+                                    <span data-toggle="counter-up">2036</span>
+
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="count_items bg-light p-3 p-lg-5 rounded text-center">
+                                <h5 class="text-dark fs-6">Photos</h5>
+                                <h2 class="fs-1 fw-bold">
+                                    <span data-toggle="counter-up">1000</span> k+
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="count_items bg-light p-3 p-lg-5 rounded text-center">
+                                <h5 class="text-dark fs-6">Clients</h5>
+                                <h2 class="fs-1 fw-bold">
+                                    <span data-toggle="counter-up">999</span> k+
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="h-100">
+                        <p class="text-primary text-uppercase mb-2">About Us</p>
+                        <h1 class="display-6 mb-4">Premium Class Photography & Cinematography Services</h1>
+                        <p class="mb-4">
+                            Bridal Harmony is a team of experienced professional photographers, cinematographers and
+                            photo-book experts who are dedicated to creating stunning, authentic stories of people's
+                            live.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi quaerat animi asperiores
+                            illo. Quaerat, deserunt natus. Minima sit numquam dolorum.
+                        </p>
+                        <a class="btn btn-primary py-2 px-4" href="about.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Services Start -->
+    <div class="service_sec pt-2 mt-2 pt-lg-4 mt-lg-4">
+        <div class="container">
+            <div class="text-center mx-auto mb-3">
+                <p class="text-primary text-uppercase mb-2">Our Services</p>
+                <h1 class="display-6 mb-5">Our Top Servies</h1>
+            </div>
+
+            <div class="owl-carousel service-carousel">
+                <div class="testimonial-item bg-white border border-light p-3 text-center">
+                    <img src="assets/img/services/1.jpg" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold"><strong>Maternity Photography</strong></h5>
+                        <p class="m-0">
+                            Make your special day last a lifetime with Bridal Harmony's exceptional wedding
+                            photography services. Our talented team is dedicated to capturing the magic of your...
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-item bg-white border border-light p-3 text-center">
+                    <img src="assets/img/services/2.png" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold"><strong>Wedding Cinematography</strong></h5>
+                        <p class="m-0">
+                            Elevate your wedding day memories with the enchanting storytelling of Bridal Harmony's
+                            wedding cinematography services. We specialize in capturing the essence of your love
+                            story...
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-item bg-white border border-light p-3 text-center">
+                    <img src="assets/img/services/7.png" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold"><strong>Birthday Photography</strong></h5>
+                        <p class="m-0">
+                            Celebrate your special day with Bridal Harmony's birthday photography services. We
+                            specialize in capturing the joy, laughter, and unforgettable moments of your birthday
+                            celebration. Our...
+                        </p>
+                    </div>
+                </div>
+
+                <div class="testimonial-item bg-white border border-light p-3 text-center">
+                    <img src="assets/img/services/4.jpg" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold"><strong>Birthday Photography</strong></h5>
+                        <p class="m-0">
+                            Celebrate your special day with Bridal Harmony's birthday photography services. We
+                            specialize in capturing the joy, laughter, and unforgettable moments of your birthday
+                            celebration. Our...
+                        </p>
+                    </div>
+                </div>
+
+                <div class="testimonial-item bg-white border border-light p-3 text-center">
+                    <img src="assets/img/services/3.jpg" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold"><strong>Corporate/Promotional Photography</strong></h5>
+                        <p class="m-0">
+                            Elevate your brand's visual identity with Bridal Harmony's professional branding and
+                            promotional photography services. We specialize in capturing the essence of your business,
+                            products, and...
+
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-item bg-white border border-light p-3 text-center">
+                    <img src="assets/img/services/7.png" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold"><strong>Birthday Photography</strong></h5>
+                        <p class="m-0">
+                            Celebrate your special day with Bridal Harmony's birthday photography services. We
+                            specialize in capturing the joy, laughter, and unforgettable moments of your birthday
+                            celebration. Our...
+                        </p>
+                    </div>
+                </div>
+
+                <div class="testimonial-item bg-white border border-light p-3 text-center">
+                    <img src="assets/img/services/4.jpg" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold"><strong>Birthday Photography</strong></h5>
+                        <p class="m-0">
+                            Celebrate your special day with Bridal Harmony's birthday photography services. We
+                            specialize in capturing the joy, laughter, and unforgettable moments of your birthday
+                            celebration. Our...
+                        </p>
+                    </div>
+                </div>
+
+                <div class="testimonial-item bg-white border border-light p-3 text-center">
+                    <img src="assets/img/services/3.jpg" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold"><strong>Corporate/Promotional Photography</strong></h5>
+                        <p class="m-0">
+                            Elevate your brand's visual identity with Bridal Harmony's professional branding and
+                            promotional photography services. We specialize in capturing the essence of your business,
+                            products, and...
+
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Services End -->
+
+
+        <!-- reviews Start -->
+        <div class="bg-light reviews py-5  mt-4 mt-lg-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5">
+                    <p class="text-primary text-uppercase mb-2">Client Reviews</p>
+                    <h1 class="display-6 mb-4">More Than 2000+ Customers Trusted Us</h1>
+                </div>
+                <div class="owl-carousel testimonial-carousel">
+                    <div class="testimonial-item bg-white p-4 rounded shodow-sm border">
+                        <div class="d-flex align-items-center mb-4">
+                            <img class="flex-shrink-0 rounded-circle border p-1" width="100" height="100"
+                                src="assets/img/testimonial-1.jpg" alt="">
+                            <div class="ms-4">
+                                <h5 class="mb-1">Emily Watson</h5>
+                                <span>Wedding Client</span>
+                            </div>
+                        </div>
+                        <div class="start mb-3">
+                            <i class="fa fa-star text-primary small"></i>
+                            <i class="fa fa-star text-primary small"></i>
+                            <i class="fa fa-star text-primary small"></i> 
+                            <i class="fa fa-star text_light small"></i>
+                            <i class="fa fa-star text_light small"></i>
+                        </div>
+                        <p class="mb-0">
+                            The team captured every magical moment of our wedding! The photos and cinematic
+                            highlights were breathtaking — we couldn’t be happier with their work.
+                        </p>
+                    </div>
+
+                    <div class="testimonial-item bg-white p-4 rounded shodow-sm border">
+                        <div class="d-flex align-items-center mb-4">
+                            <img class="flex-shrink-0 rounded-circle border p-1" width="100" height="100"
+                                src="assets/img/testimonial-2.jpg" alt="">
+                            <div class="ms-4">
+                                <h5 class="mb-1">Mark Johnson</h5>
+                                <span>Event Organizer</span>
+                            </div>
+                        </div>
+                        <p class="mb-0">Our corporate event was perfectly documented. Their team is professional,
+                            punctual, and incredibly talented. Highly recommended for any high-end shoot!</p>
+                    </div>
+
+                    <div class="testimonial-item bg-white p-4 rounded shodow-sm border">
+                        <div class="d-flex align-items-center mb-4">
+                            <img class="flex-shrink-0 rounded-circle border p-1" width="100" height="100"
+                                src="assets/img/testimonial-3.jpg" alt="">
+                            <div class="ms-4">
+                                <h5 class="mb-1">Sophia Lee</h5>
+                                <span>Model & Influencer</span>
+                            </div>
+                        </div>
+                        <p class="mb-0">Their studio photoshoots are top-notch! From lighting to direction, everything
+                            felt premium. They really know how to bring out your best angles.</p>
+                    </div>
+
+                    <div class="testimonial-item bg-white p-4 rounded shodow-sm border">
+                        <div class="d-flex align-items-center mb-4">
+                            <img class="flex-shrink-0 rounded-circle border p-1" width="100" height="100"
+                                src="assets/img/testimonial-4.jpg" alt="">
+                            <div class="ms-4">
+                                <h5 class="mb-1">Rahul Mehra</h5>
+                                <span>Groom</span>
+                            </div>
+                        </div>
+                        <p class="mb-0">Our pre-wedding shoot felt like a movie set! The cinematography was elegant,
+                            emotional, and beautifully edited. Thank you for the lifetime memories.</p>
+                    </div>
+                    <div class="testimonial-item bg-white p-4 rounded shodow-sm border">
+                        <div class="d-flex align-items-center mb-4">
+                            <img class="flex-shrink-0 rounded-circle border p-1" width="100" height="100"
+                                src="assets/img/testimonial-2.jpg" alt="">
+                            <div class="ms-4">
+                                <h5 class="mb-1">Mark Johnson</h5>
+                                <span>Event Organizer</span>
+                            </div>
+                        </div>
+                        <p class="mb-0">Our corporate event was perfectly documented. Their team is professional,
+                            punctual, and incredibly talented. Highly recommended for any high-end shoot!</p>
+                    </div>
+
+                    <div class="testimonial-item bg-white p-4 rounded shodow-sm border">
+                        <div class="d-flex align-items-center mb-4">
+                            <img class="flex-shrink-0 rounded-circle border p-1" width="100" height="100"
+                                src="assets/img/testimonial-3.jpg" alt="">
+                            <div class="ms-4">
+                                <h5 class="mb-1">Sophia Lee</h5>
+                                <span>Model & Influencer</span>
+                            </div>
+                        </div>
+                        <p class="mb-0">Their studio photoshoots are top-notch! From lighting to direction, everything
+                            felt premium. They really know how to bring out your best angles.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- reviews End -->
+
+
+        <!-- Team Start -->
+        <div class="container-xxl px-0 pt-4 mt-4 pt-lg-5 mt-lg-5">
+            <div class="text-center mx-auto mb-5">
+                <p class="text-primary text-uppercase mb-2">Our Team</p>
+                <h1 class="display-6 mb-0">Creative Photograher And Videographer</h1>
+            </div>
+            <div class="row g-0">
+                <div class="col-lg-6">
+                    <div class="row g-0 flex-sm-row">
+                        <div class="col-sm-6">
+                            <div class="team-img position-relative">
+                                <img class="img-fluid" src="img/team-1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="h-100 p-5 d-flex flex-column justify-content-between">
+                                <div class="mb-3">
+                                    <h4>Lucifer Jhones</h4>
+                                    <span>Photographer</span>
+                                </div>
+                                <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
+                                    clita
+                                    duo</p>
+                                <div class="d-flex">
+                                    <a class="btn btn-square btn-outline-primary rounded-circle me-2" href=""><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-outline-primary rounded-circle me-2" href=""><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-outline-primary rounded-circle me-2" href=""><i
+                                            class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-0 flex-sm-row-reverse flex-lg-row">
+                        <div class="col-sm-6">
+                            <div class="team-img position-relative">
+                                <img class="img-fluid" src="img/team-2.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="h-100 p-5 d-flex flex-column justify-content-between">
+                                <div class="mb-3">
+                                    <h4>Jesse Joslin</h4>
+                                    <span>Videographer</span>
+                                </div>
+                                <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
+                                    clita
+                                    duo</p>
+                                <div class="d-flex">
+                                    <a class="btn btn-square btn-outline-primary rounded-circle me-2" href=""><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-outline-primary rounded-circle me-2" href=""><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-outline-primary rounded-circle me-2" href=""><i
+                                            class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-0 flex-lg-row-reverse">
+                        <div class="col-sm-6">
+                            <div class="team-img position-relative">
+                                <img class="img-fluid" src="img/team-3.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="h-100 p-5 d-flex flex-column justify-content-between">
+                                <div class="mb-3">
+                                    <h4>Richard Archer</h4>
+                                    <span>Retoucher</span>
+                                </div>
+                                <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
+                                    clita
+                                    duo</p>
+                                <div class="d-flex">
+                                    <a class="btn btn-square btn-outline-primary rounded-circle me-2" href=""><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-outline-primary rounded-circle me-2" href=""><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-outline-primary rounded-circle me-2" href=""><i
+                                            class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-0 flex-sm-row-reverse">
+                        <div class="col-sm-6">
+                            <div class="team-img position-relative">
+                                <img class="img-fluid" src="img/team-4.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="h-100 p-5 d-flex flex-column justify-content-between">
+                                <div class="mb-3">
+                                    <h4>April Ryan</h4>
+                                    <span>Editor</span>
+                                </div>
+                                <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
+                                    clita
+                                    duo</p>
+                                <div class="d-flex">
+                                    <a class="btn btn-square btn-outline-primary rounded-circle me-2" href=""><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-outline-primary rounded-circle me-2" href=""><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-outline-primary rounded-circle me-2" href=""><i
+                                            class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Team End -->
+
+
+
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer position-relative bg-dark text-white-50 mt-5 py-5 px-4 px-lg-5">
+            <div class="row g-5 pt-4 mt-4 pt-lg-5 mt-lg-5">
+                <div class="col-lg-6 pe-lg-5">
+                    <a href="index.html" class="navbar-brand">
+                        <h1 class="display-5 text-primary">Bridal</h1>
+                    </a>
+                    <p>Aliquyam sed elitr elitr erat sed diam ipsum eirmod eos lorem nonumy. Tempor sea ipsum diam sed
+                        clita
+                        dolore eos dolores magna erat dolore sed stet justo et dolor.</p>
+                    <p><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</p>
+                    <p><i class="fa fa-phone-alt me-2"></i>+012 345 67890</p>
+                    <p><i class="fa fa-envelope me-2"></i>info@example.com</p>
+                    <div class="d-flex justify-content-start mt-4">
+                        <a class="btn btn-square btn-outline-primary rounded-circle me-2" href="#"><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-primary rounded-circle me-2" href="#"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-primary rounded-circle me-2" href="#"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-square btn-outline-primary rounded-circle me-2" href="#"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <div class="row g-5">
+                        <div class="col-sm-6">
+                            <h4 class="text-light mb-4">Quick Links</h4>
+                            <a class="btn btn-link" href="">About Us</a>
+                            <a class="btn btn-link" href="">Contact Us</a>
+                            <a class="btn btn-link" href="">Our Services</a>
+                            <a class="btn btn-link" href="">Terms & Condition</a>
+                            <a class="btn btn-link" href="">Support</a>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4 class="text-light mb-4">Popular Links</h4>
+                            <a class="btn btn-link" href="">About Us</a>
+                            <a class="btn btn-link" href="">Contact Us</a>
+                            <a class="btn btn-link" href="">Our Services</a>
+                            <a class="btn btn-link" href="">Terms & Condition</a>
+                            <a class="btn btn-link" href="">Support</a>
+                        </div>
+                        <div class="col-sm-12">
+                            <h4 class="text-light mb-4">Newsletter</h4>
+                            <div class="w-100">
+                                <div class="input-group">
+                                    <input type="text" class="form-control border-0 bg-secondary"
+                                        style="padding: 20px 30px;" placeholder="Your Email Address"><button
+                                        class="btn btn-primary px-4">Sign Up</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Copyright Start -->
+        <div class="container-fluid bg-dark text-white border-top border-secondary px-0">
+            <div class="d-flex flex-column flex-md-row justify-content-between">
+                <div class="py-4 px-5 text-center text-md-start">
+                    <p class="mb-0">&copy; <a class="text-primary" href="#">Your Site Name</a>. All Rights Reserved.</p>
+                </div>
+                <div class="py-4 px-5 bg-secondary footer-shape position-relative text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    <p class="mb-0">Designed by <a class="text-primary fw-bold" href="https://htmlcodex.com">HTML
+                            Codex</a>
+                    </p> Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+                class="bi bi-arrow-up"></i></a>
+
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/lib/counterup/counterup.min.js"></script>
+        <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="assets/lib/lightbox/js/lightbox.min.js"></script>
+        <script src="assets/lib/waypoints/waypoints.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="assets/js/main.js"></script>
+</body>
+
+</html>
