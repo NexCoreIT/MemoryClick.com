@@ -10,7 +10,11 @@ use App\Models\properties;
 use Illuminate\Http\Request;
 use App\Rules\PasswordCheckRule;
 use App\Http\Controllers\Controller;
+use App\Models\Cinematography;
+use App\Models\OurService;
 use App\Models\Photography;
+use App\Models\RecentWork;
+use App\Models\Testimonial;
 
 class HomeController extends Controller
 {
@@ -19,11 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['title'] = 'brightvisionbd - Home';
-        // $data['row'] = properties::where('status','1')->orderByDesc('id')->get();
-        $data['row'] = properties::where('status', '1')->orderBy('id', 'DESC')->get();
-        $data['service'] = Product::where('status', '1')->latest()->take(12)->get();
-        $data['about'] = CustomPage::where('slug', 'about-us')->find(1);
+        $data['title'] = 'Memoryclick - Home';
+        $data['testimonials'] = Testimonial::where('status','1')->orderByDesc('id')->get();
+        $data['service'] = OurService::where('status', '1')->orderBy('id', 'DESC')->get();
+        $data['recent_work'] = RecentWork::where('status', '1')->latest()->take(8)->get();
+        $data['cinematography'] = Cinematography::where('status', '1-us')->get();
 
         return view('frontend.pages.home', $data);
     }

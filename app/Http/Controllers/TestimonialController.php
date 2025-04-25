@@ -30,6 +30,7 @@ class TestimonialController extends Controller
         'name' => 'required|string|max:255',
         'description' => 'required|string',
         'status' => 'required|boolean',
+         'rating' => 'required|numeric|min:1|max:5'
     ]);
 
     $imagePath = null;
@@ -54,6 +55,7 @@ class TestimonialController extends Controller
         'description' => $request->description,
         'status' => $request->status,
         'image' => $imagePath,
+        'designation'=> $request->designation,
     ]);
 
     return redirect()->route('testimonial.index')->with('success', 'Testimonial created successfully!');
@@ -75,6 +77,8 @@ class TestimonialController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'status' => 'required|boolean',
+            'rating' => 'required|numeric|min:1|max:5',
+            'designation' => 'required',
         ]);
 
         $testimonial = Testimonial::findOrFail($id);
@@ -102,6 +106,7 @@ class TestimonialController extends Controller
         'name' => $request->name,
         'description' => $request->description,
         'status' => $request->status,
+        'designation'=> $request->designation,
         ]);
 
         return redirect()->route('testimonial.index')->with('success', 'Testimonial updated successfully!');

@@ -12,7 +12,7 @@ class OurServiceController extends Controller
 
         $data['title'] = "Service List";
 
-        $data['services'] = OurService::get();
+        $data['services'] = OurService::paginate(20);
 
         return view('backend.admin.our_service.index',$data);
     }

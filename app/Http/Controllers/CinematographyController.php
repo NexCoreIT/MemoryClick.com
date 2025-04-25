@@ -31,12 +31,14 @@ public function store(Request $request)
         'title' => 'required|string|max:255',
         'youtube_url' => 'required|url',
         'status' => 'required|boolean',
+        'credit'=>'required'
     ]);
 
     Cinematography::create([
         'title' => $request->title,
         'youtube_url' => $request->youtube_url,
         'status' => $request->status,
+        'credit' => $request->credit,
         'slug' => Str::slug($request->title),
     ]);
 
@@ -52,6 +54,7 @@ public function update(Request $request, $id)
         'title' => 'required|string|max:255',
         'youtube_url' => 'required|url',
         'status' => 'required|boolean',
+        'credit'=>'required'
     ]);
 
     $cinematography->update([
@@ -59,6 +62,7 @@ public function update(Request $request, $id)
         'youtube_url' => $request->youtube_url,
         'status' => $request->status,
         'slug' => Str::slug($request->title),
+        'credit' => $request->credit,
     ]);
 
     return redirect()->route('cinematographies.index')->with('success', 'Cinematography updated successfully!');

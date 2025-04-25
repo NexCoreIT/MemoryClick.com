@@ -30,7 +30,7 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->social_media_name }}</td>
                         <td>
-                            <span class="badge bg-{{ $item->status ? 'success' : 'secondary' }}">
+                            <span class="badge bg-{{ $item->status ? '1' : '0' }}">
                                 {{ $item->status ? 'Active' : 'Inactive' }}
                             </span>
                         </td>

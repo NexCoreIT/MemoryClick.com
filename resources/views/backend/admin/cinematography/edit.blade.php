@@ -9,20 +9,26 @@
         <form action="{{ route('cinematographies.update', $cinematography->id) }}" method="POST">
             @csrf
             @method('PUT')
-            <div class="card-body">
-                <div class="mb-3">
+            <div class="card-body row">
+                <div class="mb-3 col-md-6">
                     <label class="form-label">Title</label>
                     <input type="text" name="title" value="{{ old('title', $cinematography->title) }}" class="form-control @error('title') is-invalid @enderror" required>
                     @error('title') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3 col-md-6">
                     <label class="form-label">YouTube URL</label>
                     <input type="text" name="youtube_url" value="{{ old('youtube_url', $cinematography->youtube_url) }}" class="form-control @error('youtube_url') is-invalid @enderror" required>
                     @error('youtube_url') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3 col-md-6">
+                    <label class="form-label">Film Credit</label>
+                    <input type="text" name="credit" value="{{ old('credit', $cinematography->credit) }}" class="form-control @error('credit') is-invalid @enderror" value="{{ old('credit') }}" required>
+                    @error('credit') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="mb-3 col-md-6">
                     <label class="form-label">Status</label>
                     <select name="status" class="form-control @error('status') is-invalid @enderror">
                         <option value="1" {{ $cinematography->status == 1 ? 'selected' : '' }}>Active</option>

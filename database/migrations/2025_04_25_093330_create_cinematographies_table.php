@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('youtube_url');
             $table->boolean('status')->default(1); // 1 = Active, 0 = Inactive
             $table->string('slug')->unique();
+            $table->string('credit');
             $table->timestamps();
         });
     }

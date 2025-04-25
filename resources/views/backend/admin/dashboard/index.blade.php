@@ -61,7 +61,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="subheader"><a
-                                        href="{{ route('property_index') }}">Properties({{ $total_properties }})</a></div>
+                                        href="{{ route('photography.index') }}">PHOTOGRAPHY({{ $total_properties }})</a></div>
                                 <div class="ms-auto lh-1">
 
                                 </div>
@@ -75,7 +75,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="subheader"><a
-                                        href="{{ route('product.index') }}">Service({{ $total_service }})</a>
+                                        href="{{ route('cinematographies.index') }}">CINEMATOGRAPHY({{ $total_service }})</a>
                                 </div>
                                 <div class="ms-auto lh-1">
 

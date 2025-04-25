@@ -66,6 +66,7 @@
                         <p class="text-center mt-1">No Data Found</p>
                     @endif
                 </div>
+                {{$services->links()}}
             </div>
         </div>
     </div>

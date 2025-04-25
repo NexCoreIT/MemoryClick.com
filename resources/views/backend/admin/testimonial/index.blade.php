@@ -26,7 +26,7 @@
                         <td>{{ Str::limit($item->description, 50) }}</td>
                         <td>{{ $item->rating }}/5</td>
                         <td>
-                            <span class="badge bg-{{ $item->status ? 'success' : 'secondary' }}">
+                            <span class="badge bg-{{ $item->status ? '1' : '0' }}">
                                 {{ $item->status ? 'Active' : 'Inactive' }}
                             </span>
                         </td>
