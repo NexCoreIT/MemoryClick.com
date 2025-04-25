@@ -484,3 +484,15 @@ body {
 .filter-button.active {
     color: var(--primary);
 }
+
+
+#packageDetails ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#packageDetails ul li {
+    font-size: 16px;
+    padding: 5px 0px;
+}
