@@ -36,7 +36,7 @@ class HomeController extends Controller
 
     public function photography()
     {
-        $data['category'] = Category::where('status', '1')->get();
+        $data['categories'] = Category::where('status', '1')->get();
         $data['rows'] = Photography::where('status', '1')->get(); // added category for optimization
         return view('frontend.photography.index', $data);
     }
