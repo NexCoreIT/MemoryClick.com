@@ -19,7 +19,10 @@ use App\Http\Controllers\HomePageContentController;
 use App\Http\Controllers\frontend\WebsiteServiceController;
 use App\Http\Controllers\frontend\AuthController as FrontendAuthController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
+use App\Http\Controllers\OurServiceController;
+use App\Http\Controllers\RecentWorkController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\TestimonialController;
 
   // =================================
     //CACHE CLEARING ROUTE     //=====
@@ -206,6 +209,46 @@ use App\Http\Controllers\SliderController;
         Route::get('edit/{slug}', [SliderController::class, 'edit'])->name('edit');
         Route::delete('delete/{id}', [SliderController::class, 'delete'])->name('delete');
         Route::put('update/{id}', [SliderController::class, 'update'])->name('update');
+    });
+
+
+       // ===============================//
+      // OUR SERVICE         //
+    // ===============================//
+    Route::prefix('our-service/')->name('service.')->group(function () {
+        Route::get('index', [OurServiceController::class, 'index'])->name('index');
+        Route::get('create', [OurServiceController::class, 'create'])->name('create');
+        Route::post('store', [OurServiceController::class, 'store'])->name('store');
+        Route::get('edit/{slug}', [OurServiceController::class, 'edit'])->name('edit');
+        Route::get('delete/{id}', [OurServiceController::class, 'delete'])->name('delete');
+        Route::put('update/{id}', [OurServiceController::class, 'update'])->name('update');
+    });
+
+
+
+        // ===============================//
+      // OUR TESTIMONIALS         //
+    // ===============================//
+    Route::prefix('testimonial/')->name('testimonial.')->group(function () {
+        Route::get('index', [TestimonialController::class, 'index'])->name('index');
+        Route::get('create', [TestimonialController::class, 'create'])->name('create');
+        Route::post('store', [TestimonialController::class, 'store'])->name('store');
+        Route::get('edit/{slug}', [TestimonialController::class, 'edit'])->name('edit');
+        Route::get('delete/{id}', [TestimonialController::class, 'delete'])->name('delete');
+        Route::put('update/{id}', [TestimonialController::class, 'update'])->name('update');
+    });
+
+
+          // ===============================//
+      // RECENT WORK         //
+    // ===============================//
+    Route::prefix('recent-work/')->name('recent-work.')->group(function () {
+        Route::get('index', [RecentWorkController::class, 'index'])->name('index');
+        Route::get('create', [RecentWorkController::class, 'create'])->name('create');
+        Route::post('store', [RecentWorkController::class, 'store'])->name('store');
+        Route::get('edit/{slug}', [RecentWorkController::class, 'edit'])->name('edit');
+        Route::delete('delete/{id}', [RecentWorkController::class, 'delete'])->name('destroy');
+        Route::put('update/{id}', [RecentWorkController::class, 'update'])->name('update');
     });
 
 

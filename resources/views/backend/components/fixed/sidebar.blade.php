@@ -173,8 +173,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('user.list') ? 'active' : '' }}"
-                        href="{{ route('user.list') }}">
+                    <a class="nav-link {{ request()->routeIs('recent-work.index') ? 'active' : '' }}"
+                        href="{{ route('recent-work.index') }}">
                          <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-presentation"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 4l18 0" /><path d="M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10" /><path d="M12 16l0 4" /><path d="M9 20l6 0" /><path d="M8 12l3 -3l2 2l3 -3" /></svg>
                             </span>
@@ -186,8 +186,8 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('user.list') ? 'active' : '' }}"
-                        href="{{ route('user.list') }}">
+                    <a class="nav-link {{ request()->routeIs('service.index') ? 'active' : '' }}"
+                        href="{{ route('service.index') }}">
                          <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-device-imac-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11 17h-7a1 1 0 0 1 -1 -1v-12a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v8" /><path d="M3 13h10" /><path d="M8 21h4" /><path d="M10 17l-.5 4" /><path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M20.2 20.2l1.8 1.8" /></svg>
                             </span>
@@ -198,8 +198,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('user.list') ? 'active' : '' }}"
-                        href="{{ route('user.list') }}">
+                    <a class="nav-link {{ request()->routeIs('testimonial.index') ? 'active' : '' }}"
+                        href="{{ route('testimonial.index') }}">
                          <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-message-question"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 9h8" /><path d="M8 13h6" /><path d="M14 18h-1l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v4.5" /><path d="M19 22v.01" /><path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
                             </span>
