@@ -40,15 +40,38 @@
                 @foreach ($rows as $item)
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{ $item->category?->slug }}">
                         <div class="photograpy_item text-center">
-                            <a href="{{ asset($item->image) }}">
-                                <img src="{{ asset($item->image) }}" class="img-fluid mb-3 rounded" alt="">
-                            </a>
+                            @php
+                                $images = json_decode($item->images, true);
+                            @endphp
+
+                            @if (!empty($images))
+                                {{-- Show only the first image --}}
+                                <a href="{{ asset($images[0]) }}" data-lg-size="1600-1067" data-sub-html="<h4>{{ $item->title }}</h4>" class="gallery-item">
+                                    <img src="{{ asset($images[0]) }}" class="img-fluid mb-3 rounded" alt="">
+                                </a>
+
+                                {{-- Hidden links for lightbox gallery --}}
+                                @foreach ($images as $key => $img)
+                                    @if ($key > 0)
+                                        <a href="{{ asset($img) }}" data-lg-size="1600-1067" data-sub-html="<h4>{{ $item->title }}</h4>" class="gallery-item d-none">
+                                        </a>
+                                    @endif
+                                @endforeach
+                            @else
+                                {{-- Fallback to single main image --}}
+                                <a href="{{ asset($item->image) }}" data-lg-size="1600-1067" class="gallery-item">
+                                    <img src="{{ asset($item->image) }}" class="img-fluid mb-3 rounded" alt="">
+                                </a>
+                            @endif
+
                             <h4>{{ $item->title ?? 'Photography' }}</h4>
                             <p class="m-0">{{ $item->category?->name }}</p>
                         </div>
                     </div>
                 @endforeach
             </div>
+
+
         </div>
     </div>
     <!-- Photography End -->
@@ -59,7 +82,10 @@
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.umd.min.js"></script>
     <script>
         lightGallery(document.getElementById('lightgallery'), {
-            selector: '.gallery_product a',
+            selector: '.gallery-item',
+            thumbnail: true,
+            download: false
         });
     </script>
+
 @endpush
