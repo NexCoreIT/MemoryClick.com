@@ -47,7 +47,7 @@
                             @empty
                                 <tr>
                                     <td colspan="3" class="text-center text-muted">
-                                        <x-backend.svg.notfound-svg />
+                                        Empty Data
                                     </td>
                                 </tr>
                             @endforelse

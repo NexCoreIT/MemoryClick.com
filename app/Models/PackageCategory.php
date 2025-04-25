@@ -9,5 +9,7 @@ class PackageCategory extends Model
 {
     use HasFactory;
 
+    
+
     protected $guarded = [];
 }
