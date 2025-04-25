@@ -11,7 +11,7 @@ class SliderController extends Controller
 
         $data['title'] = "Slider List";
 
-        $data['sliders'] = Slider::get();
+        $data['sliders'] = Slider::paginate(20);
 
         return view('backend.admin.slider.index',$data);
     }
@@ -99,5 +99,16 @@ class SliderController extends Controller
         return redirect()->route('slider.index')->with('success', 'Slider updated successfully!');
     }
 
+    public function delete($id)
+    {
+        try {
+            $service = Slider::findOrFail($id);
+            $service->delete();
+
+            return redirect()->back()->with('success', 'Slider deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to delete Slider.');
+        }
+    }
 
 }

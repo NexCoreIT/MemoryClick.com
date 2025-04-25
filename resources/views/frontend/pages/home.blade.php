@@ -1,7 +1,7 @@
 @extends('frontend.layout.app')
 @section('content')
 @php
-    $seo = DB::table('custom_pages')->first();
+$seo = DB::table('custom_pages')->first();
 @endphp
 @section('seo')
 
@@ -16,188 +16,571 @@
 <meta name="robots" content="index, follow">
 
 @endsection
-<!-- Properties Section -->
-<section class="section pt-0">
+@include('frontend.components.fixed.hero')
+<!-- About Start -->
+<div class="about_sec pt-4 mt-4 pt-lg-5 mt-lg-5">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-12 section-header">
-                <h2>Services</h2>
-                <p>We bring years of experience in real estate photography, delivering fast turnaround times and
-                    high-quality images that will take your real estate listings to the next level.</p>
-            </div>
-        </div>
-        @if ($row->isNotEmpty())
-
-        <div class="row g-4">
-            @forelse ($row as $property)
-                <div class="col-12 col-md-6 col-xl-6">
-                    @if (!empty($property->video))
-                        <div>
-                            <video width="100%" controls>
-                                <source src="{{ asset('public/'.$property->video) }}" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    @else
-                    <div class="loader-container">
-                        <div class="loader"></div>
-                        <div class="before_after">
-                            <img src="{{ asset('public/'.($property->before_image ?? 'default-before.jpg')) }}" alt="Before" onload="imageLoaded(this)">
-                            <img src="{{ asset('public/'.($property->after_image ?? 'default-after.jpg')) }}" alt="After" onload="imageLoaded(this)">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <div class="count_items bg-light p-2 p-lg-5 rounded text-center">
+                            <h5 class="text-dark fs-6">Since</h5>
+                            <h2 class="fs-1 fw-bold" data-toggle="counter-up">2013</h2>
                         </div>
                     </div>
-                    @endif
+                    <div class="col-6 mb-3">
+                        <div class="count_items bg-light p-2 p-lg-5 rounded text-center">
+                            <h5 class="text-dark fs-6">Events</h5>
+                            <h2 class="fs-1 fw-bold">
+                                <span data-toggle="counter-up">2036</span>
 
-                    <h2 class="mt-4" style="text-align: center">{{ $property->title ?? 'No Title Available' }}</h2>
-
-                    <div class="mt-2">
-                        <p>{{ $property->description ?? 'No Description Available' }}</p>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="count_items bg-light p-2 p-lg-5 rounded text-center">
+                            <h5 class="text-dark fs-6">Photos</h5>
+                            <h2 class="fs-1 fw-bold">
+                                <span data-toggle="counter-up">1000</span> k+
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="count_items bg-light p-2 p-lg-5 rounded text-center">
+                            <h5 class="text-dark fs-6">Clients</h5>
+                            <h2 class="fs-1 fw-bold">
+                                <span data-toggle="counter-up">999</span> k+
+                            </h2>
+                        </div>
                     </div>
                 </div>
-            @empty
-                <strong class="text-center w-100">No Service Added Yet</strong>
-            @endforelse
-        </div>
-
-        @else
-        <br><br>
-        <h2 style="text-align: center"><strong style="color: red">No Data Found</strong></h2>
-        @endif
-    </div>
-</section>
-
-<!-- Properties by Type  -->
-<section class="section properties-type">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6 section-header">
-                <h2>How We Works</h2>
             </div>
-        </div>
-        <div class="row g-4">
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="properties-type-item">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="96"  height="96"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-message"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 9h8" /><path d="M8 13h6" /><path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z" /></svg>
-                    <h3>STEP 1</h3>
-                    <p>Message Us</p>
-                    {{-- <a href="#">Read more</a> --}}
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="properties-type-item">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="96"  height="96"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-file-dollar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><path d="M14 11h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M12 17v1m0 -8v1" /></svg>
-                    <h3>STEP 2</h3>
-                    <p>Tell Us Your Budget</p>
-                    {{-- <a href="#">Read more</a> --}}
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="properties-type-item">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="96"  height="96"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-reserved-line"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 20h6" /><path d="M12 14v6" /><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M9 9h6" /></svg>
-                    <h3>STEP 3</h3>
-                    <p>Upload images on drive</p>
-                    {{-- <a href="#">Read more</a> --}}
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="properties-type-item">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="96"  height="96"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-cloud-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 18.004h-5.343c-2.572 -.004 -4.657 -2.011 -4.657 -4.487c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.38 0 2.573 .813 3.13 1.99" /><path d="M19 16v6" /><path d="M22 19l-3 3l-3 -3" /></svg>
-                    <h3>STEP 4</h3>
-                    <p>Download via drive</p>
-                    {{-- <a href="#">Read more</a> --}}
+            <div class="col-lg-6">
+                <div class="h-100">
+                    <p class="text-primary text-uppercase sub_title mb-2">About Us</p>
+                    <h1 class="title mb-4">Premium Class Photography & Cinematography Services</h1>
+                    <p class="mb-4">
+                        Bridal Harmony is a team of experienced professional photographers, cinematographers and
+                        photo-book experts who are dedicated to creating stunning, authentic stories of people's
+                        live.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi quaerat animi asperiores
+                        illo. Quaerat, deserunt natus. Minima sit numquam dolorum.
+                    </p>
+                    <a class="btn btn-primary py-2 px-4" href="about.html">Read More</a>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+<!-- About End -->
 
-<!-- Property Listing  -->
-<section class=" section">
+
+<!-- Services Start -->
+<div class="service_sec pt-4 mt-4 pt-lg-4 mt-lg-4">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-12 section-header">
-                <h2>Bring your real estate photos to a new level</h2>
-                <p>Ensuring the best real estate image editing service</p>
+        <div class="text-center mx-auto mb-3">
+            <p class="text-primary text-uppercase sub_title mb-2">Our Services</p>
+            <h1 class="display-6 mb-5">Our Top Servies</h1>
+        </div>
+
+        <div class="owl-carousel service-carousel">
+            <div class="testimonial-item bg-white border border-light rounded shadow-sm p-2 p-md-3 text-center">
+                <img src="assets/img/services/1.jpg" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                <div>
+                    <h5 class="mb-3 fs-5 fw-bold"><strong>Maternity Photography</strong></h5>
+                    <p class="m-0">
+                        Make your special day last a lifetime with Bridal Harmony's exceptional wedding
+                        photography services. Our talented team is dedicated to capturing the magic of your...
+                    </p>
+                </div>
+            </div>
+            <div class="testimonial-item bg-white border border-light rounded shadow-sm p-2 p-md-3 text-center">
+                <img src="assets/img/services/2.png" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                <div>
+                    <h5 class="mb-3 fs-5 fw-bold"><strong>Wedding Cinematography</strong></h5>
+                    <p class="m-0">
+                        Elevate your wedding day memories with the enchanting storytelling of Bridal Harmony's
+                        wedding cinematography services. We specialize in capturing the essence of your love
+                        story...
+                    </p>
+                </div>
+            </div>
+            <div class="testimonial-item bg-white border border-light rounded shadow-sm p-2 p-md-3 text-center">
+                <img src="assets/img/services/7.png" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                <div>
+                    <h5 class="mb-3 fs-5 fw-bold"><strong>Birthday Photography</strong></h5>
+                    <p class="m-0">
+                        Celebrate your special day with Bridal Harmony's birthday photography services. We
+                        specialize in capturing the joy, laughter, and unforgettable moments of your birthday
+                        celebration. Our...
+                    </p>
+                </div>
+            </div>
+
+            <div class="testimonial-item bg-white border border-light rounded shadow-sm p-2 p-md-3 text-center">
+                <img src="assets/img/services/4.jpg" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                <div>
+                    <h5 class="mb-3 fs-5 fw-bold"><strong>Birthday Photography</strong></h5>
+                    <p class="m-0">
+                        Celebrate your special day with Bridal Harmony's birthday photography services. We
+                        specialize in capturing the joy, laughter, and unforgettable moments of your birthday
+                        celebration. Our...
+                    </p>
+                </div>
+            </div>
+
+            <div class="testimonial-item bg-white border border-light rounded shadow-sm p-2 p-md-3 text-center">
+                <img src="assets/img/services/3.jpg" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                <div>
+                    <h5 class="mb-3 fs-5 fw-bold"><strong>Corporate/Promotional Photography</strong></h5>
+                    <p class="m-0">
+                        Elevate your brand's visual identity with Bridal Harmony's professional branding and
+                        promotional photography services. We specialize in capturing the essence of your business,
+                        products, and...
+
+                    </p>
+                </div>
+            </div>
+            <div class="testimonial-item bg-white border border-light rounded shadow-sm p-2 p-md-3 text-center">
+                <img src="assets/img/services/7.png" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                <div>
+                    <h5 class="mb-3 fs-5 fw-bold"><strong>Birthday Photography</strong></h5>
+                    <p class="m-0">
+                        Celebrate your special day with Bridal Harmony's birthday photography services. We
+                        specialize in capturing the joy, laughter, and unforgettable moments of your birthday
+                        celebration. Our...
+                    </p>
+                </div>
+            </div>
+
+            <div class="testimonial-item bg-white border border-light rounded shadow-sm p-2 p-md-3 text-center">
+                <img src="assets/img/services/4.jpg" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                <div>
+                    <h5 class="mb-3 fs-5 fw-bold"><strong>Birthday Photography</strong></h5>
+                    <p class="m-0">
+                        Celebrate your special day with Bridal Harmony's birthday photography services. We
+                        specialize in capturing the joy, laughter, and unforgettable moments of your birthday
+                        celebration. Our...
+                    </p>
+                </div>
+            </div>
+
+            <div class="testimonial-item bg-white border border-light rounded shadow-sm p-2 p-md-3 text-center">
+                <img src="assets/img/services/3.jpg" class="img-fluid mb-3 rounded shadow-sm" alt="">
+                <div>
+                    <h5 class="mb-3 fs-5 fw-bold"><strong>Corporate/Promotional Photography</strong></h5>
+                    <p class="m-0">
+                        Elevate your brand's visual identity with Bridal Harmony's professional branding and
+                        promotional photography services. We specialize in capturing the essence of your business,
+                        products, and...
+
+                    </p>
+                </div>
             </div>
         </div>
-        <div class="row g-4 listing-view-items">
-            @forelse ($service as $item)
 
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="{{ route('service.details', $item->slug) }}" class="listing-card">
-                    <div class="listing-view">
-                        <div class="img-container">
-                           <img src="{{ asset('public/'.$item->image) }}" alt="img" style="filter: none; transform: none; transition: none;">
+        <div class="text-center mt-5">
+            <a class="btn btn-primary py-2 px-4" href="package.html">View All Services</a>
+        </div>
 
+    </div>
+    <!-- Services End -->
+
+
+    <!-- reviews Start -->
+    <div class="bg-light reviews py-5  mt-4 mt-lg-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5" style="max-width:600px;">
+                <p class="text-primary text-uppercase sub_title mb-2">Client Reviews</p>
+                <h1 class="display-6 mb-4">More Than 2000+ Customers Trusted Us</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel">
+                <div class="testimonial-item bg-white p-3 p-lg-4 rounded shodow-sm border">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="flex-shrink-0 rounded-circle border p-1" width="100" height="100"
+                            src="assets/img/testimonial-1.jpg" alt="">
+                        <div class="ms-2 ms-lg-4">
+                            <h5 class="mb-1">Emily Watson</h5>
+                            <span>Wedding Client</span>
                         </div>
-                        <div class="hot-labels">
-                            <div class="label">
-                                New
+                    </div>
+                    <div class="start mb-3">
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text_light small"></i>
+                        <i class="fa fa-star text_light small"></i>
+                    </div>
+                    <p class="mb-0">
+                        The team captured every magical moment of our wedding! The photos and cinematic
+                        highlights were breathtaking — we couldn’t be happier with their work.
+                    </p>
+                </div>
+
+                <div class="testimonial-item bg-white p-3 p-lg-4 rounded shodow-sm border">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="flex-shrink-0 rounded-circle border p-1" width="100" height="100"
+                            src="assets/img/testimonial-2.jpg" alt="">
+                        <div class="ms-2 ms-lg-4">
+                            <h5 class="mb-1">Mark Johnson</h5>
+                            <span>Event Organizer</span>
+                        </div>
+                    </div>
+                    <div class="start mb-3">
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text_light small"></i>
+                        <i class="fa fa-star text_light small"></i>
+                    </div>
+                    <p class="mb-0">Our corporate event was perfectly documented. Their team is professional,
+                        punctual, and incredibly talented. Highly recommended for any high-end shoot!</p>
+                </div>
+
+                <div class="testimonial-item bg-white p-3 p-lg-4 rounded shodow-sm border">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="flex-shrink-0 rounded-circle border p-1" width="100" height="100"
+                            src="assets/img/testimonial-3.jpg" alt="">
+                        <div class="ms-2 ms-lg-4">
+                            <h5 class="mb-1">Sophia Lee</h5>
+                            <span>Model & Influencer</span>
+                        </div>
+                    </div>
+                    <div class="start mb-3">
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text_light small"></i>
+                    </div>
+                    <p class="mb-0">Their studio photoshoots are top-notch! From lighting to direction, everything
+                        felt premium. They really know how to bring out your best angles.</p>
+                </div>
+
+                <div class="testimonial-item bg-white p-3 p-lg-4 rounded shodow-sm border">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="flex-shrink-0 rounded-circle border p-1" width="100" height="100"
+                            src="assets/img/testimonial-4.jpg" alt="">
+                        <div class="ms-2 ms-lg-4">
+                            <h5 class="mb-1">Rahul Mehra</h5>
+                            <span>Groom</span>
+                        </div>
+                    </div>
+                    <div class="start mb-3">
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text_light small"></i>
+                        <i class="fa fa-star text_light small"></i>
+                    </div>
+                    <p class="mb-0">Our pre-wedding shoot felt like a movie set! The cinematography was elegant,
+                        emotional, and beautifully edited. Thank you for the lifetime memories.</p>
+                </div>
+                <div class="testimonial-item bg-white p-3 p-lg-4 rounded shodow-sm border">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="flex-shrink-0 rounded-circle border p-1" width="100" height="100"
+                            src="assets/img/testimonial-2.jpg" alt="">
+                        <div class="ms-2 ms-lg-4">
+                            <h5 class="mb-1">Mark Johnson</h5>
+                            <span>Event Organizer</span>
+                        </div>
+                    </div>
+                    <div class="start mb-3">
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text_light small"></i>
+                    </div>
+                    <p class="mb-0">Our corporate event was perfectly documented. Their team is professional,
+                        punctual, and incredibly talented. Highly recommended for any high-end shoot!</p>
+                </div>
+
+                <div class="testimonial-item bg-white p-3 p-lg-4 rounded shodow-sm border">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="flex-shrink-0 rounded-circle border p-1" width="100" height="100"
+                            src="assets/img/testimonial-3.jpg" alt="">
+                        <div class="ms-2 ms-lg-4">
+                            <h5 class="mb-1">Sophia Lee</h5>
+                            <span>Model & Influencer</span>
+                        </div>
+                    </div>
+                    <div class="start mb-3">
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                        <i class="fa fa-star text-primary small"></i>
+                    </div>
+                    <p class="mb-0">Their studio photoshoots are top-notch! From lighting to direction, everything
+                        felt premium. They really know how to bring out your best angles.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- reviews End -->
+
+
+    <!-- Recent Work Start -->
+    <div class="recent_work_sec pb-5 pt-4 mt-4 pt-lg-4 mt-lg-4">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 pb-4" style="max-width:600px;">
+                <p class="text-primary text-uppercase sub_title mb-2">Recent Work</p>
+                <h1 class="display-6 mb-0">Our recent stunning wedding photography</h1>
+            </div>
+            <div class="row gy-2 gy-xl-5">
+                <div class="col-lg-6">
+                    <div class="row g-0 flex-sm-row">
+                        <div class="col-sm-6">
+                            <div class="team-img position-relative">
+                                <a href="#">
+                                    <img class="img-fluid rounded mb-3 mb-sm-0" src="assets/img/about-1.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div
+                                class="recent_work_item h-100 p-2 p-md-3 p-xl-5 d-flex flex-column justify-content-between">
+                                <div class="mb-3">
+                                    <h4><a href="#">Simona ~ Badhon</a></h4>
+                                    <span>Package : Signature Series</span>
+                                </div>
+                                <p>
+                                    Wedding Reception || Bridal Harmony
+                                    Instagram : bridalharmony.bangladesh
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="listing-info">
-                        <a href="{{ route('service.details', $item->slug) }}"><h3>{{Str::limit($item->name,20)}}</h3></a>
-                    </div>
-                </a>
-            </div>
-
-            @empty
-            <h2 style="text-align: center"><strong style="color: red">No Data Found</strong></h2>
-            @endforelse
-
-        </div>
-    </div>
-</section>
-
-<!-- About Us -->
-<section id="about-us" class="property-listing section py-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="section-header text-center mb-4">
-                    <h2 class="fw-bold" style="text-align: center">About Us</h2>
                 </div>
-                <div class="about-content bg-light p-4 rounded shadow-sm">
-                    <div class="content">
-                        {!! nl2br($about->body) !!}
+                <div class="col-lg-6">
+                    <div class="row g-0 flex-sm-row-reverse flex-lg-row">
+                        <div class="col-sm-6">
+                            <div class="team-img position-relative">
+                                <a href="#"><img class="img-fluid rounded mb-3 mb-sm-0" src="assets/img/hero-1.jpg"
+                                        alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div
+                                class="recent_work_item h-100 p-2 p-md-3 p-xl-5 d-flex flex-column justify-content-between">
+                                <div class="mb-3">
+                                    <h4><a href="#">Labono ~ Apu</a></h4>
+                                    <span>Engagement || Bridal Harmony</span>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita nisi nulla
+                                    voluptatem quos veniam cupiditate explicabo ab fuga inventore saepe.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-<!-- Call to Action -->
-<section class="py-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-sm-8 col-lg-12">
-                <div class="card shadow-lg p-4 bg-white" style="text-align: center">
-                    <h2 class="card-title text-dark fw-bold mb-3">Love what you see</h2>
-                    <p class="card-text text-muted mb-4">Try our seamless platform and services to see how good your real estate photos can be!</p>
-                    <a href="{{route('registration')}}" class="custom-btn d-inlie-block">Try Now </a>
+                <div class="col-lg-6">
+                    <div class="row g-0 flex-lg-row-reverse">
+                        <div class="col-sm-6">
+                            <div class="team-img position-relative">
+                                <a href="#">
+                                    <img class="img-fluid rounded mb-3 mb-sm-0" src="assets/img/team-1.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div
+                                class="recent_work_item h-100 p-2 p-md-3 p-xl-5 d-flex flex-column justify-content-between">
+                                <div class="mb-3">
+                                    <h4><a href="#">Richard Archer</a></h4>
+                                    <span>Retoucher</span>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita nisi nulla
+                                    voluptatem quos veniam cupiditate explicabo ab fuga inventore saepe.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-0 flex-sm-row-reverse">
+                        <div class="col-sm-6">
+                            <div class="team-img position-relative">
+                                <a href="#">
+                                    <img class="img-fluid rounded mb-3 mb-sm-0" src="assets/img/service-1.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div
+                                class="recent_work_item h-100 p-2 p-md-3 p-xl-5 d-flex flex-column justify-content-between">
+                                <div class="mb-3">
+                                    <h4><a href="#">Noushin & Shahruk || Haldi || Bridal Harmony</a></h4>
+                                    <span>Instagram : bridalharmony.bangladesh</span>
+                                </div>
+                                <p>
+                                    Contact us for Booking : +88 01742 225584, +88 01772 225565 <br>
+                                    © Bridal Harmony Bangladesh
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+    <!-- Recent Work End -->
 
-<div class="devider-img" style="text-align: center">
-    <img src="frontend/images/divider.jpg" alt="devider" class="img-fluid">
-</div>
 
-@endsection
-@push('styles')
-<style>
+    <!-- Cinematography Start -->
+    <div class="cinematography_sec pb-5 mb-4 pt-0 mt-0 pt-lg-4 mt-lg-4">
+        <div class="container">
+            <div class="text-center mx-auto mb-3" style="max-width: 600px;">
+                <p class="text-primary text-uppercase sub_title mb-2">Cinematography</p>
+                <h1 class="display-6 mb-5">Take a peek at our recent stunning wedding photography</h1>
+            </div>
+            <div class="owl-carousel cinematography-carousel">
 
-</style>
-@endpush
+                <div class="testimonial-item bg-white text-center">
+                    <div class="ratio ratio-16x9  mb-4">
+                        <iframe width="100%" src="https://www.youtube.com/embed/zE04Ua6E52U"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold">
+                            <strong>Jessica & Sanjib || Wedding || Bridal Harmony</strong>
+                        </h5>
+                        <p class="m-0">
+                            Film Credits: Bridal Harmony
+                        </p>
+                    </div>
+                </div>
 
-@push('scripts')
+                <div class="testimonial-item bg-white text-center">
+                    <div class="ratio ratio-16x9  mb-4">
+                        <iframe width="100%" src="https://www.youtube.com/embed/zE04Ua6E52U"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold">
+                            <strong>Dr. Prema & Rayhan || Holud Teaser || Bridal Harmony </strong>
+                        </h5>
+                        <p class="m-0">
+                            Film Credits: Bridal Harmony
+                        </p>
+                    </div>
+                </div>
 
-@endpush
+                <div class="testimonial-item bg-white text-center">
+                    <div class="ratio ratio-16x9  mb-4">
+                        <iframe width="100%" src="https://www.youtube.com/embed/zE04Ua6E52U"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold">
+                            <strong>Ritu & Shaikat || Akdth || Bridal Harmony </strong>
+                        </h5>
+                        <p class="m-0">
+                            Film Credits: Bridal Harmony
+                        </p>
+                    </div>
+                </div>
+
+                <div class="testimonial-item bg-white text-center">
+                    <div class="ratio ratio-16x9  mb-4">
+                        <iframe width="100%" src="https://www.youtube.com/embed/zE04Ua6E52U"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold">
+                            <strong>Jessica & Sanjib || Wedding || Bridal Harmony </strong>
+                        </h5>
+                        <p class="m-0">
+                            Film Credits: Bridal Harmony
+                        </p>
+                    </div>
+                </div>
+
+                <div class="testimonial-item bg-white text-center">
+                    <div class="ratio ratio-16x9  mb-4">
+                        <iframe width="100%" src="https://www.youtube.com/embed/zE04Ua6E52U"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold">
+                            <strong>Dr. Prema & Rayhan || Holud Teaser || Bridal Harmony </strong>
+                        </h5>
+                        <p class="m-0">
+                            Film Credits: Bridal Harmony
+                        </p>
+                    </div>
+                </div>
+
+                <div class="testimonial-item bg-white text-center">
+                    <div class="ratio ratio-16x9  mb-4">
+                        <iframe width="100%" src="https://www.youtube.com/embed/zE04Ua6E52U"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold">
+                            <strong>Ritu & Shaikat || Akdth || Bridal Harmony </strong>
+                        </h5>
+                        <p class="m-0">
+                            Film Credits: Bridal Harmony
+                        </p>
+                    </div>
+                </div>
+
+                <div class="testimonial-item bg-white text-center">
+                    <div class="ratio ratio-16x9  mb-4">
+                        <iframe width="100%" src="https://www.youtube.com/embed/zE04Ua6E52U"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div>
+                        <h5 class="mb-3 fs-5 fw-bold">
+                            <strong>Jessica & Sanjib || Wedding || Bridal Harmony </strong>
+                        </h5>
+                        <p class="m-0">
+                            Film Credits: Bridal Harmony
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Cinematography  End -->
+
+    @endsection
+    @push('styles')
+    <style>
+
+    </style>
+    @endpush
+
+    @push('scripts')
+
+    @endpush

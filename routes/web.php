@@ -47,9 +47,11 @@ use App\Http\Controllers\TestimonialController;
     Route::prefix('/')->group(function () {
         Route::get('/', [FrontendHomeController::class, 'index'])->name('home');
         Route::get('about', [FrontendHomeController::class, 'about'])->name('about.page');
-        Route::get('portfolio', [FrontendHomeController::class, 'portfolio'])->name('ourWorkIndex');
+        Route::get('photography', [FrontendHomeController::class, 'photography'])->name('photography.page');
+        Route::get('cinematography', [FrontendHomeController::class, 'cinematography'])->name('cinematography.page');
+        Route::get('contact-us', [FrontendHomeController::class, 'contactUs'])->name('contactUs.page');
         Route::get('frontend-logout', [FrontendAuthController::class, 'frontendLogout'])->name('frontend.logout');
-        Route::get('/bulk-order', [FrontendHomeController::class, 'bulkOrder'])->name('bulkOrder');
+
         // Service Routes
         Route::get('/service/page', [WebsiteServiceController::class, 'index'])->name('service.page');
         Route::get('/service/details/{slug}', [WebsiteServiceController::class, 'details'])->name('service.details');
@@ -61,11 +63,11 @@ use App\Http\Controllers\TestimonialController;
         // ===============================
         // USER MANAGEMENT       //====
         // ===============================
-        Route::get('/dashboard', [FrontendHomeController::class, 'dashboardIndex'])->name('user.dashboard');
-        Route::post('/update-user-password/{id}', [FrontendHomeController::class, 'update'])->name('update.user.password');
-        Route::get('change-profile', [FrontendHomeController::class, 'changeProfile'])->name('change.profile');
-        Route::get('change-web-password', [FrontendHomeController::class, 'changePassword'])->name('change.web.password');
-        Route::post('customerUpdate/{id}', [FrontendHomeController::class, 'customerUpdate'])->name('change.web.customerUpdate');
+
+        // Route::post('/update-user-password/{id}', [FrontendHomeController::class, 'update'])->name('update.user.password');
+        // Route::get('change-profile', [FrontendHomeController::class, 'changeProfile'])->name('change.profile');
+        // Route::get('change-web-password', [FrontendHomeController::class, 'changePassword'])->name('change.web.password');
+        // Route::post('customerUpdate/{id}', [FrontendHomeController::class, 'customerUpdate'])->name('change.web.customerUpdate');
 
 
     });
@@ -208,7 +210,7 @@ use App\Http\Controllers\TestimonialController;
         Route::get('create', [SliderController::class, 'create'])->name('create');
         Route::post('store', [SliderController::class, 'store'])->name('store');
         Route::get('edit/{slug}', [SliderController::class, 'edit'])->name('edit');
-        Route::delete('delete/{id}', [SliderController::class, 'delete'])->name('delete');
+        Route::get('delete/{id}', [SliderController::class, 'delete'])->name('delete');
         Route::put('update/{id}', [SliderController::class, 'update'])->name('update');
     });
 
@@ -253,8 +255,8 @@ use App\Http\Controllers\TestimonialController;
     });
 
 
-     // ===============================//
-    // PHOTOGRAPHY                    //
+      // ===============================//
+     // PHOTOGRAPHY                    //
     // ===============================//
     Route::prefix('photography/')->name('photography.')->group(function () {
         Route::get('index', [PhotographyController::class, 'index'])->name('index');
@@ -266,7 +268,7 @@ use App\Http\Controllers\TestimonialController;
     });
 
       // ===============================//
-    // CINEMATOGRAPHY                    //
+     // CINEMATOGRAPHY                 //
     // ===============================//
     Route::prefix('cinematographies/')->name('cinematographies.')->group(function () {
         Route::get('index', [CinematographyController::class, 'index'])->name('index');

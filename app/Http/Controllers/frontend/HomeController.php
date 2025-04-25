@@ -10,6 +10,7 @@ use App\Models\properties;
 use Illuminate\Http\Request;
 use App\Rules\PasswordCheckRule;
 use App\Http\Controllers\Controller;
+use App\Models\Photography;
 
 class HomeController extends Controller
 {
@@ -20,43 +21,63 @@ class HomeController extends Controller
     {
         $data['title'] = 'brightvisionbd - Home';
         // $data['row'] = properties::where('status','1')->orderByDesc('id')->get();
-        $data['row'] = properties::where('status','1')->orderBy('id', 'DESC')->get();
-        $data['service'] = Product::where('status','1')->latest()->take(12)->get();
-        $data['about'] = CustomPage::where('slug','about-us')->find(1);
+        $data['row'] = properties::where('status', '1')->orderBy('id', 'DESC')->get();
+        $data['service'] = Product::where('status', '1')->latest()->take(12)->get();
+        $data['about'] = CustomPage::where('slug', 'about-us')->find(1);
 
-        return view('frontend.pages.home',$data);
+        return view('frontend.pages.home', $data);
+    }
+
+
+    public function photography()
+    {
+        $data['category'] = Category::where('status', '1')->get();
+        $data['row'] = Photography::where('status', '1')->get(); // added category for optimization
+        return view('frontend.photography.index', $data);
     }
 
 
 
-    public function dashboardIndex()
+    public function cinematography()
     {
-        return view('frontend.user_dashboard.index');
+
+        $data['title'] = 'Cinematography';
+
+        return view('frontend.cinematography.index', $data);
+    }
+
+
+    public function contactUs()
+    {
+        $data['title'] = 'Contact';
+
+        return view('frontend.contact.index', $data);
     }
 
 
     public function about()
     {
-        $data['about'] = CustomPage::where('slug','about-us')->find(1);
+        $data['about'] = CustomPage::where('slug', 'about-us')->find(1);
 
-        return view('frontend.about.index',$data);
+        return view('frontend.about.index', $data);
     }
 
 
-    public function changeProfile(){
+    public function changeProfile()
+    {
 
         return view('frontend.user_dashboard.change-profile');
     }
 
-    public function changePassword(){
+    public function changePassword()
+    {
 
         return view('frontend.user_dashboard.change-password');
     }
 
 
     public function update(Request $request, string $id)
-    {
-        {
+    { {
 
             $rules = [
                 'old_password' => ['required', new PasswordCheckRule], // Check password
@@ -99,22 +120,22 @@ class HomeController extends Controller
     public function customerUpdate(Request $request, string $id)
     {
 
-    $userUpdate= User::find($id);
+        $userUpdate = User::find($id);
 
 
-    $imageName = auth()->user()->image;
-    if ($request->hasFile('image')) {
-        $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
-        $request->file('image')->storeAs('uploads', $imageName, 'public');
-    }
-    //dd($imageName);
-    $userUpdate->update([
-        "email"   =>  $request->email,
-        "phone"   =>  $request->phone,
-        "name"    =>  $request->name,
-        "role"    =>  'customer',
-        "image"   => $imageName,
-    ]);
+        $imageName = auth()->user()->image;
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('uploads', $imageName, 'public');
+        }
+        //dd($imageName);
+        $userUpdate->update([
+            "email"   =>  $request->email,
+            "phone"   =>  $request->phone,
+            "name"    =>  $request->name,
+            "role"    =>  'customer',
+            "image"   => $imageName,
+        ]);
 
 
 
@@ -122,20 +143,5 @@ class HomeController extends Controller
     }
 
 
-    public function portfolio()
-{
-    $data['category'] = Category::where('status','1')->get();
-    $data['row'] = Product::with(['images', 'category'])->where('status','1')->get(); // added category for optimization
-    return view('frontend.our-work.index', $data);
-}
-
-
-
-public function bulkOrder(){
-
-    $data['title'] = 'Bulk Order';
-
-    return view('frontend.bulk_order.index',$data);
-}
 
 }
