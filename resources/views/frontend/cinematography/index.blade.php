@@ -7,7 +7,7 @@
         <h4>Cinematography</h4>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Cinematography</li>
             </ol>
         </nav>
@@ -23,10 +23,11 @@
             <h1 class="display-6 mb-4">See our all Cinematography</h1>
         </div>
         <div class="row gy-4">
+            @forelse ($cinematography as $video)
             <div class="col-sm-6 col-lg-4 col-xl-3">
                 <div class="testimonial-item shadow-sm p-3 rounded bg-white text-center">
                     <div class="ratio ratio-16x9  mb-4">
-                        <iframe width="100%" class="rounded" src="https://www.youtube.com/embed/zE04Ua6E52U"
+                        <iframe width="100%" class="rounded" src="{{$video->youtube_url}}"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
@@ -34,149 +35,20 @@
                     </div>
                     <div>
                         <h5 class="mb-3 fs-5 fw-bold">
-                            <strong>Jessica & Sanjib || Wedding || Bridal Harmony</strong>
+                            <strong>{{$video->title}}</strong>
                         </h5>
                         <p class="m-0">
-                            Film Credits: Bridal Harmony
+                            Film Credits: {{$video->credit}}
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3">
-                <div class="testimonial-item shadow-sm p-3 rounded bg-white text-center">
-                    <div class="ratio ratio-16x9  mb-4">
-                        <iframe width="100%" class="rounded" src="https://www.youtube.com/embed/zE04Ua6E52U"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div>
-                        <h5 class="mb-3 fs-5 fw-bold">
-                            <strong>Dr. Prema & Rayhan || Holud Teaser || Bridal Harmony </strong>
-                        </h5>
-                        <p class="m-0">
-                            Film Credits: Bridal Harmony
-                        </p>
-                    </div>
-                </div>
+            @empty
+            <div class="text-center">
+                <strong class="text-danger">NO DATA FOUND</strong>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3">
-                <div class="testimonial-item shadow-sm p-3 rounded bg-white text-center">
-                    <div class="ratio ratio-16x9  mb-4">
-                        <iframe width="100%" class="rounded" src="https://www.youtube.com/embed/zE04Ua6E52U"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div>
-                        <h5 class="mb-3 fs-5 fw-bold">
-                            <strong>Dr. Prema & Rayhan || Holud Teaser || Bridal Harmony </strong>
-                        </h5>
-                        <p class="m-0">
-                            Film Credits: Bridal Harmony
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3">
-                <div class="testimonial-item shadow-sm p-3 rounded bg-white text-center">
-                    <div class="ratio ratio-16x9  mb-4">
-                        <iframe width="100%" class="rounded" src="https://www.youtube.com/embed/zE04Ua6E52U"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div>
-                        <h5 class="mb-3 fs-5 fw-bold">
-                            <strong>Ritu & Shaikat || Akdth || Bridal Harmony </strong>
-                        </h5>
-                        <p class="m-0">
-                            Film Credits: Bridal Harmony
-                        </p>
-                    </div>
-                </div>
 
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3">
-                <div class="testimonial-item shadow-sm p-3 rounded bg-white text-center">
-                    <div class="ratio ratio-16x9  mb-4">
-                        <iframe width="100%" class="rounded" src="https://www.youtube.com/embed/zE04Ua6E52U"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div>
-                        <h5 class="mb-3 fs-5 fw-bold">
-                            <strong>Jessica & Sanjib || Wedding || Bridal Harmony </strong>
-                        </h5>
-                        <p class="m-0">
-                            Film Credits: Bridal Harmony
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3">
-                <div class="testimonial-item shadow-sm p-3 rounded bg-white text-center">
-                    <div class="ratio ratio-16x9  mb-4">
-                        <iframe width="100%" class="rounded" src="https://www.youtube.com/embed/zE04Ua6E52U"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div>
-                        <h5 class="mb-3 fs-5 fw-bold">
-                            <strong>Dr. Prema & Rayhan || Holud Teaser || Bridal Harmony </strong>
-                        </h5>
-                        <p class="m-0">
-                            Film Credits: Bridal Harmony
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3">
-                <div class="testimonial-item shadow-sm p-3 rounded bg-white text-center">
-                    <div class="ratio ratio-16x9  mb-4">
-                        <iframe width="100%" class="rounded" src="https://www.youtube.com/embed/zE04Ua6E52U"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div>
-                        <h5 class="mb-3 fs-5 fw-bold">
-                            <strong>Ritu & Shaikat || Akdth || Bridal Harmony </strong>
-                        </h5>
-                        <p class="m-0">
-                            Film Credits: Bridal Harmony
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-3">
-                <div class="testimonial-item shadow-sm p-3 rounded bg-white text-center">
-                    <div class="ratio ratio-16x9  mb-4">
-                        <iframe width="100%" class="rounded" src="https://www.youtube.com/embed/zE04Ua6E52U"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div>
-                        <h5 class="mb-3 fs-5 fw-bold">
-                            <strong>Jessica & Sanjib || Wedding || Bridal Harmony </strong>
-                        </h5>
-                        <p class="m-0">
-                            Film Credits: Bridal Harmony
-                        </p>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </div>

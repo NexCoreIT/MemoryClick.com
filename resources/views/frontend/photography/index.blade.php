@@ -7,7 +7,7 @@
         <h4>Photography</h4>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Photography</li>
             </ol>
         </nav>
@@ -37,127 +37,30 @@
                 <button class="btn btn-default shadow-none border-0 bg-transparent filter-button"
                     data-filter="birthday">Birthday</button>
             </div>
+
             <div id="lightgallery" class="gallery row gy-4">
-                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter reception">
-                    <div class="photograpy_item text-center">
-                        <a href="assets/img/2.jpg">
-                            <img src="assets/img/2.jpg" class="img-fluid mb-3 rounded" alt="">
-                        </a>
-                        <h4>Simona ~ Badhon</h4>
-                        <p class="m-0">Wedding/Reception</p>
-                    </div>
-                </div>
 
-                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter engagement">
-                    <div class="photograpy_item text-center">
-                        <a href="assets/img/3.jpg">
-                            <img src="assets/img/3.jpg" class="img-fluid mb-3 rounded" alt="">
-                        </a>
-                        <h4>Simona ~ Badhon</h4>
-                        <p class="m-0">Wedding/Reception</p>
-                    </div>
-                </div>
+                @forelse ($rows as $row)
+
 
                 <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter reception">
                     <div class="photograpy_item text-center">
-                        <a href="assets/img/4.jpg">
-                            <img src="assets/img/4.jpg" class="img-fluid mb-3 rounded" alt="">
+                        <a href="frontend/assets/img/2.jpg">
+                            <img src="frontend/assets/img/2.jpg" class="img-fluid mb-3 rounded" alt="">
                         </a>
                         <h4>Simona ~ Badhon</h4>
                         <p class="m-0">Wedding/Reception</p>
                     </div>
                 </div>
+                @empty
+                <div class="text-center">
+                    <strong class="text-danger">NO DATA FOUND</strong>
+                </div>
+                @endforelse
 
-                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter Hindu-wedding">
-                    <div class="photograpy_item text-center">
-                        <a href="assets/img/5.jpg">
-                            <img src="assets/img/5.jpg" class="img-fluid mb-3 rounded" alt="">
-                        </a>
-                        <h4>Simona ~ Badhon</h4>
-                        <p class="m-0">Wedding/Reception</p>
-                    </div>
-                </div>
 
-                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter mehendi">
-                    <div class="photograpy_item text-center">
-                        <a href="assets/img/2.jpg">
-                            <img src="assets/img/2.jpg" class="img-fluid mb-3 rounded" alt="">
-                        </a>
-                        <h4>Simona ~ Badhon</h4>
-                        <p class="m-0">Wedding/Reception</p>
-                    </div>
-                </div>
-
-                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter Hindu-wedding">
-                    <div class="photograpy_item text-center">
-                        <a href="assets/img/2.jpg">
-                            <img src="assets/img/2.jpg" class="img-fluid mb-3 rounded" alt="">
-                        </a>
-                        <h4>Simona ~ Badhon</h4>
-                        <p class="m-0">Wedding/Reception</p>
-                    </div>
-                </div>
-
-                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter mehendi">
-                    <div class="photograpy_item text-center">
-                        <a href="assets/img/2.jpg">
-                            <img src="assets/img/2.jpg" class="img-fluid mb-3 rounded" alt="">
-                        </a>
-                        <h4>Simona ~ Badhon</h4>
-                        <p class="m-0">Wedding/Reception</p>
-                    </div>
-                </div>
-
-                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter Hindu-wedding">
-                    <div class="photograpy_item text-center">
-                        <a href="assets/img/4.jpg">
-                            <img src="assets/img/4.jpg" class="img-fluid mb-3 rounded" alt="">
-                        </a>
-                        <h4>Simona ~ Badhon</h4>
-                        <p class="m-0">Wedding/Reception</p>
-                    </div>
-                </div>
-
-                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter birthday">
-                    <div class="photograpy_item text-center">
-                        <a href="assets/img/2.jpg">
-                            <img src="assets/img/2.jpg" class="img-fluid mb-3 rounded" alt="">
-                        </a>
-                        <h4>Simona ~ Badhon</h4>
-                        <p class="m-0">Wedding/Reception</p>
-                    </div>
-                </div>
-
-                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter birthday">
-                    <div class="photograpy_item text-center">
-                        <a href="assets/img/3.jpg">
-                            <img src="assets/img/3.jpg" class="img-fluid mb-3 rounded" alt="">
-                        </a>
-                        <h4>Simona ~ Badhon</h4>
-                        <p class="m-0">Wedding/Reception</p>
-                    </div>
-                </div>
-
-                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter mehendi">
-                    <div class="photograpy_item text-center">
-                        <a href="assets/img/3.jpg">
-                            <img src="assets/img/3.jpg" class="img-fluid mb-3 rounded" alt="">
-                        </a>
-                        <h4>Simona ~ Badhon</h4>
-                        <p class="m-0">Wedding/Reception</p>
-                    </div>
-                </div>
-
-                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter engagement">
-                    <div class="photograpy_item text-center">
-                        <a href="assets/img/5.jpg">
-                            <img src="assets/img/5.jpg" class="img-fluid mb-3 rounded" alt="">
-                        </a>
-                        <h4>Simona ~ Badhon</h4>
-                        <p class="m-0">Wedding/Reception</p>
-                    </div>
-                </div>
             </div>
+
         </div>
     </div>
 </div>

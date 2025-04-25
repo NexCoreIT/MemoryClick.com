@@ -11,4 +11,9 @@ class Category extends Model
 
     protected $guarded = [];
 
+    public function photography()
+    {
+        return $this->hasMany(Photography::class);
+    }
+
 }

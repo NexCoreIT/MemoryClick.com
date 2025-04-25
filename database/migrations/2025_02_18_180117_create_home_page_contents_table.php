@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('linkedin_link')->nullable();
             $table->string('twitter_link')->nullable();
             $table->string('phone')->nullable();
+            $table->string('address')->nullable();
             $table->string('instagram_link')->nullable();
             $table->string('email')->nullable();
             $table->timestamps();

@@ -14,6 +14,7 @@ use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\CinematographyController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\HomePageContentController;
 use App\Http\Controllers\frontend\WebsiteServiceController;
@@ -50,6 +51,7 @@ use App\Http\Controllers\TestimonialController;
         Route::get('photography', [FrontendHomeController::class, 'photography'])->name('photography.page');
         Route::get('cinematography', [FrontendHomeController::class, 'cinematography'])->name('cinematography.page');
         Route::get('contact-us', [FrontendHomeController::class, 'contactUs'])->name('contactUs.page');
+        Route::post('contact-store', [FrontendHomeController::class, 'contactStore'])->name('contact.store');
         Route::get('frontend-logout', [FrontendAuthController::class, 'frontendLogout'])->name('frontend.logout');
 
         // Service Routes
@@ -144,16 +146,12 @@ use App\Http\Controllers\TestimonialController;
 
 
     // ===============================//
-    // PROPERTIES MANAGEMENT          //
+    // CONTACT MANAGEMENT          //
     // ===============================//
-    Route::prefix('property')->group(function(){
-        Route::get('index', [PropertyController::class, 'property_index'])->name('property_index');
-        Route::get('create', [PropertyController::class, 'property_create'])->name('property_create');
-        Route::post('save', [PropertyController::class, 'property_store'])->name('property_store');
-        Route::get('edit/{slug}', [PropertyController::class, 'property_edit'])->name('property_edit');
-        Route::get('show/{slug}', [PropertyController::class, 'property_show'])->name('property_show');
-        Route::delete('delete/{id}', [PropertyController::class, 'property_delete'])->name('property_delete');
-        Route::put('update/{id}', [PropertyController::class, 'property_update'])->name('property_update');
+    Route::prefix('contact')->name('contact.')->group(function(){
+        Route::get('index', [ContactController::class, 'index'])->name('index');
+        Route::get('show/{id}', [ContactController::class, 'show'])->name('show');
+
     });
 
 

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container d-flex justify-content-center mt-4">
-    <div class="card shadow-lg" style="max-width: 800px; width: 100%;">
+    <div class="card shadow-lg w-100" style="max-width: 800px;">
         <div class="card-header">
             <h3 class="card-title mb-0">Edit Photography</h3>
         </div>
@@ -11,17 +11,30 @@
             @method('PUT')
             <div class="card-body">
 
+                {{-- Current Thumbnail --}}
                 <div class="mb-3">
                     <label class="form-label">Current Image</label><br>
                     <img src="{{ asset($photography->image) }}" width="100" class="img-thumbnail mb-2">
                 </div>
 
+                {{-- Change Thumbnail --}}
                 <div class="mb-3">
                     <label class="form-label">Change Image</label>
                     <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
                     @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
+                {{-- Additional Images --}}
+                @if ($photography->images && is_array(json_decode($photography->images, true)))
+                <div class="mb-3">
+                    <label class="form-label">Current Additional Images</label><br>
+                    @foreach (json_decode($photography->images, true) as $img)
+                        <img src="{{ asset($img) }}" style="width: 60px;" class="img-thumbnail me-1 mb-2">
+                    @endforeach
+                </div>
+                @endif
+
+                {{-- Title & Client Name --}}
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Title</label>
@@ -38,6 +51,7 @@
                     </div>
                 </div>
 
+                {{-- Status & Category --}}
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Status</label>
@@ -64,6 +78,7 @@
 
             </div>
 
+            {{-- Footer --}}
             <div class="card-footer d-flex justify-content-between">
                 <a href="{{ route('photography.index') }}" class="btn btn-secondary">Back</a>
                 <button type="submit" class="btn btn-primary">Update</button>

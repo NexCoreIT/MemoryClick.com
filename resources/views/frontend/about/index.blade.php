@@ -19,32 +19,7 @@
   <!-- About Start -->
   <div class="about_sec section_gap">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="about_bx">
-                    <img src="frontend/assets/img/project-7.jpg" class="w-100 rounded shape-md" alt="">
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="h-100">
-                    <p class="text-primary text-uppercase sub_title mb-2">About Us</p>
-                    <h1 class="title mb-4">Premium Class Photography & Cinematography Services</h1>
-                    <p>
-                        Bridal Harmony is a premium wedding photography and cinematography company based in
-                        Bangladesh, specializing in capturing the unforgettable moments of your big day. Established
-                        in 2013, our team of experienced photographers and cinematographers have been capturing the
-                        essence of love, joy, and celebration through our lens. At Bridal Harmony, we understand
-                        that every couple is unique, and so are their wedding stories. Our mission is to immortalize
-                        your special day with our artistic flair and expertise. We strive to capture the
-                        authenticity of your love, the beauty of the event, and the emotions that make your day
-                        unforgettable. © Bridal Harmony Bangladesh. Contact us for Booking : +88 01742 22 55 84, +88
-                        01772 22 55 65 Premium Class Wedding Photography &amp; Cinematography. Since 2013. Follow us
-                        on Instagram : bridalharmony.bangladesh Package Details : www.bridalharmonybd.com/packages
-                        Facebook : bridalharmonybd
-                    </p>
-                </div>
-            </div>
-        </div>
+        {!!$page->body!!}
     </div>
 </div>
 <!-- About End -->
@@ -56,7 +31,7 @@
         <div class="row d-flex allign-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0 order-lg-2">
                 <div class="about_bx text-center text-lg-end">
-                    <img src="assets/img/about-2.jpg" class="img-fluid rounded shape-md" alt="">
+                    <img src="frontend/assets/img/about-2.jpg" class="img-fluid rounded shape-md" alt="">
                 </div>
             </div>
             <div class="col-lg-6 order-lg-1">
@@ -94,7 +69,7 @@
         <div class="row">
             <div class="col-sm-6 col-xl-3">
                 <div class="team-membem shadow-sm bg-white p-3 p-lg-4 rounded text-center">
-                    <img src="assets/img/team-1.jpg" class="img-fluid rounded mb-3" alt="Photographer">
+                    <img src="frontend/assets/img/team-1.jpg" class="img-fluid rounded mb-3" alt="Photographer">
                     <h4>John Doe</h4>
                     <p class="m-0 small">Lead Photographer</p>
                 </div>
@@ -102,7 +77,7 @@
 
             <div class="col-sm-6 col-xl-3">
                 <div class="team-membem shadow-sm bg-white p-3 p-lg-4 rounded text-center">
-                    <img src="assets/img/team-2.jpg" class="img-fluid rounded mb-3" alt="Studio Manager">
+                    <img src="frontend/assets/img/team-2.jpg" class="img-fluid rounded mb-3" alt="Studio Manager">
                     <h4>Jane Smith</h4>
                     <p class="m-0 small">Studio Manager</p>
                 </div>
@@ -110,7 +85,7 @@
 
             <div class="col-sm-6 col-xl-3">
                 <div class="team-membem shadow-sm bg-white p-3 p-lg-4 rounded text-center">
-                    <img src="assets/img/team-3.jpg" class="img-fluid rounded mb-3" alt="Assistant Photographer">
+                    <img src="frontend/assets/img/team-3.jpg" class="img-fluid rounded mb-3" alt="Assistant Photographer">
                     <h4>Emily Green</h4>
                     <p class="m-0 small">Assistant Photographer</p>
                 </div>
@@ -118,7 +93,7 @@
 
             <div class="col-sm-6 col-xl-3">
                 <div class="team-membem shadow-sm bg-white p-3 p-lg-4 rounded text-center">
-                    <img src="assets/img/team-4.jpg" class="img-fluid rounded mb-3" alt="Photo Editor">
+                    <img src="frontend/assets/img/team-4.jpg" class="img-fluid rounded mb-3" alt="Photo Editor">
                     <h4>Michael Brown</h4>
                     <p class="m-0 small">Photo Editor</p>
                 </div>

@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Models\User;
+use App\Models\Contact;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\CustomPage;
+use App\Models\OurService;
 use App\Models\properties;
+use App\Models\RecentWork;
+use App\Models\Photography;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use App\Models\Cinematography;
 use App\Rules\PasswordCheckRule;
 use App\Http\Controllers\Controller;
-use App\Models\Cinematography;
-use App\Models\OurService;
-use App\Models\Photography;
-use App\Models\RecentWork;
-use App\Models\Testimonial;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,7 @@ class HomeController extends Controller
         $data['testimonials'] = Testimonial::where('status','1')->orderByDesc('id')->get();
         $data['service'] = OurService::where('status', '1')->orderBy('id', 'DESC')->get();
         $data['recent_work'] = RecentWork::where('status', '1')->latest()->take(8)->get();
-        $data['cinematography'] = Cinematography::where('status', '1-us')->get();
+        $data['cinematography'] = Cinematography::where('status', '1')->get();
 
         return view('frontend.pages.home', $data);
     }
@@ -36,7 +37,7 @@ class HomeController extends Controller
     public function photography()
     {
         $data['category'] = Category::where('status', '1')->get();
-        $data['row'] = Photography::where('status', '1')->get(); // added category for optimization
+        $data['rows'] = Photography::where('status', '1')->get(); // added category for optimization
         return view('frontend.photography.index', $data);
     }
 
@@ -46,6 +47,8 @@ class HomeController extends Controller
     {
 
         $data['title'] = 'Cinematography';
+
+        $data['cinematography'] = Cinematography::where('status', '1')->get();
 
         return view('frontend.cinematography.index', $data);
     }
@@ -58,10 +61,25 @@ class HomeController extends Controller
         return view('frontend.contact.index', $data);
     }
 
+    public function contactStore(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        Contact::create($validated);
+
+        return redirect()->back()->with('success', 'Your message has been sent successfully!');
+    }
 
     public function about()
     {
-        $data['about'] = CustomPage::where('slug', 'about-us')->find(1);
+        $data['title'] = 'About Us';
+
+        $data['page'] = CustomPage::where('slug', 'about-us')->find(1);
 
         return view('frontend.about.index', $data);
     }
