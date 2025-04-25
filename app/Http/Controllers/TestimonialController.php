@@ -26,6 +26,7 @@ class TestimonialController extends Controller
     public function store(Request $request)
 {
     $request->validate([
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'name' => 'required|string|max:255',
         'description' => 'required|string',
         'status' => 'required|boolean',
@@ -33,6 +34,18 @@ class TestimonialController extends Controller
 
     $imagePath = null;
 
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = $image->getClientOriginalName(); // keep original name
+        $uploadPath = public_path('uploads/testimonial');
+
+        if (!is_dir($uploadPath)) {
+            mkdir($uploadPath, 0755, true); // use PHP mkdir instead of File facade
+        }
+
+        $image->move($uploadPath, $imageName);
+        $imagePath = 'uploads/testimonial/' . $imageName;
+    }
 
 
     Testimonial::create([
@@ -40,6 +53,7 @@ class TestimonialController extends Controller
         'name' => $request->name,
         'description' => $request->description,
         'status' => $request->status,
+        'image' => $imagePath,
     ]);
 
     return redirect()->route('testimonial.index')->with('success', 'Testimonial created successfully!');
@@ -57,15 +71,33 @@ class TestimonialController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'status' => 'required|boolean',
         ]);
 
-        $service = Testimonial::findOrFail($id);
+        $testimonial = Testimonial::findOrFail($id);
 
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($testimonial->image && file_exists(public_path($testimonial->image))) {
+                unlink(public_path($testimonial->image));
+            }
 
-        $service->update([
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $uploadPath = public_path('uploads/testimonial');
+
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
+            }
+
+            $image->move($uploadPath, $imageName);
+            $testimonial->image = 'uploads/testimonial/' . $imageName;
+        }
+
+        $testimonial->update([
         'rating' =>$request->rating,
         'name' => $request->name,
         'description' => $request->description,

@@ -6,15 +6,32 @@
         <div class="card-header">
             <h3 class="card-title mb-0">Edit Testimonial</h3>
         </div>
-        <form action="{{ route('testimonial.update', $testimonial->id) }}" method="POST">
+        <form action="{{ route('testimonial.update', $testimonial->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="card-body">
+            <div class="card-body row">
 
-                <div class="mb-3">
+                <div class="mb-3 col-md-6">
                     <label class="form-label">Name <span class="text-danger">*</span></label>
                     <input type="text" name="name" value="{{ old('name', $testimonial->name) }}" class="form-control @error('name') is-invalid @enderror" required>
                     @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label">Current Image</label><br>
+                    @if($testimonial->image)
+                        <img src="{{ asset($testimonial->image) }}" style="width: 100px;" class="img-thumbnail mb-2">
+                    @else
+                        <p class="text-muted">No image uploaded.</p>
+                    @endif
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label">Change Image</label>
+                    <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
+                    @error('image')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -29,7 +46,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">Ratings (out of 5) <span class="text-danger">*</span></label>
-                    <input type="number" name="rating" value="{{ old('rating', $testimonial->rating) }}" min="1" max="5" step="1" class="form-control @error('ratings') is-invalid @enderror" required>
+                    <input type="number" name="rating" value="{{ old('rating', $testimonial->rating) }}" min="1" max="5" step="1" class="form-control @error('rating') is-invalid @enderror" required>
                     @error('rating')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

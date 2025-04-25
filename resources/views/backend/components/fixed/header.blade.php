@@ -200,57 +200,7 @@
                             <x-backend.svg.home-svg />
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
-                            data-bs-auto-close="outside" role="button" aria-expanded="false">
 
-                            <span class="nav-link-title fw-bold text-dark">
-                               Quick Access
-
-                            </span>
-                        </a>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-menu-columns">
-                                <div class="dropdown-menu-column">
-                                    <a class="dropdown-item" href="{{ route('property_index') }}">
-                                        <x-backend.svg.hotel-svg />
-                                        Properties
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('custom.page.index') }}">
-                                        <x-backend.svg.book-svg />
-                                        Custom Page
-
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('home.page.index') }}">
-                                        <x-backend.svg.home-content-svg />
-                                        Home Page Content
-
-                                    </a>
-
-
-
-                                </div>
-                                <div class="dropdown-menu-column">
-                                    <a class="dropdown-item" href="{{ route('product.index') }}">
-                                           <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-device-imac-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11 17h-7a1 1 0 0 1 -1 -1v-12a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v8" /><path d="M3 13h10" /><path d="M8 21h4" /><path d="M10 17l-.5 4" /><path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M20.2 20.2l1.8 1.8" /></svg>
-                                        Service
-
-                                    </a>
-                                    <!--<a class="dropdown-item" href="{{ route('roles.permission.index') }}">-->
-                                    <!--    <x-backend.svg.people-svg />-->
-                                    <!--     Role & Permissions-->
-
-                                    <!--</a>-->
-                                    {{-- <a class="dropdown-item" href="{{ route('faq.index') }}">
-                                        <x-backend.svg.faq-svg />
-                                        FAQ
-                                    </a> --}}
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </li>
 
 
                     <li class="nav-item">
@@ -258,7 +208,7 @@
 
                             <span class="btn btn-primary">
                                 <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
-                               Add Service
+                               Add Photography
                             </span>
                         </a>
                     </li>
@@ -267,7 +217,7 @@
 
                             <span class="btn btn-primary">
                                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
-                               Add Property
+                               Add Cinematography
                             </span>
                         </a>
                     </li>

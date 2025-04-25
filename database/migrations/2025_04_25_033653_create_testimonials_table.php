@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image');
             $table->string('rating');
             $table->text('description');
             $table->boolean('status')->default(1); // 1 = Active, 0 = Inactive
