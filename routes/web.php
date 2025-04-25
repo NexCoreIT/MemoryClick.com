@@ -167,9 +167,10 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('index', [PackageController::class, 'index'])->name('index');
         Route::get('create', [PackageController::class, 'create'])->name('create');
         Route::post('save', [PackageController::class, 'store'])->name('store');
+        Route::get('view/{slug}', [PackageController::class, 'view'])->name('view');
         Route::get('edit/{slug}', [PackageController::class, 'edit'])->name('edit');
         Route::post('update/{id}', [PackageController::class, 'update'])->name('update');
-        Route::DELETE('delete/{id}', [PackageController::class, 'delete'])->name('destroy'); 
+        Route::DELETE('delete/{id}', [PackageController::class, 'delete'])->name('delete'); 
     });
 
 

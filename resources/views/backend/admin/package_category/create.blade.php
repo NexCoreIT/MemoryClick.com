@@ -1,4 +1,6 @@
 @extends('backend.layout.app')
+@section('package_menu', 'show')
+@section('packages', 'show active')
 @section('content')
 
 <div class="col-12 d-flex justify-content-center mt-4">

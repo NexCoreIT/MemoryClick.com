@@ -1,5 +1,6 @@
 @extends('backend.layout.app')
-
+@section('package_menu', 'show')
+@section('packages', 'show active')
 @section('content')
     <div class="container">
         <br>

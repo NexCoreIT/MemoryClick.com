@@ -146,7 +146,7 @@
 
                 <!-- Services -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {{ request()->routeIs('package.category.index') || request()->routeIs('package.category.create') || request()->routeIs('package.category.store') || request()->routeIs('package.category.edit') || request()->routeIs('package.category.destroy') || request()->routeIs('package.category.show') ? 'active show' : '' }}"
+                    <a class="nav-link dropdown-toggle @yield('packages')
                         href="#" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
                         aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -167,7 +167,7 @@
                             Packages
                         </span>
                     </a>
-                    <div class="dropdown-menu {{ request()->routeIs('package.category.index') || request()->routeIs('package.category.create') || request()->routeIs('package.category.store') || request()->routeIs('package.category.edit') || request()->routeIs('package.category.destroy') || request()->routeIs('category.show') ? 'show' : '' }}">
+                    <div class="dropdown-menu  @yield('package_menu')">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
 
