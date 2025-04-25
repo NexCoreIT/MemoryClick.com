@@ -16,7 +16,7 @@
     }
 
     .mobile_menu .nav-link:hover {
-        color: var(--primary); 
+        color: var(--primary);
     }
 
     .mobile_menu .dropdown-item:hover,
@@ -32,19 +32,27 @@
 }
 
 @media screen and (max-width:767px) {
-    .team-img::after{
+    .team-img::after {
         display: none;
     }
-    .title{
+
+    .title {
         font-size: 20px;
     }
-    .display-6{
+
+    .display-6 {
         font-size: 20px;
     }
-    .sub_title{
+
+    .sub_title {
         font-size: 15px !important;
     }
-    .recent_work_item h4{
-       font-size: 18px;
+
+    .recent_work_item h4 {
+        font-size: 18px;
+    }
+
+    .section_gap {
+        padding: 50px 0px;
     }
 }
