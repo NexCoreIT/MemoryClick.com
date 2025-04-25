@@ -18,7 +18,7 @@
                     <input type="text" name="name" class="form-control" value="{{ old('name', $category->name) }}" placeholder="Type Name">
                 </div>
 
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label class="form-label">Current Image</label><br>
                     @if($category->image && file_exists(public_path(Str::replaceFirst('public/', '', $category->image))))
                         <img src="{{ asset(Str::replaceFirst('public/', '', $category->image)) }}" alt="Current Image" style="width: 100px; height: auto; border: 1px solid #ddd; padding: 3px; border-radius: 4px;">
@@ -30,7 +30,7 @@
                 <div class="mb-3">
                     <label class="form-label">Change Image</label>
                     <input type="file" name="image" class="form-control">
-                </div>
+                </div> --}}
 
                 <div class="mb-3">
                     <label class="form-label">Status</label>

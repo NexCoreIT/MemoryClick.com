@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\BlogCategory;
 use Illuminate\Support\Facades\Route;;
 use Illuminate\Support\Facades\Artisan;
 use Spatie\Honeypot\ProtectAgainstSpam;
@@ -14,12 +13,14 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\CinematographyController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\HomePageContentController;
 use App\Http\Controllers\frontend\WebsiteServiceController;
 use App\Http\Controllers\frontend\AuthController as FrontendAuthController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\OurServiceController;
+use App\Http\Controllers\PhotographyController;
 use App\Http\Controllers\RecentWorkController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TestimonialController;
@@ -200,7 +201,7 @@ use App\Http\Controllers\TestimonialController;
 
 
      // ===============================//
-    // SLIDER MANAGEMENT          //
+    // SLIDER MANAGEMENT               //
     // ===============================//
     Route::prefix('slider/')->name('slider.')->group(function () {
         Route::get('index', [SliderController::class, 'index'])->name('index');
@@ -213,7 +214,7 @@ use App\Http\Controllers\TestimonialController;
 
 
        // ===============================//
-      // OUR SERVICE         //
+      // OUR SERVICE                    //
     // ===============================//
     Route::prefix('our-service/')->name('service.')->group(function () {
         Route::get('index', [OurServiceController::class, 'index'])->name('index');
@@ -227,7 +228,7 @@ use App\Http\Controllers\TestimonialController;
 
 
         // ===============================//
-      // OUR TESTIMONIALS         //
+      // OUR TESTIMONIALS               //
     // ===============================//
     Route::prefix('testimonial/')->name('testimonial.')->group(function () {
         Route::get('index', [TestimonialController::class, 'index'])->name('index');
@@ -239,8 +240,8 @@ use App\Http\Controllers\TestimonialController;
     });
 
 
-          // ===============================//
-      // RECENT WORK         //
+     // ===============================//
+    // RECENT WORK                     //
     // ===============================//
     Route::prefix('recent-work/')->name('recent-work.')->group(function () {
         Route::get('index', [RecentWorkController::class, 'index'])->name('index');
@@ -251,6 +252,30 @@ use App\Http\Controllers\TestimonialController;
         Route::put('update/{id}', [RecentWorkController::class, 'update'])->name('update');
     });
 
+
+     // ===============================//
+    // PHOTOGRAPHY                    //
+    // ===============================//
+    Route::prefix('photography/')->name('photography.')->group(function () {
+        Route::get('index', [PhotographyController::class, 'index'])->name('index');
+        Route::get('create', [PhotographyController::class, 'create'])->name('create');
+        Route::post('store', [PhotographyController::class, 'store'])->name('store');
+        Route::get('edit/{slug}', [PhotographyController::class, 'edit'])->name('edit');
+        Route::get('delete/{id}', [PhotographyController::class, 'delete'])->name('delete');
+        Route::put('update/{id}', [PhotographyController::class, 'update'])->name('update');
+    });
+
+      // ===============================//
+    // CINEMATOGRAPHY                    //
+    // ===============================//
+    Route::prefix('cinematographies/')->name('cinematographies.')->group(function () {
+        Route::get('index', [CinematographyController::class, 'index'])->name('index');
+        Route::get('create', [CinematographyController::class, 'create'])->name('create');
+        Route::post('store', [CinematographyController::class, 'store'])->name('store');
+        Route::get('edit/{slug}', [CinematographyController::class, 'edit'])->name('edit');
+        Route::get('delete/{id}', [CinematographyController::class, 'delete'])->name('delete');
+        Route::put('update/{id}', [CinematographyController::class, 'update'])->name('update');
+    });
 
 });
 

@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('slider.index') ? 'active' : '' }}"
+                    <a class="nav-link {{ request()->routeIs('slider.index','slider.create','slider.edit') ? 'active' : '' }}"
                         href="{{ route('slider.index') }}">
                          <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-slideshow"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l.01 0" /><path d="M3 3m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" /><path d="M3 13l4 -4a3 5 0 0 1 3 0l4 4" /><path d="M13 12l2 -2a3 5 0 0 1 3 0l3 3" /><path d="M8 21l.01 0" /><path d="M12 21l.01 0" /><path d="M16 21l.01 0" /></svg>
@@ -55,7 +55,7 @@
 
                 <!-- Properties -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {{ request()->routeIs('property_index') || request()->routeIs('property_create') || request()->routeIs('property_store') || request()->routeIs('property_edit') || request()->routeIs('property_show') || request()->routeIs('property_delete') || request()->routeIs('property_update') ? 'active' : '' }}"
+                    <a class="nav-link dropdown-toggle {{ request()->routeIs('category.index') || request()->routeIs('category.create') || request()->routeIs('category.edit') || request()->routeIs('photography.create') || request()->routeIs('photography.edit') || request()->routeIs('photography.index') || request() ? 'active' : '' }}"
                         href="#" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
                         aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -68,8 +68,8 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item {{ request()->routeIs('property_index') ? 'active' : '' }}"
-                                    href="{{ route('property_index') }}">
+                                <a class="dropdown-item {{ request()->routeIs('category.index','category.create','category.edit') ? 'active' : '' }}"
+                                    href="{{ route('category.index') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                 class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right">
@@ -80,8 +80,8 @@
                                             </svg>
                                     Category
                                 </a>
-                                <a class="dropdown-item {{ request()->routeIs('property_create') ? 'active' : '' }}"
-                                    href="{{ route('property_create') }}">
+                                <a class="dropdown-item {{ request()->routeIs('photography.index','photography.create','photography.edit') ? 'active' : '' }}"
+                                    href="{{ route('photography.index') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                         class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right">
@@ -100,8 +100,8 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('user.list') ? 'active' : '' }}"
-                        href="{{ route('user.list') }}">
+                    <a class="nav-link {{ request()->routeIs('cinematographies.index','cinematographies.edit','cinematographies.create') ? 'active' : '' }}"
+                        href="{{ route('cinematographies.index') }}">
                          <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-video"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4z" /><path d="M3 6m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z" /></svg>
                             </span>
@@ -141,7 +141,7 @@
                                     Branch
                                 </a>
 
-                                <a class="dropdown-item {{ request()->routeIs('product.index') ? 'active' : '' }}"
+                                <a class="dropdown-item {{ request()->routeIs('category.index') ? 'active' : '' }}"
                                     href="{{ route('product.index') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -173,7 +173,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('recent-work.index') ? 'active' : '' }}"
+                    <a class="nav-link {{ request()->routeIs('recent-work.index','recent-work.create','recent-work.edit') ? 'active' : '' }}"
                         href="{{ route('recent-work.index') }}">
                          <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-presentation"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 4l18 0" /><path d="M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10" /><path d="M12 16l0 4" /><path d="M9 20l6 0" /><path d="M8 12l3 -3l2 2l3 -3" /></svg>
@@ -186,7 +186,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('service.index') ? 'active' : '' }}"
+                    <a class="nav-link {{ request()->routeIs('service.index','service.create','service.edit') ? 'active' : '' }}"
                         href="{{ route('service.index') }}">
                          <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-device-imac-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11 17h-7a1 1 0 0 1 -1 -1v-12a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v8" /><path d="M3 13h10" /><path d="M8 21h4" /><path d="M10 17l-.5 4" /><path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M20.2 20.2l1.8 1.8" /></svg>
@@ -198,7 +198,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('testimonial.index') ? 'active' : '' }}"
+                    <a class="nav-link {{ request()->routeIs('testimonial.index','testimonial.create','testimonial.edit') ? 'active' : '' }}"
                         href="{{ route('testimonial.index') }}">
                          <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-message-question"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 9h8" /><path d="M8 13h6" /><path d="M14 18h-1l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v4.5" /><path d="M19 22v.01" /><path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
@@ -209,52 +209,6 @@
                     </a>
                 </li>
 
-                {{-- @can('view users') --}}
-
-                {{-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {{ request()->routeIs('category.index') || request()->routeIs('category.create') || request()->routeIs('category.store') || request()->routeIs('category.edit') || request()->routeIs('category.destroy') || request()->routeIs('category.show') ? 'active' : '' }}"
-                        href="#" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
-                        aria-expanded="false">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-device-imac-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11 17h-7a1 1 0 0 1 -1 -1v-12a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v8" /><path d="M3 13h10" /><path d="M8 21h4" /><path d="M10 17l-.5 4" /><path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M20.2 20.2l1.8 1.8" /></svg>
-                        </span>
-                        <span class="nav-link-title">
-                            Blog
-                        </span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-menu-columns">
-                            <div class="dropdown-menu-column">
-
-                                <a class="dropdown-item {{ request()->routeIs('blog.index') ? 'active' : '' }}"
-                                    href="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M5 12l14 0" />
-                                        <path d="M15 16l4 -4" />
-                                        <path d="M15 8l4 4" />
-                                    </svg>
-                                   Category
-                                </a>
-
-                                <a class="dropdown-item {{ request()->routeIs('blog.index') ? 'active' : '' }}"
-                                    href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M5 12l14 0" />
-                                        <path d="M15 16l4 -4" />
-                                        <path d="M15 8l4 4" />
-                                    </svg>
-                                    Blog Post
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li> --}}
 
                 <!-- User -->
                 <li class="nav-item">

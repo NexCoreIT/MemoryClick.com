@@ -1,25 +1,17 @@
 @extends('backend.layout.app')
-@php
-    $protectedCategories = [
-        'Photo Services',
-        'Virtual Photo Services',
-        'Other Photo Services',
-        'Video Services',
-        'Floor Planing',
-    ];
-@endphp
+
 @section('content')
     <div class="container">
         <br>
-        <h2 style="text-align: center">{{ $title }}</h2>
-        <div style="text-align: right">
-            <a href="{{ route('category.create') }}" class="btn btn-info" style="margin-right: 10px;">+ Add Category</a>
-        </div><br><br>
+        <h2 class="text-center">{{ $title }}</h2>
+        <div class="text-end mb-3">
+            <a href="{{ route('category.create') }}" class="btn btn-info">+ Add Category</a>
+        </div>
 
         <div class="col-12">
             <div class="card">
                 <div class="table-responsive">
-                    <table id="categoryTable" class="table table-vcenter table-mobile-md card-table">
+                    <table class="table table-vcenter table-mobile-md card-table">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -30,41 +22,25 @@
                         <tbody>
                             @forelse ($categories as $category)
                                 <tr>
-                                    <td>{{ Str::limit($category->name,20) }}</td>
+                                    <td>{{ Str::limit($category->name, 20) }}</td>
                                     <td>
-                                        <span class="badge {{ $category->status ? 'badge bg-green-lt' : 'badge bg-red-lt' }}">
+                                        <span class="badge {{ $category->status ? 'bg-success' : 'bg-danger' }}">
                                             {{ $category->status ? 'Active' : 'Inactive' }}
                                         </span>
                                     </td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <a href="{{ route('category.edit', $category->slug) }}" class="btn btn-warning btn-sm">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                                    <path d="M16 5l3 3" />
-                                                </svg>
+                                                Edit
                                             </a>
-                                            @if (!in_array($category->name, $protectedCategories))
-                                                <a href="{{ route('category.destroy', $category->id) }}" class="btn btn-danger btn-sm">
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <path d="M4 7l16 0" />
-                                                        <path d="M10 11l0 6" />
-                                                        <path d="M14 11l0 6" />
-                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                                    </svg>
-                                                                                                </a>
+                                            @if (($category->name))
+                                                <form action="{{ route('category.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                </form>
                                             @endif
-                                            <a href="{{route('category.show',$category->slug)}}" class="btn btn-info btn-sm">
-                                                 <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
-                                            </a>
+
                                         </div>
                                     </td>
                                 </tr>
@@ -78,42 +54,19 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div class="card-footer">
+                    {{ $categories->links() }}
+                </div>
             </div>
         </div>
     </div>
 @endsection
 
 @push('styles')
-    <!-- DataTable CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-@endpush
-
-@push('scripts')
-
-    <!-- jQuery & DataTable JS -->
-    @isset($categories)
-        @if(count($categories) > 0)
-            <!-- jQuery & DataTable JS -->
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        @endif
-    @endisset
-
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-                new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-
-            // Initialize DataTable
-            $('#categoryTable').DataTable({
-                "paging": true,
-                "searching": true,
-                "ordering": true,
-                "info": true
-            });
-        });
-    </script>
+    <style>
+        .pagination {
+            justify-content: center;
+        }
+    </style>
 @endpush

@@ -19,7 +19,7 @@
 
                     </small>
                 </div>
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label class="form-label">Image</label>
                     <input type="file" name="image" class="form-control" placeholder="Image Name" required>
                     <small>
@@ -28,7 +28,7 @@
                         @enderror
 
                     </small>
-                </div>
+                </div> --}}
                 <div class="mb-3">
                     <label class="form-label">Status</label>
                     <select name="status" class="form-control">

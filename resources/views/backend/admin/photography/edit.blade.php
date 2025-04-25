@@ -1,0 +1,74 @@
+@extends('backend.layout.app')
+
+@section('content')
+<div class="container d-flex justify-content-center mt-4">
+    <div class="card shadow-lg" style="max-width: 800px; width: 100%;">
+        <div class="card-header">
+            <h3 class="card-title mb-0">Edit Photography</h3>
+        </div>
+        <form action="{{ route('photography.update', $photography->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="card-body">
+
+                <div class="mb-3">
+                    <label class="form-label">Current Image</label><br>
+                    <img src="{{ asset($photography->image) }}" width="100" class="img-thumbnail mb-2">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Change Image</label>
+                    <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
+                    @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Title</label>
+                        <input type="text" name="title" value="{{ old('title', $photography->title) }}"
+                            class="form-control @error('title') is-invalid @enderror" required>
+                        @error('title') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    </div>
+
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Client Name</label>
+                        <input type="text" name="client_name" value="{{ old('client_name', $photography->client_name) }}"
+                            class="form-control @error('client_name') is-invalid @enderror" required>
+                        @error('client_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Status</label>
+                        <select name="status" class="form-control @error('status') is-invalid @enderror">
+                            <option value="1" {{ $photography->status == 1 ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ $photography->status == 0 ? 'selected' : '' }}>Inactive</option>
+                        </select>
+                        @error('status') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    </div>
+
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Category</label>
+                        <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
+                            <option value="">Select Category</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ $photography->category_id == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('category_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card-footer d-flex justify-content-between">
+                <a href="{{ route('photography.index') }}" class="btn btn-secondary">Back</a>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection
