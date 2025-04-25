@@ -66,7 +66,7 @@
 
                                 </div>
                             </div>
-                            <div class="h1 mb-3"><a href="{{ route('property_index') }}">{{ $total_properties }}</a> </div>
+                            <div class="h1 mb-3"><a href="#">{{ $total_properties }}</a> </div>
                         </div>
                     </div>
                 </div>

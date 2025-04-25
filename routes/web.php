@@ -21,10 +21,12 @@ use App\Http\Controllers\frontend\WebsiteServiceController;
 use App\Http\Controllers\frontend\AuthController as FrontendAuthController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\OurServiceController;
+use App\Http\Controllers\PackageCategoryController;
 use App\Http\Controllers\PhotographyController;
 use App\Http\Controllers\RecentWorkController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TestimonialController;
+use App\Models\PackageCategory;
 
   // =================================
     //CACHE CLEARING ROUTE     //=====
@@ -144,6 +146,20 @@ use App\Http\Controllers\TestimonialController;
         Route::get('show/{slug}', [CategoryController::class, 'show'])->name('show');
     });
 
+
+     // ===============================//
+    // PACKAGE CATEGORY MANAGEMENT     //
+    // ===============================//
+
+    Route::prefix('package-category/')->name('package.category.')->group(function(){
+        Route::get('index', [PackageCategoryController::class, 'index'])->name('index');
+        Route::get('create', [PackageCategoryController::class, 'create'])->name('create');
+        Route::post('save', [PackageCategoryController::class, 'store'])->name('store');
+        Route::get('edit/{slug}', [PackageCategoryController::class, 'edit'])->name('edit');
+        Route::post('update/{id}', [PackageCategoryController::class, 'update'])->name('update');
+        Route::DELETE('delete/{id}', [PackageCategoryController::class, 'delete'])->name('destroy');
+        Route::get('show/{slug}', [PackageCategoryController::class, 'show'])->name('show');
+    });
 
     // ===============================//
     // CONTACT MANAGEMENT          //
