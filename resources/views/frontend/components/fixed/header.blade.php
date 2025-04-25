@@ -66,12 +66,12 @@ $links = DB::table('home_page_contents')->first();
                     class="{{ request()->routeIs('bulkOrder') ? 'active' : '' }}">Bulk Order</a>
             </li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="{{ route('blog.page') }}"
                     class="{{ request()->routeIs('blog.page','blog.details') ? 'active' : '' }}">Blog</a>
-            </li>
+            </li> --}}
 
-            <li><a href="{{ route('faq.page') }}" class="{{ request()->routeIs('faq.page') ? 'active' : '' }}">FAQ</a>
+            {{-- <li><a href="{{ route('faq.page') }}" class="{{ request()->routeIs('faq.page') ? 'active' : '' }}">FAQ</a> --}}
             </li>
             <li><a href="{{ route('about.page') }}" class="{{ request()->routeIs('about.page') ? 'active' : '' }}">About
                     US</a></li>

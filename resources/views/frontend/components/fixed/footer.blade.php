@@ -60,7 +60,7 @@
                     <a href="{{route('home')}}" style="color: white;" class="py-1"><i class="fas fa-home me-2"></i> Home</a>
                     <a href="{{route('about.page')}}" style="color: white;" class="py-1"><i class="fas fa-info-circle me-2"></i> About Us</a>
                     <a href="{{route('ourWorkIndex')}}" style="color: white;" class="py-1"><i class="fas fa-briefcase me-2"></i> Our Work</a>
-                    <a href="{{route('faq.page')}}" style="color: white;" class="py-1"><i class="fas fa-question-circle me-2"></i> FAQ</a>
+                    {{-- <a href="{{route('faq.page')}}" style="color: white;" class="py-1"><i class="fas fa-question-circle me-2"></i> FAQ</a> --}}
                     <a href="{{route('login')}}" style="color: white;" class="py-1"><i class="fas fa-sign-in-alt me-2"></i> Login</a>
                 </div>
             </div>

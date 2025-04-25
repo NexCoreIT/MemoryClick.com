@@ -21,7 +21,7 @@ class HomeController extends Controller
         $data['title'] = 'brightvisionbd - Home';
         // $data['row'] = properties::where('status','1')->orderByDesc('id')->get();
         $data['row'] = properties::where('status','1')->orderBy('id', 'DESC')->get();
-        $data['service'] = Product::where('status','1')->whereNull('youtube_link')->latest()->take(12)->get();
+        $data['service'] = Product::where('status','1')->latest()->take(12)->get();
         $data['about'] = CustomPage::where('slug','about-us')->find(1);
 
         return view('frontend.pages.home',$data);
