@@ -1,3 +1,7 @@
+@php
+    $settings = DB::table('home_page_contents')->find(1)
+@endphp
+
 <div class="modal-header">
     <h1 class="modal-title fs-5" id="packageDetailsLabel">{{ $package->package_name }}</h1>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -23,6 +27,6 @@
         <h4>{{ $package->price }} TK</h4>
     </div>
     <div>
-        <a href="tel:" class="btn btn-sm btn-dark" target="_blank">Contact with us</a>
+        <a href="tel:{{$settings->phone}}" class="btn btn-sm btn-dark" target="_blank">Contact with us</a>
     </div>
 </div>
