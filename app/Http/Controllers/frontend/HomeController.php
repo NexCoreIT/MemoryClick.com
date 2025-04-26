@@ -37,11 +37,24 @@ class HomeController extends Controller
 
     public function photography()
     {
+        $data['title'] = "Photography";
+
         $data['categories'] = Category::where('status', '1')->get();
-        $data['rows'] = Photography::where('status', '1')->get(); // added category for optimization
+
+        $data['rows'] = Photography::where('status', '1')->get();
+
         return view('frontend.photography.index', $data);
     }
 
+    public function photographyDetails($slug){
+
+        $data['title'] = "Top Services";
+
+        $data['row'] = Photography::where('slug', $slug)->firstOrFail();
+
+
+        return view('frontend.photography.details',$data);
+    }
 
 
     public function cinematography()

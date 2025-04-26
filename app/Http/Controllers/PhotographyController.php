@@ -36,6 +36,7 @@ class PhotographyController extends Controller
         'status' => 'required|boolean',
         'category_id' =>'required',
         'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        'package_name' =>'required'
     ]);
 
     $imagePath = null;
@@ -69,6 +70,7 @@ class PhotographyController extends Controller
         'status' => $request->status,
         'category_id' =>$request->category_id,
         'images' => json_encode($additionalImages),
+        'package_name'=>$request->package_name
     ]);
 
     return redirect()->route('photography.index')->with('success', 'Photography added successfully!');
@@ -96,7 +98,7 @@ class PhotographyController extends Controller
         'client_name' => 'required|string|max:255',
         'status' => 'required|boolean',
         'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-
+        'package_name' =>'required'
     ]);
 
     $uploadPath = public_path('uploads/photography');
@@ -137,6 +139,7 @@ class PhotographyController extends Controller
     $photography->client_name = $request->client_name;
     $photography->status = $request->status;
     $photography->category_id = $request->category_id;
+    $photography->package_name = $request->package_name;
     $photography->save();
 
     return redirect()->route('photography.index')->with('success', 'Photography updated successfully!');

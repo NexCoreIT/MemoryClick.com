@@ -11,6 +11,7 @@
             @method('PUT')
             <div class="card-body">
 
+                <div class="row">
                 {{-- Current Thumbnail --}}
                 <div class="mb-3">
                     <label class="form-label">Current Image</label><br>
@@ -18,12 +19,18 @@
                 </div>
 
                 {{-- Change Thumbnail --}}
-                <div class="mb-3">
+                <div class="mb-3 col-md-6">
                     <label class="form-label">Change Image</label>
                     <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
                     @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
-
+                <div class="mb-3 col-md-6">
+                    <label class="form-label">Additional Images</label>
+                    <input type="file" name="images[]" class="form-control @error('images') is-invalid @enderror" multiple required>
+                    @error('images')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
                 {{-- Additional Images --}}
                 @if ($photography->images && is_array(json_decode($photography->images, true)))
                 <div class="mb-3">
@@ -33,7 +40,7 @@
                     @endforeach
                 </div>
                 @endif
-
+            </div>
                 {{-- Title & Client Name --}}
                 <div class="row">
                     <div class="mb-3 col-md-6">
@@ -42,7 +49,12 @@
                             class="form-control @error('title') is-invalid @enderror" required>
                         @error('title') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
-
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Package Name</label>
+                        <input type="text" name="package_name" class="form-control @error('package_name') is-invalid @enderror"
+                        value="{{ old('package_name', $photography->package_name) }}" required>
+                        @error('package_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    </div>
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Client Name</label>
                         <input type="text" name="client_name" value="{{ old('client_name', $photography->client_name) }}"

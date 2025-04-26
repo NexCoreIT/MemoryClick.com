@@ -24,6 +24,12 @@
                         @error('client_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
 
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Package Name</label>
+                        <input type="text" name="package_name" class="form-control @error('package_name') is-invalid @enderror"
+                            value="{{ old('package_name') }}" required>
+                        @error('package_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    </div>
 
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Image</label>
@@ -32,7 +38,7 @@
                 </div>
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Additional Images</label>
-                    <input type="file" name="images[]" class="form-control @error('images') is-invalid @enderror" multiple>
+                    <input type="file" name="images[]" class="form-control @error('images') is-invalid @enderror" multiple required>
                     @error('images')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
