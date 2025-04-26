@@ -15,6 +15,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\OurServiceController;
@@ -164,6 +165,16 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         // Route::get('show/{slug}', [PackageCategoryController::class, 'show'])->name('show');
     });
 
+    Route::prefix('division')->name('division.')->group(function () {
+        Route::get('index', [DivisionController::class, 'index'])->name('index');
+        Route::get('create', [DivisionController::class, 'create'])->name('create');
+        Route::post('save', [DivisionController::class, 'store'])->name('store'); 
+        Route::get('edit/{slug}', [DivisionController::class, 'edit'])->name('edit');
+        Route::post('update/{id}', [DivisionController::class, 'update'])->name('update');
+        Route::DELETE('delete/{id}', [DivisionController::class, 'delete'])->name('delete'); 
+    });
+
+
 
     Route::prefix('package')->name('package.')->group(function () {
         Route::get('index', [PackageController::class, 'index'])->name('index');
@@ -174,9 +185,6 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::post('update/{id}', [PackageController::class, 'update'])->name('update');
         Route::DELETE('delete/{id}', [PackageController::class, 'delete'])->name('delete');
     });
-
-
-
 
 
 
