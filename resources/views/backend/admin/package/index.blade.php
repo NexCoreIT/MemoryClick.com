@@ -18,6 +18,7 @@
                         <thead>
                             <tr>
                                 <th style="width:20%;">Package Name</th>
+                                <th style="width:20%;">Image</th>
                                 <th style="width:20%;">Division</th>
                                 <th style="width:20%;">Category</th>
                                 <th style="width:20%;">Price</th>
@@ -30,7 +31,10 @@
                             @foreach ($packages as $package)
                                 <tr>
                                     <td>{{ $package->package_name }}</td>
-                                    <td>{{ $package->division_id == '1' ? 'Dhaka' : 'Chittagong' }}</td>
+                                    <td>
+                                        <img src="{{ asset($package->image) }}" width="120" alt="">
+                                    </td>
+                                    <td>{{ $package->division?->name }}</td>
                                     <td>{{ $package->category?->name }}</td>
                                     <td>TK {{ $package->price }}</td>
                                     <td>

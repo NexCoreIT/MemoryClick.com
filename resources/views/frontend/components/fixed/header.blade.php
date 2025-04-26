@@ -28,7 +28,7 @@
                         <a href="{{ route('cinematography.page') }}" class="dropdown-item py-2 {{ request()->routeIs('cinematography.page') ? 'active' : '' }}">Cinematography</a>
                     </div>
                 </div>
-                <a href="package.html" class="nav-item nav-link">Package</a>
+                <a href="{{ route('package') }}" class="nav-item nav-link">Package</a>
                 <a href="{{ route('contactUs.page') }}" class="nav-item nav-link {{ request()->routeIs('contactUs.page') ? 'active' : '' }}">Contact Us</a>
             </div>
         </div>

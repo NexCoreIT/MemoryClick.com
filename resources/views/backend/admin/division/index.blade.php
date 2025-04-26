@@ -18,6 +18,7 @@
                         <thead>
                             <tr>
                                 <th>Division Name</th>   
+                                <th>Image</th>   
                                 <th>Status</th> 
                                 <th></th>
                             </tr>
@@ -27,6 +28,9 @@
                                 <tr>
                                     <td>{{ $division->name }}</td> 
                                     <td>
+                                        <img src="{{ asset($division->image) }}" width="120" class="rounded" alt="">    
+                                    </td> 
+                                    <td>
                                         <span
                                             class="badge text-white bg-{{ $division->status == '1' ? 'success' : 'danger' }}">
                                             {{ $division->status == '1' ? 'Active' : 'Inactive' }}
@@ -34,13 +38,6 @@
                                     </td>
                                     <td>
                                         <div class="d-flex gap-2">
-
-                                            <a href="{{ route('division.view', $division->id) }}"
-                                                class="btn btn-warning btn-sm">
-                                                View
-                                            </a>
-
-
                                             <a href="{{ route('division.edit', $division->id) }}"
                                                 class="btn btn-warning btn-sm">
                                                 Edit

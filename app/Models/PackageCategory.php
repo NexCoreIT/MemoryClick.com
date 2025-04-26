@@ -12,4 +12,9 @@ class PackageCategory extends Model
     
 
     protected $guarded = [];
+
+    public function scopeActive($q)
+    {
+        return $q->where('status', '1');
+    }
 }
