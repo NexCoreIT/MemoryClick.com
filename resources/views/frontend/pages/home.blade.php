@@ -230,7 +230,10 @@ $seo = DB::table('custom_pages')->first();
                 </div>
 
                 @empty
-                <strong class="text-danger">NO DATA FOUND</strong>
+                <div class="text-center">
+                    <strong class="text-danger">NO DATA FOUND</strong>
+                </div>
+
                 @endforelse
 
             </div>

@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data['title'] = 'Service Type List';
+        $data['title'] = 'Category List';
         $data['categories'] = Category::paginate(20);
         return view('backend.admin.category.index',$data);
     }

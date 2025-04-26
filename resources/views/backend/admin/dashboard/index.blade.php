@@ -61,12 +61,12 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="subheader"><a
-                                        href="{{ route('photography.index') }}">PHOTOGRAPHY(500)</a></div>
+                                        href="{{ route('photography.index') }}">PHOTOGRAPHY({{$total_photography}})</a></div>
                                 <div class="ms-auto lh-1">
 
                                 </div>
                             </div>
-                            <div class="h1 mb-3"><a href="#">500</a> </div>
+                            <div class="h1 mb-3"><a href="#">{{$total_photography}}</a> </div>
                         </div>
                     </div>
                 </div>
@@ -75,14 +75,14 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="subheader"><a
-                                        href="{{ route('cinematographies.index') }}">CINEMATOGRAPHY(500)</a>
+                                        href="{{ route('cinematographies.index') }}">CINEMATOGRAPHY({{$total_cinematography}})</a>
                                 </div>
                                 <div class="ms-auto lh-1">
 
                                 </div>
                             </div>
                             <div class="d-flex align-items-baseline">
-                                <div class="h1 mb-0 me-2"><a href="#">500</a>
+                                <div class="h1 mb-0 me-2"><a href="#">{{$total_cinematography}}</a>
                                 </div>
                                 <div class="me-auto">
 
@@ -146,9 +146,11 @@
                             @forelse ($row as $item)
                                 <div class="col-sm-6 col-lg-4">
                                     <div class="card card-sm">
-                                        <a class="d-block"><img src="{{('public/'.$item->image)}}"
+                                        <a class="d-block"><img src="{{($item->image)}}"
                                                 class="card-img-top"></a>
                                         <div class="card-body">
+                                            <p>{{ Str::limit($item->title, 25) }}</p>
+
                                             <div class="d-flex align-items-center">
 
                                                 <div>

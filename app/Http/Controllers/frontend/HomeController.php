@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use App\Models\Cinematography;
 use App\Rules\PasswordCheckRule;
 use App\Http\Controllers\Controller;
+use App\Models\Team;
 
 class HomeController extends Controller
 {
@@ -80,6 +81,7 @@ class HomeController extends Controller
         $data['title'] = 'About Us';
 
         $data['page'] = CustomPage::where('slug', 'about-us')->find(1);
+        $data['teams'] = Team::get();
 
         return view('frontend.about.index', $data);
     }

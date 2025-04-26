@@ -67,37 +67,23 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-6 col-xl-3">
-                <div class="team-membem shadow-sm bg-white p-3 p-lg-4 rounded text-center">
-                    <img src="frontend/assets/img/team-1.jpg" class="img-fluid rounded mb-3" alt="Photographer">
-                    <h4>John Doe</h4>
-                    <p class="m-0 small">Lead Photographer</p>
-                </div>
-            </div>
+
+            @forelse ($teams as $team)
+
 
             <div class="col-sm-6 col-xl-3">
                 <div class="team-membem shadow-sm bg-white p-3 p-lg-4 rounded text-center">
-                    <img src="frontend/assets/img/team-2.jpg" class="img-fluid rounded mb-3" alt="Studio Manager">
-                    <h4>Jane Smith</h4>
-                    <p class="m-0 small">Studio Manager</p>
+                    <img src="{{asset($team->image)}}" class="img-fluid rounded mb-3" alt="Photographer">
+                    <h4>{{$team->name}}</h4>
+                    <p class="m-0 small">{{$team->designation}}</p>
                 </div>
+            </div>
+            @empty
+            <div class="text-center">
+                <strong class="text-danger">NO DATA FOUND</strong>
             </div>
 
-            <div class="col-sm-6 col-xl-3">
-                <div class="team-membem shadow-sm bg-white p-3 p-lg-4 rounded text-center">
-                    <img src="frontend/assets/img/team-3.jpg" class="img-fluid rounded mb-3" alt="Assistant Photographer">
-                    <h4>Emily Green</h4>
-                    <p class="m-0 small">Assistant Photographer</p>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-xl-3">
-                <div class="team-membem shadow-sm bg-white p-3 p-lg-4 rounded text-center">
-                    <img src="frontend/assets/img/team-4.jpg" class="img-fluid rounded mb-3" alt="Photo Editor">
-                    <h4>Michael Brown</h4>
-                    <p class="m-0 small">Photo Editor</p>
-                </div>
-            </div>
+            @endforelse
 
         </div>
 

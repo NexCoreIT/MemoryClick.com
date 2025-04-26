@@ -40,7 +40,6 @@ class CustomPageController extends Controller
 
     // Assign each field explicitly
     $item->title = $validatedData['title'];
-    $item->slug = $validatedData['slug'] ?? Str::slug($validatedData['title']); // Generate slug if not provided
     $item->meta_title = $validatedData['meta_title'];
     $item->meta_description = $validatedData['meta_description'];
     $item->meta_keywords = $validatedData['meta_keywords'];
