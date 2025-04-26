@@ -23,20 +23,20 @@
                             value="{{ old('client_name') }}" required>
                         @error('client_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
-              
+
 
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Image</label>
                     <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" required>
                     @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
-                <div class="mb-3 col-md-6">
+                {{-- <div class="mb-3 col-md-6">
                     <label class="form-label">Additional Images</label>
                     <input type="file" name="images[]" class="form-control @error('images') is-invalid @enderror" multiple>
                     @error('images')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Status</label>

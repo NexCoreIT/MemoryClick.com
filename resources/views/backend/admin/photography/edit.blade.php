@@ -25,14 +25,14 @@
                 </div>
 
                 {{-- Additional Images --}}
-                @if ($photography->images && is_array(json_decode($photography->images, true)))
+                {{-- @if ($photography->images && is_array(json_decode($photography->images, true)))
                 <div class="mb-3">
                     <label class="form-label">Current Additional Images</label><br>
                     @foreach (json_decode($photography->images, true) as $img)
                         <img src="{{ asset($img) }}" style="width: 60px;" class="img-thumbnail me-1 mb-2">
                     @endforeach
                 </div>
-                @endif
+                @endif --}}
 
                 {{-- Title & Client Name --}}
                 <div class="row">

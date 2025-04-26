@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->text('images');
+            $table->text('images')->nullable();
             $table->string('client_name')->nullable();
             $table->boolean('status')->default(1); // 1 = Active, 0 = Inactive
             $table->string('slug')->unique();

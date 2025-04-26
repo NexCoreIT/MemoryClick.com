@@ -35,7 +35,7 @@ class PhotographyController extends Controller
         'client_name' => 'required|string|max:255',
         'status' => 'required|boolean',
         'category_id' =>'required',
-        'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        // 'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
     ]);
 
     $imagePath = null;
@@ -53,13 +53,13 @@ class PhotographyController extends Controller
     }
 
     // Handle additional images
-    if ($request->hasFile('images')) {
-        foreach ($request->file('images') as $img) {
-            $imgName = time() . '_' . uniqid() . '_' . $img->getClientOriginalName();
-            $img->move($uploadPath, $imgName);
-            $additionalImages[] = 'uploads/photography/' . $imgName;
-        }
-    }
+    // if ($request->hasFile('images')) {
+    //     foreach ($request->file('images') as $img) {
+    //         $imgName = time() . '_' . uniqid() . '_' . $img->getClientOriginalName();
+    //         $img->move($uploadPath, $imgName);
+    //         $additionalImages[] = 'uploads/photography/' . $imgName;
+    //     }
+    // }
 
     Photography::create([
         'title' => $request->title,
@@ -68,7 +68,7 @@ class PhotographyController extends Controller
         'client_name' => $request->client_name,
         'status' => $request->status,
         'category_id' =>$request->category_id,
-        'images' => json_encode($additionalImages),
+        // 'images' => json_encode($additionalImages),
     ]);
 
     return redirect()->route('photography.index')->with('success', 'Photography added successfully!');
@@ -95,7 +95,7 @@ class PhotographyController extends Controller
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         'client_name' => 'required|string|max:255',
         'status' => 'required|boolean',
-        'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        // 'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
 
     ]);
 
@@ -113,24 +113,24 @@ class PhotographyController extends Controller
     }
 
      // Update additional images if uploaded
-     if ($request->hasFile('images')) {
+    //  if ($request->hasFile('images')) {
         // Delete old additional images
-        if ($photography->images) {
-            foreach (json_decode($photography->images, true) as $oldImage) {
-                if (file_exists(public_path($oldImage))) {
-                    unlink(public_path($oldImage));
-                }
-            }
-        }
+    //     if ($photography->images) {
+    //         foreach (json_decode($photography->images, true) as $oldImage) {
+    //             if (file_exists(public_path($oldImage))) {
+    //                 unlink(public_path($oldImage));
+    //             }
+    //         }
+    //     }
 
-        $newImages = [];
-        foreach ($request->file('images') as $img) {
-            $imgName = time() . '_' . uniqid() . '_' . $img->getClientOriginalName();
-            $img->move($uploadPath, $imgName);
-            $newImages[] = 'uploads/photography/' . $imgName;
-        }
-        $photography->images = json_encode($newImages);
-    }
+    //     $newImages = [];
+    //     foreach ($request->file('images') as $img) {
+    //         $imgName = time() . '_' . uniqid() . '_' . $img->getClientOriginalName();
+    //         $img->move($uploadPath, $imgName);
+    //         $newImages[] = 'uploads/photography/' . $imgName;
+    //     }
+    //     $photography->images = json_encode($newImages);
+    // }
 
     $photography->title = $request->title;
     $photography->slug = Str::slug($request->title);
