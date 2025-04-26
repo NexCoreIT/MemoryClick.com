@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Artisan;
 use Spatie\Honeypot\ProtectAgainstSpam;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ContactController;
@@ -101,18 +102,18 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::get('/custom/page/edit/{id}', [CustomPageController::class, 'edit'])->name('custom.page.edit');
     Route::post('/custom/page/update/{id}', [CustomPageController::class, 'update'])->name('custom.page.update');
 
-    // ===============================
-    // Service MANAGEMENT       //====
+  // ===============================
+    // TEAM MANAGEMENT       //====
     // ===============================
 
-    Route::prefix('service')->name('product.')->group(function () {
-        Route::get('/create', [PropertyController::class, 'create'])->name('create');
-        Route::post('/store', [PropertyController::class, 'store'])->name('store');
-        Route::get('/index', [PropertyController::class, 'index'])->name('index');
-        Route::get('/edit/{slug}', [PropertyController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [PropertyController::class, 'update'])->name('update');
-        Route::delete('/delete/{id}', [PropertyController::class, 'delete'])->name('delete');
-        Route::get('/show/{slug}', [PropertyController::class, 'show'])->name('show');
+    Route::prefix('team')->name('team.')->group(function () {
+        Route::get('/create', [TeamController::class, 'create'])->name('create');
+        Route::post('/store', [TeamController::class, 'store'])->name('store');
+        Route::get('/index', [TeamController::class, 'index'])->name('index');
+        Route::get('/edit/{slug}', [TeamController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [TeamController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [TeamController::class, 'delete'])->name('destroy');
+
     });
 
 
@@ -170,7 +171,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('view/{slug}', [PackageController::class, 'view'])->name('view');
         Route::get('edit/{slug}', [PackageController::class, 'edit'])->name('edit');
         Route::post('update/{id}', [PackageController::class, 'update'])->name('update');
-        Route::DELETE('delete/{id}', [PackageController::class, 'delete'])->name('delete'); 
+        Route::DELETE('delete/{id}', [PackageController::class, 'delete'])->name('delete');
     });
 
 

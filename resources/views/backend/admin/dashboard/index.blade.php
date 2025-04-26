@@ -61,12 +61,12 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="subheader"><a
-                                        href="{{ route('photography.index') }}">PHOTOGRAPHY({{ $total_properties }})</a></div>
+                                        href="{{ route('photography.index') }}">PHOTOGRAPHY(500)</a></div>
                                 <div class="ms-auto lh-1">
 
                                 </div>
                             </div>
-                            <div class="h1 mb-3"><a href="#">{{ $total_properties }}</a> </div>
+                            <div class="h1 mb-3"><a href="#">500</a> </div>
                         </div>
                     </div>
                 </div>
@@ -75,14 +75,14 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="subheader"><a
-                                        href="{{ route('cinematographies.index') }}">CINEMATOGRAPHY({{ $total_service }})</a>
+                                        href="{{ route('cinematographies.index') }}">CINEMATOGRAPHY(500)</a>
                                 </div>
                                 <div class="ms-auto lh-1">
 
                                 </div>
                             </div>
                             <div class="d-flex align-items-baseline">
-                                <div class="h1 mb-0 me-2"><a href="{{ route('product.index') }}">{{ $total_service }}</a>
+                                <div class="h1 mb-0 me-2"><a href="#">500</a>
                                 </div>
                                 <div class="me-auto">
 

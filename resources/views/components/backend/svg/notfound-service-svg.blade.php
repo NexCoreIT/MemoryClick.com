@@ -139,21 +139,11 @@
                             d="M601.002 350.178C579.177 366.095 549.387 377.694 514.39 381.184C511.347 375.792 508.372 370.361 505.466 364.894C501.376 357.2 497.519 349.634 493.896 342.197C505.942 349.292 519.121 354.256 532.854 356.871C555.749 361.042 579.355 358.723 601.002 350.178Z"
                             fill="black" opacity="0.1" />
                     </svg>
+                    <p class="empty-title">No Data found</p>
                 </div>
-                <p class="empty-title">No Service found</p>
 
-                <div class="empty-action">
-                    <a href="{{route('product.create')}}" class="btn btn-primary btn-4">
-                        <!-- Download SVG icon from http://tabler.io/icons/icon/plus -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="icon icon-2">
-                            <path d="M12 5l0 14" />
-                            <path d="M5 12l14 0" />
-                        </svg>
-                        Add New
-                    </a>
-                </div>
+
+
             </div>
         </div>
     </div>
