@@ -96,6 +96,17 @@ class HomeController extends Controller
         return view('frontend.top_service.index',$data);
     }
 
+    public function topServiceDetails($slug){
+
+        $data['title'] = "Top Services";
+
+        $data['service'] = OurService::where('slug', $slug)->firstOrFail();
+
+
+        return view('frontend.top_service.details',$data);
+    }
+
+
     public function changeProfile()
     {
 

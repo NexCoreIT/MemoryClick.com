@@ -67,7 +67,7 @@ class CategoryController extends Controller
      */
     public function edit($slug)
     {
-        $data['title'] = 'Edit Service Type';
+        $data['title'] = 'Edit Category';
 
         $data['category'] = Category::where('slug', $slug)->firstOrFail();
 

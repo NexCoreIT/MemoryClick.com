@@ -2,6 +2,7 @@
 @section('content')
 @php
 $seo = DB::table('custom_pages')->first();
+$home_page_content = DB::table('home_page_contents')->first();
 @endphp
 @section('seo')
 
@@ -59,16 +60,11 @@ $seo = DB::table('custom_pages')->first();
             <div class="col-lg-6">
                 <div class="h-100">
                     <p class="text-primary text-uppercase sub_title mb-2">About Us</p>
-                    <h1 class="title mb-4">Premium Class Photography & Cinematography Services</h1>
+                    <h1 class="title mb-4">{{$home_page_content->about_title ?? 'No Data Found'}}</h1>
                     <p class="mb-4">
-                        Bridal Harmony is a team of experienced professional photographers, cinematographers and
-                        photo-book experts who are dedicated to creating stunning, authentic stories of people's
-                        live.
+                        {{$home_page_content->about_content ?? 'No Data Found'}}
                     </p>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi quaerat animi asperiores
-                        illo. Quaerat, deserunt natus. Minima sit numquam dolorum.
-                    </p>
+
                     <a class="btn btn-primary py-2 px-4" href="about.html">Read More</a>
                 </div>
             </div>
@@ -117,7 +113,7 @@ $seo = DB::table('custom_pages')->first();
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width:600px;">
                 <p class="text-primary text-uppercase sub_title mb-2">Client Reviews</p>
-                <h1 class="display-6 mb-4">More Than 2000+ Customers Trusted Us</h1>
+                <h1 class="display-6 mb-4">{{$home_page_content->homepage_title ?? 'No Data Found'}}</h1>
             </div>
             <div class="owl-carousel testimonial-carousel">
                 @forelse ($testimonials as $testimonial)

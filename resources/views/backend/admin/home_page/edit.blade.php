@@ -8,7 +8,7 @@
             <div class="row row-cards">
                 <div class="col-md-12">
                     <div class="mb-3">
-                        <label class="form-label">Homepage Title</label>
+                        <label class="form-label">Client Reviews</label>
                         <input type="text" name="homepage_title" class="form-control" placeholder="Homepage Title" value="{{ old('homepage_title', $item->homepage_title) }}" required>
                     </div>
                     <div class="mb-3">

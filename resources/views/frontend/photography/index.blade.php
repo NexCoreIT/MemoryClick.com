@@ -46,7 +46,7 @@
                                     <img src="{{ asset($item->image) }}" class="img-fluid mb-3 rounded" alt="">
                                 </a>
 
-                            <h4>{{ $item->title ?? 'Photography' }}</h4>
+                            <h4>{{ $item->client_name ?? 'Photography' }}</h4>
                             <p class="m-0">{{ $item->category?->name }}</p>
                         </div>
                     </div>
