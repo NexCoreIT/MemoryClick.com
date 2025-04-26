@@ -87,6 +87,15 @@ class HomeController extends Controller
     }
 
 
+    public function topService(){
+
+        $data['title'] = "Top Services";
+
+        $data['service'] = OurService::where('status', '1')->orderBy('id', 'DESC')->get();
+
+        return view('frontend.top_service.index',$data);
+    }
+
     public function changeProfile()
     {
 

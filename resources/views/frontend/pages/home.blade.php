@@ -105,7 +105,7 @@ $seo = DB::table('custom_pages')->first();
         </div>
 
         <div class="text-center mt-5">
-            <a class="btn btn-primary py-2 px-4" href="package.html">View All Services</a>
+            <a class="btn btn-primary py-2 px-4" href="{{route('topService.page')}}">View All Services</a>
         </div>
 
     </div>

@@ -57,6 +57,7 @@ Route::prefix('/')->group(function () {
     Route::get('cinematography', [FrontendHomeController::class, 'cinematography'])->name('cinematography.page');
     Route::get('contact-us', [FrontendHomeController::class, 'contactUs'])->name('contactUs.page');
     Route::post('contact-store', [FrontendHomeController::class, 'contactStore'])->name('contact.store');
+    Route::get('top-service', [FrontendHomeController::class, 'topService'])->name('topService.page');
     Route::get('frontend-logout', [FrontendAuthController::class, 'frontendLogout'])->name('frontend.logout');
 
     // Service Routes
