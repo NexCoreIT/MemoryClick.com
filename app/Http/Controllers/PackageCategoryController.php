@@ -10,8 +10,8 @@ class PackageCategoryController extends Controller
 {
     public function index()
     {
-        $data['title'] = 'Category List';
-        $data['categories'] = PackageCategory::paginate(20);
+        $data['title']          = 'Category List';
+        $data['categories']     = PackageCategory::paginate(20);
         return view('backend.admin.package_category.index',$data);
     }
 
@@ -21,7 +21,6 @@ class PackageCategoryController extends Controller
     public function create()
     {
         $data['title'] = 'Add New Category';
-
         return view('backend.admin.package_category.create',$data);
     }
 

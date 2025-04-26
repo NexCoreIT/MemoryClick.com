@@ -61,7 +61,11 @@ Route::prefix('/')->group(function () {
     Route::get('top-service', [FrontendHomeController::class, 'topService'])->name('topService.page');
     Route::get('top-service-details/{slug}', [FrontendHomeController::class, 'topServiceDetails'])->name('topService.details');
     Route::get('photography/{slug}', [FrontendHomeController::class, 'photographyDetails'])->name('photography.details');
+    Route::get('package', [FrontendHomeController::class, 'package'])->name('package');
+    Route::get('division/{slug}/package', [FrontendHomeController::class, 'divisionPackage'])->name('division.package');
+    Route::get('/package-details', [FrontendHomeController::class, 'packageDetails'])->name('package.details');
     Route::get('frontend-logout', [FrontendAuthController::class, 'frontendLogout'])->name('frontend.logout');
+
 
     // Service Routes
     Route::get('/service/page', [WebsiteServiceController::class, 'index'])->name('service.page');
@@ -173,9 +177,8 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::post('save', [DivisionController::class, 'store'])->name('store'); 
         Route::get('edit/{slug}', [DivisionController::class, 'edit'])->name('edit');
         Route::post('update/{id}', [DivisionController::class, 'update'])->name('update');
-        Route::DELETE('delete/{id}', [DivisionController::class, 'delete'])->name('delete'); 
+        Route::get('delete/{id}', [DivisionController::class, 'delete'])->name('delete'); 
     });
-
 
 
     Route::prefix('package')->name('package.')->group(function () {
@@ -185,7 +188,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('view/{slug}', [PackageController::class, 'view'])->name('view');
         Route::get('edit/{slug}', [PackageController::class, 'edit'])->name('edit');
         Route::post('update/{id}', [PackageController::class, 'update'])->name('update');
-        Route::DELETE('delete/{id}', [PackageController::class, 'delete'])->name('delete');
+        Route::get('delete/{id}', [PackageController::class, 'delete'])->name('delete');
     });
 
 

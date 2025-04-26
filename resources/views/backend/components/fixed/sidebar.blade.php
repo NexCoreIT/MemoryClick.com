@@ -146,7 +146,7 @@
 
                 <!-- Services -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle @yield('packages')
+                    <a class="nav-link dropdown-toggle @yield('packages')"
                         href="#" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
                         aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -171,7 +171,7 @@
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
 
-                                <a class="dropdown-item {{ request()->routeIs('division.index') ? 'active' : '' }}"
+                                {{-- <a class="dropdown-item {{ request()->routeIs('division.index') ? 'active' : '' }}"
                                     href="{{ route('division.index') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -183,7 +183,7 @@
                                         <path d="M15 8l4 4" />
                                     </svg>
                                     Division
-                                </a>
+                                </a> --}}
 
                                 <a class="dropdown-item {{ request()->routeIs('package.category.index') ? 'active' : '' }}"
                                     href="{{ route('package.category.index') }}">
@@ -309,8 +309,8 @@
 
                 <!-- User -->
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('team.index') ? 'active' : '' }}"
-                        href="{{ route('team.index') }}">
+                    <a class="nav-link {{ request()->routeIs('user.list') ? 'active' : '' }}"
+                        href="{{ route('user.list') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -322,7 +322,7 @@
                             </svg>
                         </span>
                         <span class="nav-link-title">
-                            Team
+                            User
                         </span>
                     </a>
                 </li>

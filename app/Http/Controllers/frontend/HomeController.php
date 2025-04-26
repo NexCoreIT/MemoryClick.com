@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Models\Team;
 use App\Models\User;
 use App\Models\Contact;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Division;
 use App\Models\CustomPage;
 use App\Models\OurService;
 use App\Models\properties;
@@ -16,7 +18,8 @@ use Illuminate\Http\Request;
 use App\Models\Cinematography;
 use App\Rules\PasswordCheckRule;
 use App\Http\Controllers\Controller;
-use App\Models\Team;
+use App\Models\Package;
+use App\Models\PackageCategory;
 
 class HomeController extends Controller
 {
@@ -26,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $data['title'] = 'Memoryclick - Home';
-        $data['testimonials'] = Testimonial::where('status','1')->orderByDesc('id')->get();
+        $data['testimonials'] = Testimonial::where('status', '1')->orderByDesc('id')->get();
         $data['service'] = OurService::where('status', '1')->orderBy('id', 'DESC')->get();
         $data['recent_work'] = RecentWork::where('status', '1')->latest()->take(8)->get();
         $data['cinematography'] = Cinematography::where('status', '1')->get();
@@ -100,13 +103,14 @@ class HomeController extends Controller
     }
 
 
-    public function topService(){
+    public function topService()
+    {
 
         $data['title'] = "Top Services";
 
         $data['service'] = OurService::where('status', '1')->orderBy('id', 'DESC')->get();
 
-        return view('frontend.top_service.index',$data);
+        return view('frontend.top_service.index', $data);
     }
 
     public function topServiceDetails($slug){
@@ -118,6 +122,37 @@ class HomeController extends Controller
 
         return view('frontend.top_service.details',$data);
     }
+
+
+
+    public function package()
+    {
+        $data['title']      = "Packages";
+        $data['divisions']  = Division::active()->latest()->get();
+        return view('frontend.package.index', $data);
+    }
+
+    public function divisionPackage($slug)
+    {
+        $data['division'] = Division::where('slug', $slug)->first();
+
+        $packages = Package::with(['features', 'division', 'category'])
+            ->active()
+            ->where('division_id', $data['division']->id)
+            ->latest()
+            ->get();
+        $data['packagesByCategory'] = $packages->groupBy('category_id');
+        $data['categories'] = PackageCategory::active()->latest()->get();
+        return view('frontend.package.division_packages', $data);
+    }
+
+
+    public function packageDetails(Request $request)
+    {
+        $package = Package::with(['features', 'division', 'category'])->findOrFail($request->id);
+        return view('frontend.package.package_details', compact('package'));
+    }
+
 
 
     public function changeProfile()
@@ -198,7 +233,4 @@ class HomeController extends Controller
 
         return redirect()->back()->withSuccess('Profile Update Success');
     }
-
-
-
 }
