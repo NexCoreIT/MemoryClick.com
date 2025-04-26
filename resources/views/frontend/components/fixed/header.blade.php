@@ -16,18 +16,20 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="{{route('home')}}" class="nav-item nav-link active">Home</a>
-                <a href="{{route('about.page')}}" class="nav-item nav-link">About Us</a>
+                <a href="{{ route('home') }}" class="nav-item nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
+
+                <a href="{{ route('about.page') }}" class="nav-item nav-link {{ request()->routeIs('about.page') ? 'active' : '' }}">About Us</a>
+
                 <div class="nav-item dropdown">
-                    <a href="javascript:void(0)" class="nav-link dropdown-toggle"
-                        data-bs-toggle="dropdown">Protfolio</a>
+                    <a href="javascript:void(0)" class="nav-link dropdown-toggle {{ request()->routeIs('photography.page') || request()->routeIs('cinematography.page') ? 'active' : '' }}"
+                        data-bs-toggle="dropdown">Portfolio</a>
                     <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0 py-2 dropdown-menu-end">
-                        <a href="{{route('photography.page')}}" class="dropdown-item py-2">Photography</a>
-                        <a href="{{route('cinematography.page')}}" class="dropdown-item py-2">Cinematography</a>
+                        <a href="{{ route('photography.page') }}" class="dropdown-item py-2 {{ request()->routeIs('photography.page') ? 'active' : '' }}">Photography</a>
+                        <a href="{{ route('cinematography.page') }}" class="dropdown-item py-2 {{ request()->routeIs('cinematography.page') ? 'active' : '' }}">Cinematography</a>
                     </div>
                 </div>
                 <a href="package.html" class="nav-item nav-link">Package</a>
-                <a href="{{route('contactUs.page')}}" class="nav-item nav-link">Contact Us</a>
+                <a href="{{ route('contactUs.page') }}" class="nav-item nav-link {{ request()->routeIs('contactUs.page') ? 'active' : '' }}">Contact Us</a>
             </div>
         </div>
     </div>

@@ -9,7 +9,7 @@ $about_details = DB::table('home_page_contents')->find(1);
         <h4>Contact Us</h4>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
             </ol>
         </nav>
