@@ -5,12 +5,10 @@ namespace App\Http\Controllers\frontend;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Contact;
-use App\Models\Product;
 use App\Models\Category;
 use App\Models\Division;
 use App\Models\CustomPage;
 use App\Models\OurService;
-use App\Models\properties;
 use App\Models\RecentWork;
 use App\Models\Photography;
 use App\Models\Testimonial;
@@ -31,7 +29,7 @@ class HomeController extends Controller
         $data['title'] = 'Memoryclick - Home';
         $data['testimonials'] = Testimonial::where('status', '1')->orderByDesc('id')->get();
         $data['service'] = OurService::where('status', '1')->orderBy('id', 'DESC')->get();
-        $data['recent_work'] = Photography::where('status', '1')->latest()->take(12)->get();
+        $data['recent_work'] = Photography::where('status', '1')->latest()->take(4)->get();
         $data['cinematography'] = Cinematography::where('status', '1')->get();
 
         return view('frontend.pages.home', $data);

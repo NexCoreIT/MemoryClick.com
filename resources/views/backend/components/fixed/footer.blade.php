@@ -9,8 +9,9 @@
 				<ul class="list-inline list-inline-dots mb-0">
 
 					<li class="list-inline-item">
-                        <a href="#" target="_blank" class="link-secondary" rel="noopener">
-                            Fast IT Care (https://fastitcare.com.bd)
+                        Developed by
+                        <a href="https://fastitcare.com.bd" target="_blank" class="link-secondary" rel="noopener">
+                           Fast IT Care
                         </a>
                     </li>
 
