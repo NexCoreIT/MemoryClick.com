@@ -43,7 +43,17 @@ class HomePageContentController extends Controller
         if (!$content) {
             return redirect()->back()->with('error', 'Content not found.');
         }
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $uploadPath = public_path('uploads/logo/');
 
+            $image->move($uploadPath, $imageName);
+
+            // Directly update the logo
+            $content->image = 'uploads/logo/' . $imageName;
+            // dd($content->logo);
+        }
         $content->update([
             'homepage_title' => $request->homepage_title,
             'homepage_content' => $request->homepage_content,
