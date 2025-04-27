@@ -31,7 +31,7 @@ class HomeController extends Controller
         $data['title'] = 'Memoryclick - Home';
         $data['testimonials'] = Testimonial::where('status', '1')->orderByDesc('id')->get();
         $data['service'] = OurService::where('status', '1')->orderBy('id', 'DESC')->get();
-        $data['recent_work'] = RecentWork::where('status', '1')->latest()->take(8)->get();
+        $data['recent_work'] = Photography::where('status', '1')->latest()->take(12)->get();
         $data['cinematography'] = Cinematography::where('status', '1')->get();
 
         return view('frontend.pages.home', $data);

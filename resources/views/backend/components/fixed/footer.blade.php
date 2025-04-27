@@ -9,8 +9,8 @@
 				<ul class="list-inline list-inline-dots mb-0">
 
 					<li class="list-inline-item">
-                        <a href="https://www.facebook.com/zidan.khan.1234/" target="_blank" class="link-secondary" rel="noopener">
-                            Developed by Zidan
+                        <a href="#" target="_blank" class="link-secondary" rel="noopener">
+                            Fast IT Care (https://fastitcare.com.bd)
                         </a>
                     </li>
 

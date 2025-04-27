@@ -11,10 +11,10 @@
                         <label class="form-label">Client Reviews</label>
                         <input type="text" name="homepage_title" class="form-control" placeholder="Homepage Title" value="{{ old('homepage_title', $item->homepage_title) }}" required>
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label class="form-label">Homepage Content</label>
                         <textarea name="homepage_content" id="summernote" class="form-control" rows="5" placeholder="Homepage Content" required>{{ old('homepage_content', $item->homepage_content) }}</textarea>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -30,20 +30,15 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Home Button Text</label>
                                 <input type="text" name="home_btn" class="form-control" placeholder="Home Button Text" value="{{ old('home_btn', $item->home_btn) }}" required>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label class="form-label">About Button Text</label>
-                                <input type="text" name="about_btn" class="form-control" placeholder="About Button Text" value="{{ old('about_btn', $item->about_btn) }}" required>
-                            </div>
-                        </div>
-                    </div>
+
+                    </div> --}}
 
                     <div class="row">
                         <div class="col-md-6">
@@ -54,10 +49,16 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
+                                <label class="form-label">About Button Text</label>
+                                <input type="text" name="about_btn" class="form-control" placeholder="About Button Text" value="{{ old('about_btn', $item->about_btn) }}" required>
+                            </div>
+                        </div>
+                        {{-- <div class="col-md-6">
+                            <div class="mb-3">
                                 <label class="form-label">Footer Button Text</label>
                                 <input type="text" name="footer_btn" class="form-control" placeholder="Footer Button Text" value="{{ old('footer_btn', $item->footer_btn) }}" required>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="row">
@@ -107,12 +108,12 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Facebook Messenger</label>
                                 <input type="text" name="messenger_username" class="form-control" placeholder="Messenger Username" value="{{ old('messenger_username', $item->messenger_username) }}">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label class="form-label"> Phone </label>
@@ -121,7 +122,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">LinkedIn Link</label>
@@ -137,7 +138,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

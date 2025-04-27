@@ -218,7 +218,7 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('recent-work.index', 'recent-work.create', 'recent-work.edit') ? 'active' : '' }}"
                         href="{{ route('recent-work.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -238,7 +238,7 @@
                             Recent Work
                         </span>
                     </a>
-                </li>
+                </li> --}}
 
 
                 <li class="nav-item">

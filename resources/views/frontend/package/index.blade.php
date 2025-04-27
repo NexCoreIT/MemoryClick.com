@@ -26,14 +26,15 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-8">
                             <div class="row gy-4">
-                                @foreach ($divisions as $division) 
-                                    <div class="col-md-6">
-                                        <div class="package_wrap h-100 text-center position-relative overflow-hidden">
-                                            <img src="{{ asset($division->image) }}" class="img-fluid rounded mb-3" alt="">
-                                            <h4><a href="{{ route('division.package', $division->slug) }}" class="stretched-link">{{ $division->name }} Packages</a></h4>
-                                        </div>
-                                    </div> 
-                                @endforeach
+                                @foreach ($divisions as $division)
+                                <div class="col-md-6">
+                                    <div class="package_wrap h-100 text-center position-relative overflow-hidden border rounded shadow-lg">
+                                        <img src="{{ asset($division->image) }}" class="img-fluid rounded-top mb-3" alt="{{ $division->name }}">
+                                        <h4><a href="{{ route('division.package', $division->slug) }}" class="stretched-link text-decoration-none text-dark">{{ $division->name }} Packages</a></h4>
+                                    </div>
+                                </div>
+                            @endforeach
+
                             </div>
                         </div>
                     </div>

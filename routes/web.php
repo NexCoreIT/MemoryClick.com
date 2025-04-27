@@ -58,7 +58,7 @@ Route::prefix('/')->group(function () {
     Route::get('cinematography', [FrontendHomeController::class, 'cinematography'])->name('cinematography.page');
     Route::get('contact-us', [FrontendHomeController::class, 'contactUs'])->name('contactUs.page');
     Route::post('contact-store', [FrontendHomeController::class, 'contactStore'])->name('contact.store');
-    Route::get('top-service', [FrontendHomeController::class, 'topService'])->name('topService.page');
+    Route::get('all-service', [FrontendHomeController::class, 'topService'])->name('topService.page');
     Route::get('top-service-details/{slug}', [FrontendHomeController::class, 'topServiceDetails'])->name('topService.details');
     Route::get('photography/{slug}', [FrontendHomeController::class, 'photographyDetails'])->name('photography.details');
     Route::get('package', [FrontendHomeController::class, 'package'])->name('package');
@@ -174,10 +174,10 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::prefix('division')->name('division.')->group(function () {
         Route::get('index', [DivisionController::class, 'index'])->name('index');
         Route::get('create', [DivisionController::class, 'create'])->name('create');
-        Route::post('save', [DivisionController::class, 'store'])->name('store'); 
+        Route::post('save', [DivisionController::class, 'store'])->name('store');
         Route::get('edit/{slug}', [DivisionController::class, 'edit'])->name('edit');
         Route::post('update/{id}', [DivisionController::class, 'update'])->name('update');
-        Route::get('delete/{id}', [DivisionController::class, 'delete'])->name('delete'); 
+        Route::get('delete/{id}', [DivisionController::class, 'delete'])->name('delete');
     });
 
 

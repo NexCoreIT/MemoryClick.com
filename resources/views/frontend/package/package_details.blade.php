@@ -27,6 +27,6 @@
         <h4>{{ $package->price }} TK</h4>
     </div>
     <div>
-        <a href="tel:{{$settings->phone}}" class="btn btn-sm btn-dark" target="_blank">Contact with us</a>
+        <a href="https://wa.me/{{$settings->phone}}" class="btn btn-sm btn-dark" target="_blank">Contact with us</a>
     </div>
 </div>

@@ -27,14 +27,14 @@ class HomePageContentController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'homepage_title' => 'required|string|max:255',
-            'homepage_content' => 'required|string',
+            'homepage_title' => 'nullable|string|max:255',
+            'homepage_content' => 'nullable|string',
             'about_title' => 'required|string|max:255',
             'about_content' => 'required|string',
-            'home_btn' => 'required|string|max:255',
+            'home_btn' => 'nullable|string|max:255',
             'about_btn' => 'required|string|max:255',
             'footer_title' => 'required|string|max:255',
-            'footer_btn' => 'required|string|max:255',
+            'footer_btn' => 'nullable|string|max:255',
             'messenger_username' => 'nullable',
             'phone' => 'nullable'
         ]);
@@ -60,7 +60,7 @@ class HomePageContentController extends Controller
             'twitter_link' => $request->twitter_link,
             'email' => $request->email,
             'address' => $request->address,
-            'messenger_username' => $request->messenger_username,
+            // 'messenger_username' => $request->messenger_username,
             'phone' => $request->phone
             // 'status' => $request->status,
         ]);

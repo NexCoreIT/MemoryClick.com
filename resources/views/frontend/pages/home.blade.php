@@ -65,7 +65,7 @@ $home_page_content = DB::table('home_page_contents')->first();
                         {{$home_page_content->about_content ?? 'No Data Found'}}
                     </p>
 
-                    <a class="btn btn-primary py-2 px-4" href="about.html">Read More</a>
+                    <a class="btn btn-primary py-2 px-4" href="{{route('about.page')}}">Read More</a>
                 </div>
             </div>
         </div>
@@ -167,7 +167,7 @@ $home_page_content = DB::table('home_page_contents')->first();
                     <div class="row g-0 flex-sm-row">
                         <div class="col-sm-6">
                             <div class="team-img position-relative">
-                                <a href="#">
+                                <a href="{{route('photography.details',$work->slug)}}">
                                     <img class="img-fluid rounded mb-3 mb-sm-0" src="{{ asset($work->image) }}" alt="">
                                 </a>
                             </div>
@@ -176,11 +176,11 @@ $home_page_content = DB::table('home_page_contents')->first();
                             <div
                                 class="recent_work_item h-100 p-2 p-md-3 p-xl-5 d-flex flex-column justify-content-between">
                                 <div class="mb-3">
-                                    <h4><a href="#">{{$work->name}}</a></h4>
-                                    <span>Package : {{$work->package_name}}</span>
+                                    <h6><a href="{{route('photography.details',$work->slug)}}">{{$work->title}}</a></h6>
+                                    <span>Package : <small>{{$work->package_name}}</small></span>
                                 </div>
                                 <p>
-                                    {{$work->social_media_name}}
+                                    {{$work->client_name}}
                                 </p>
                             </div>
                         </div>

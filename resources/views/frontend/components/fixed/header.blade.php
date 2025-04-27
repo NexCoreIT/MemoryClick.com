@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg bg-white border-bottom navbar-light sticky-top px-4 px-lg-5">
     <div class="container">
         <a href="{{route('home')}}" class="navbar-brand">
-            <h1 class="text-primary">Bridal</h1>
+            <h1 class="text-primary">MemoryClick</h1>
         </a>
         <button type="button" class="navbar-toggler shadow-none p-2" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
@@ -39,7 +39,7 @@
 <div class="mobile_menu d-block d-lg-none">
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Bridal</h5>
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">MemoryClick</h5>
             <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body p-0">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <a href="package.html" class="nav-item nav-link">Package</a>
+            <a href="{{route('package')}}" class="nav-item nav-link">Package</a>
             <a href="{{route('contactUs.page')}}" class="nav-item nav-link">Contact Us</a>
         </div>
     </div>
