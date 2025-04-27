@@ -71,7 +71,7 @@
             @forelse ($teams as $team)
 
 
-            <div class="col-sm-6 col-xl-3">
+            <div class="col-sm-6 col-xl-3 my-3">
                 <div class="team-membem shadow-sm bg-white p-3 p-lg-4 rounded text-center">
                     <img src="{{asset($team->image)}}" class="img-fluid rounded mb-3" alt="Photographer">
                     <h4>{{$team->name}}</h4>

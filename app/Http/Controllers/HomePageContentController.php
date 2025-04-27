@@ -51,7 +51,7 @@ class HomePageContentController extends Controller
             $image->move($uploadPath, $imageName);
 
             // Directly update the logo
-            $content->image = 'uploads/logo/' . $imageName;
+            $content->image  = 'uploads/logo/' . $imageName;
             // dd($content->logo);
         }
         $content->update([
