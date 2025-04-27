@@ -25,7 +25,7 @@
             </div>
             <div class="row">
 
-                <div class="col-lg-3 col-xl-2 border-end">
+                {{-- <div class="col-lg-3 col-xl-2 border-end">
                     <div class="package_category">
                         <div class="d-flex mb-4 mb-lg-0 justify-content-center justify-content-lg-start align-items-start">
                             <!-- Tabs: Vertical Nav Pills -->
@@ -45,8 +45,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Main Content: Package Filters + Package Lists -->
+ 
                 <div class="col-lg-9 col-xl-10">
                     <!-- Tab Content Section -->
                     <div class="tab-content" id="v-pills-tabContent">
@@ -95,13 +94,69 @@
                         @endforeach
 
                     </div>
+                </div> --}}
+
+
+                <div class="col-lg-3 col-xl-2 border-end">
+                    <div class="package_category">
+                        <button
+                            class="btn btn-default shadow-none active border-0 w-100 text-start bg-transparent filter-button"
+                            data-filter="all">
+                            All
+                        </button>
+                        @foreach ($categories as $key => $category)
+                            <button class="btn btn-default shadow-none border-0 bg-transparent filter-button"
+                                data-filter="cate_{{ $key }}">
+                                {{ $category->name }}
+                            </button>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-lg-9 col-xl-10">
+                    <div class="row gy-4">
+                        @foreach ($categories as $key => $item)
+                            @php
+                                $packages = $packagesByCategory->get($item->id, collect());
+                            @endphp
+                            @if ($packages->isNotEmpty())
+                                @foreach ($packages as $package)
+                                    <div class="col-sm-6 col-xl-4 filter cate_{{ $key }}">
+                                        <div class="package_list text-center h-100 border p-2 rounded shape-sm">
+                                            <img src="{{ asset($package->image) }}" class="img-fluid mb-2 d-block rounded"
+                                                alt="">
+                                            <h4>{{ $package->package_name }}</h4>
+                                            <p class="m-0">
+                                                @php
+                                                    $people = array_filter([
+                                                        $package->chief,
+                                                        $package->photographer,
+                                                        $package->cinematographer,
+                                                    ]);
+                                                @endphp
+                                                {{ implode(' + ', $people) }}
+                                            </p>
+                                            <div class="d-flex mt-4 align-items-center justify-content-between">
+                                                <div><strong>TK. {{ $package->price }}</strong></div>
+                                                <div>
+                                                    <button class="btn btn-primary p-2 px-3 btn-sm viewPackageDetails"
+                                                        data-id="{{ $package->id }}" data-bs-toggle="modal"
+                                                        data-bs-target="#packageDetails">
+                                                        Details
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
     <!-- package end -->
-
 
     <!-- Modal -->
     <div class="modal fade" id="packageDetails" tabindex="-1" aria-labelledby="packageDetailsLabel" aria-hidden="true">
@@ -119,7 +174,7 @@
     <script>
         $(document).ready(function() {
             $('.viewPackageDetails').click(function() {
-                var packageId = $(this).data('id'); 
+                var packageId = $(this).data('id');
                 $.ajax({
                     url: "{{ route('package.details') }}",
                     type: "GET",
