@@ -1,9 +1,14 @@
+@php
+    $logo = DB::table('home_page_contents')->first();
+@endphp
+
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white border-bottom navbar-light sticky-top px-4 px-lg-5">
     <div class="container">
-        <a href="{{route('home')}}" class="navbar-brand">
-            <h1 class="text-primary">MemoryClick</h1>
+        <a href="{{ route('home') }}" class="navbar-brand">
+            <img src="{{ asset($logo->image) }}" alt="MemoryClick Logo" style="height: 40px;">
         </a>
+
         <button type="button" class="navbar-toggler shadow-none p-2" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
