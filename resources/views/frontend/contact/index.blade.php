@@ -71,8 +71,8 @@ $about_details = DB::table('home_page_contents')->find(1);
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control shadow-none"  name="subject" id="subject" placeholder="Subject" required>
-                                <label for="subject">Subject</label>
+                                <input type="tel" class="form-control shadow-none"  name="subject" id="subject" placeholder="Subject" required>
+                                <label for="subject">Phone</label>
                             </div>
                         </div>
                         <div class="col-12">

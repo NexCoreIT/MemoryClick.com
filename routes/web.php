@@ -62,6 +62,8 @@ Route::prefix('/')->group(function () {
     Route::get('top-service-details/{slug}', [FrontendHomeController::class, 'topServiceDetails'])->name('topService.details');
     Route::get('photography/{slug}', [FrontendHomeController::class, 'photographyDetails'])->name('photography.details');
     Route::get('package', [FrontendHomeController::class, 'package'])->name('package');
+    Route::get('term-and-condition', [FrontendHomeController::class, 'term'])->name('term.page');
+
     Route::get('division/{slug}/package', [FrontendHomeController::class, 'divisionPackage'])->name('division.package');
     Route::get('/package-details', [FrontendHomeController::class, 'packageDetails'])->name('package.details');
     Route::get('frontend-logout', [FrontendAuthController::class, 'frontendLogout'])->name('frontend.logout');

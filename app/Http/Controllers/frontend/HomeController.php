@@ -94,7 +94,7 @@ class HomeController extends Controller
     {
         $data['title'] = 'About Us';
 
-        $data['page'] = CustomPage::where('slug', 'about-us')->find(1);
+        $data['page'] = CustomPage::where('slug', 'about-us')->first();
         $data['teams'] = Team::get();
 
         return view('frontend.about.index', $data);
@@ -151,7 +151,14 @@ class HomeController extends Controller
         return view('frontend.package.package_details', compact('package'));
     }
 
+    public function term()
+    {
+        $data['title'] = 'Terms and Condition';
 
+        $data['page'] = CustomPage::where('slug', 'terms-and-condition')->first();
+
+        return view('frontend.term.index', $data);
+    }
 
     public function changeProfile()
     {
