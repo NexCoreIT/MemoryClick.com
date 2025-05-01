@@ -51,7 +51,7 @@
                                                 <div class="mb-4 text-center">
                                                     <label for="image-upload" class="d-block" style="cursor: pointer;">
                                                         <img id="image-preview"
-                                                            src="{{ asset('public/public/uploads/' . auth()->user()->image) }}"
+                                                            src="{{ asset(auth()->user()->image) }}"
                                                             alt="Profile Image"
                                                             class="rounded-circle border img-thumbnail"
                                                             style="width: 120px; height: 120px; object-fit: cover;">

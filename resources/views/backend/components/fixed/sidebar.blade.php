@@ -330,8 +330,8 @@
 
                 <!-- Home Page Content -->
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('home.page.index') ? 'active' : '' }}"
-                        href="{{ route('home.page.index') }}">
+                    <a class="nav-link {{ request()->routeIs('home.page.edit') ? 'active' : '' }}"
+                        href="{{ route('home.page.edit') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

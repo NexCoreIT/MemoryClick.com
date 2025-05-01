@@ -71,10 +71,17 @@ class RegistrationController extends Controller
             $userUpdate= User::find($id);
 
 
-            $imageName = auth()->user()->image;
             if ($request->hasFile('image')) {
-                $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
-                $request->file('image')->storeAs('uploads', $imageName, 'public');
+                $image = $request->file('image');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $destinationPath = public_path('uploads/profile');
+
+                // Create directory if not exists
+                if (!file_exists($destinationPath)) {
+                    mkdir($destinationPath, 0755, true);
+                }
+
+                $image->move($destinationPath, $imageName);
             }
             //dd($imageName);
             $userUpdate->update([
@@ -82,7 +89,7 @@ class RegistrationController extends Controller
                 "phone"   =>  $request->phone,
                 "name"    =>  $request->name,
                 "role"    =>  'admin',
-                "image"   => $imageName,
+                "image"   => 'uploads/profile/' . $imageName,
             ]);
 
 
