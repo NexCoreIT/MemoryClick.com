@@ -39,7 +39,7 @@ Before you begin, ensure you have the following installed on your machine:
 First, clone the repository to your local machine using Git:
 
 ```bash
-git clone [https://github.com/zidankhan86/Real-Ested-Photo-Edit-Web-App.git](https://github.com/NexCoreIT/MemoryClick.com.git)
+git clone https://github.com/NexCoreIT/MemoryClick.com.git
 cd MemoryClick.com
 ```
 
