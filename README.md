@@ -1,17 +1,23 @@
-![image](https://github.com/user-attachments/assets/1ac777bc-831a-47b4-9bf9-cb08c417c7fa)
+![image](https://github.com/user-attachments/assets/31290eb7-a72f-4289-ba5f-65c11702ef92)
 
 
 
-![screencapture-127-0-0-1-8000-our-work-2025-03-07-21_24_39](https://github.com/user-attachments/assets/7e1d1694-d0ca-462c-9e5b-a1549c67f14a)
 
-
-![screencapture-127-0-0-1-8000-auth-login-2025-03-07-21_25_26](https://github.com/user-attachments/assets/1e2cdfa9-039f-490f-89a6-5d9f6c9a7b42)
-
-
-![image](https://github.com/user-attachments/assets/5cd5fb1a-7ef6-4a4e-a9dc-1808d338d0da)
+![image](https://github.com/user-attachments/assets/feed1174-782b-46be-90ea-8465a5ec8a87)
 
 
 
+![image](https://github.com/user-attachments/assets/50da23ff-2ff2-42da-9738-ad1471e263f8)
+
+
+
+![image](https://github.com/user-attachments/assets/e3288a8e-9d5a-47de-81d9-e9449ff16724)
+
+
+![image](https://github.com/user-attachments/assets/38228525-7bfa-4a30-ad22-3ae9629995f0)
+
+
+![image](https://github.com/user-attachments/assets/b8464583-21f3-491d-bf3b-7cf69e58d12d)
 
 # Laravel Project Setup Guide
 
