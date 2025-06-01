@@ -1,148 +1,175 @@
 @extends('backend.layout.app')
 @section('package_menu', 'show')
 @section('packages', 'show active')
+<script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+ <style>
+	            #container {
+	                width: 1000px;
+	                margin: 20px auto;
+	            }
+	            .ck-editor__editable[role="textbox"] {
+	                /* editing area */
+	                min-height: 200px;
+	            }
+	            .ck-content .image {
+	                /* block images */
+	                max-width: 80%;
+	                margin: 20px auto;
+	            }
+	        </style>
 @section('content')
-    <div class="container">
-        <div class="col-12 d-flex justify-content-center mt-4">
-            <div class="card shadow-lg" style="max-width: 1000px; width: 100%;">
-                <div class="card-header">
-                    <h3 class="card-title mb-0">Add New Package</h3>
-                </div>
-                <form action="{{ route('package.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="card-body">
-                        <div class="row" id="featureContainer">
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Package Name</label>
-                                    <input type="text" name="package_name" value="{{ old('package_name') }}" class="form-control" placeholder="Name"
+<div class="container">
+    <div class="col-12 d-flex justify-content-center mt-4">
+        <div class="card shadow-lg" style="max-width: 1000px; width: 100%;">
+            <div class="card-header">
+                <h3 class="card-title mb-0">Add New Package</h3>
+            </div>
+            <form action="{{ route('package.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="card-body">
+                    <div class="row" id="featureContainer">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Package Name</label>
+                                <input type="text" name="package_name" value="{{ old('package_name') }}"
+                                    class="form-control" placeholder="Name" required="">
+                                @error('package_name')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Package Image</label>
+                                <input type="file" name="image" class="form-control" placeholder="Name" required="">
+                                @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Division</label>
+                                <select name="division_id" class="form-control form-select" required>
+                                    <option value="" class="d-none">Select</option>
+                                    @foreach ($divisions as $division)
+                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Category</label>
+                                <select name="category_id" class="form-control form-select" required>
+                                    <option value="" class="d-none">Select</option>
+                                    @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Price</label>
+                                <input type="text" name="price" value="{{ old('price') }}" class="form-control"
+                                    placeholder="price" required="">
+                                @error('price')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Chief</label>
+                                <input type="text" name="chief" value="{{ old('chief') }}" class="form-control"
+                                    placeholder="Chief">
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Photographer</label>
+                                <input type="text" name="photographer" value="{{ old('photographer') }}"
+                                    class="form-control" placeholder="Photographer">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Cinematographer</label>
+                                <input type="text" name="cinematographer" value="{{ old('cinematographer') }}"
+                                    class="form-control" placeholder="Cinematographer">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Number of Photos</label>
+                                <input type="text" name="number_of_photos" value="{{ old('number_of_photos') }}"
+                                    class="form-control" placeholder="Number of Photos" required="">
+                                @error('number_of_photos')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Package Description</label>
+                                <textarea id="editor" name="description">{{ old('description') }}</textarea>
+
+                                @error('description')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Status</label>
+                                <select name="status" class="form-control form-select">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Features</label>
+                                <div class="input-group">
+                                    <input type="text" name="features[]" class="form-control" placeholder="Feature"
                                         required="">
-                                    @error('package_name')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Package Image</label>
-                                    <input type="file" name="image" class="form-control" placeholder="Name"
-                                        required="">
-                                    @error('image')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Division</label>
-                                    <select name="division_id" class="form-control form-select" required>
-                                        <option value="" class="d-none">Select</option>
-                                        @foreach ($divisions as $division)
-                                            <option value="{{ $division->id }}">{{ $division->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Category</label>
-                                    <select name="category_id" class="form-control form-select" required>
-                                        <option value="" class="d-none">Select</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Price</label>
-                                    <input type="text" name="price" value="{{ old('price') }}" class="form-control" placeholder="price"
-                                        required="">
-                                    @error('price')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Chief</label>
-                                    <input type="text" name="chief" value="{{ old('chief') }}" class="form-control" placeholder="Chief">
-                                </div>
-                            </div>
-
-
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Photographer</label>
-                                    <input type="text" name="photographer" value="{{ old('photographer') }}" class="form-control"
-                                        placeholder="Photographer">
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Cinematographer</label>
-                                    <input type="text" name="cinematographer" value="{{ old('cinematographer') }}" class="form-control"
-                                        placeholder="Cinematographer">
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Number of Photos</label>
-                                    <input type="text" name="number_of_photos" value="{{ old('number_of_photos') }}" class="form-control" placeholder="Number of Photos"
-                                        required="">
-                                    @error('number_of_photos')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Status</label>
-                                    <select name="status" class="form-control form-select">
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Features</label>
-                                    <div class="input-group">
-                                        <input type="text" name="features[]" class="form-control" placeholder="Feature"
-                                            required="">
-                                        <button type="button" class="btn btn-success addFeature">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-plus-icon lucide-plus">
-                                                <path d="M5 12h14" />
-                                                <path d="M12 5v14" />
-                                            </svg>
-                                        </button>
-                                    </div>
+                                    <button type="button" class="btn btn-success addFeature">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-plus-icon lucide-plus">
+                                            <path d="M5 12h14" />
+                                            <path d="M12 5v14" />
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer text-end">
-                        <button type="submit" class="btn btn-primary">Create</button>
-                    </div>
-                </form>
-            </div>
-        </div>
 
+
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
     </div>
+
+</div>
 @endsection
 
 @push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
             $('.addFeature').click(function() {
                 var featureInput = `
                     <div class="col-sm-6 removeItem">
@@ -171,5 +198,17 @@
                 $(this).closest('.removeItem').remove();
             });
         });
-    </script>
+</script>
+<!-- CKEditor 4.25.1 LTS CDN and init -->
+<script src="https://cdn.ckeditor.com/4.25.1/lts/ckeditor.js"></script>
+<script>
+  		ClassicEditor
+	        .create( document.querySelector( '#editor' ) )
+	        .catch( error => {
+	            console.error( error );
+	        } );
+	</script>
+
+
+
 @endpush

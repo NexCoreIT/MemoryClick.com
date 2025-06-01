@@ -37,7 +37,7 @@ class PackageController extends Controller
             'category_id'   => 'required',
             'price'         => 'required',
             'image'         => 'required',
-            'features'      => 'required',
+            'features'      => 'nullable',
             'number_of_photos'   => 'required',
         ]);
 
@@ -52,6 +52,8 @@ class PackageController extends Controller
             $data->photographer         = $request->photographer;
             $data->cinematographer      = $request->cinematographer;
             $data->number_of_photos     = $request->number_of_photos;
+            $data->description          = $request->description;
+
             $data->status               = $request->status;
             if ($request->hasFile('image')) {
                 $image          = $request->file('image');
@@ -78,6 +80,7 @@ class PackageController extends Controller
             }
             return redirect()->route('package.index')->with('success', 'Package created successfully!');
         } catch (\Throwable $th) {
+            dd($th);
             return redirect()->back()->with('error', 'Something went wrong! Please try again.');
         }
     }
@@ -100,7 +103,7 @@ class PackageController extends Controller
             'division_id'   => 'required',
             'category_id'   => 'required',
             'price'         => 'required',
-            'features'      => 'required',
+            'features'      => 'nullable',
             'number_of_photos'      => 'required',
         ]);
 
@@ -115,6 +118,7 @@ class PackageController extends Controller
             $data->photographer         = $request->photographer;
             $data->cinematographer      = $request->cinematographer;
             $data->number_of_photos     = $request->number_of_photos;
+            $data->description          = $request->description;
             $data->status               = $request->status;
             if ($request->hasFile('image')) {
                 if ($data->image) {

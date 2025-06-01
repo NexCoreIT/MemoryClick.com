@@ -1,6 +1,25 @@
 @extends('backend.layout.app')
 @section('package_menu', 'show')
 @section('packages', 'show active')
+<script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+ <style>
+	            #container {
+	                width: 1000px;
+	                margin: 20px auto;
+	            }
+	            .ck-editor__editable[role="textbox"] {
+	                /* editing area */
+	                min-height: 200px;
+	            }
+	            .ck-content .image {
+	                /* block images */
+	                max-width: 80%;
+	                margin: 20px auto;
+	            }
+
+	        </style>
+
+
 @section('content')
     <div class="container">
         <div class="col-12 d-flex justify-content-center mt-4">
@@ -126,7 +145,15 @@
                                     @enderror
                                 </div>
                             </div>
-
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Package Description</label>
+                                <textarea id="editor" name="description">{{ old('description',$package->description) }}</textarea>
+                                @error('description')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
                             {{-- Status --}}
                             <div class="col-sm-6">
                                 <div class="mb-3">
@@ -223,7 +250,7 @@
             $('.addFeature').click(function() {
                 var featureInput = `
                     <div class="col-sm-6 removeItem">
-                        <div class="mb-3"> 
+                        <div class="mb-3">
                             <label class="form-label">Features</label>
                             <div class="input-group mb-2">
                                 <input type="text" name="features[]" class="form-control" placeholder="Feature" required="">
@@ -248,5 +275,15 @@
                 $(this).closest('.removeItem').remove();
             });
         });
+
     </script>
+<!-- CKEditor 4.25.1 LTS CDN and init -->
+<script src="https://cdn.ckeditor.com/4.25.1/lts/ckeditor.js"></script>
+<script>
+  		ClassicEditor
+	        .create( document.querySelector( '#editor' ) )
+	        .catch( error => {
+	            console.error( error );
+	        } );
+	</script>
 @endpush
