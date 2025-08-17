@@ -13,15 +13,16 @@
 
             <!-- Social Media Links -->
             <div class="d-flex align-items-center">
-                <a class="btn btn-square btn-outline-primary rounded-circle me-2" href="{{$links->facebook_link ?? '#'}}">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a class="btn btn-square btn-outline-primary rounded-circle me-2" href="{{$links->twitter_link ?? '#'}}">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a class="btn btn-square btn-outline-primary rounded-circle me-2" href="{{$links->instagram_link ?? '#'}}">
-                    <i class="fab fa-instagram"></i>
-                </a>
+                <a class="btn btn-square btn-outline-primary rounded-circle me-2" href="{{ $links->facebook_link ?? '#' }}">
+    <i class="fab fa-facebook-f"></i>
+</a>
+<a class="btn btn-square btn-outline-primary rounded-circle me-2" href="{{ $links->youtube_link ?? '#' }}">
+    <i class="fab fa-youtube"></i>
+</a>
+<a class="btn btn-square btn-outline-primary rounded-circle me-2" href="{{ $links->instagram_link ?? '#' }}">
+    <i class="fab fa-instagram"></i>
+</a>
+
             </div>
 
             <!-- Developer Credit -->

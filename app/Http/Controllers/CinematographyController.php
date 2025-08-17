@@ -27,12 +27,22 @@ class CinematographyController extends Controller
   // Store
 public function store(Request $request)
 {
+    // $request->validate([
+    //     'title' => 'required|string|max:255',
+    //     'youtube_url' => 'required|url',
+    //     'status' => 'required|boolean',
+    //     'credit'=>'required'
+    // ]);
+
     $request->validate([
-        'title' => 'required|string|max:255',
-        'youtube_url' => 'required|url',
-        'status' => 'required|boolean',
-        'credit'=>'required'
-    ]);
+    'title' => 'required|string|max:255',
+    'youtube_url' => 'required|url',
+    'status' => 'required|boolean',
+    'credit' => 'required'
+], [
+    'youtube_url.required' => 'Facebook link URL is required.',
+    'youtube_url.url' => 'Please enter a valid Facebook embed URL.'
+]);
 
     Cinematography::create([
         'title' => $request->title,
@@ -50,11 +60,21 @@ public function update(Request $request, $id)
 {
     $cinematography = Cinematography::findOrFail($id);
 
-    $request->validate([
-        'title' => 'required|string|max:255',
-        'youtube_url' => 'required|url',
-        'status' => 'required|boolean',
-        'credit'=>'required'
+    // $request->validate([
+    //     'title' => 'required|string|max:255',
+    //     'youtube_url' => 'required|url',
+    //     'status' => 'required|boolean',
+    //     'credit'=>'required'
+    // ]);
+
+     $request->validate([
+    'title' => 'required|string|max:255',
+    'youtube_url' => 'required|url',
+    'status' => 'required|boolean',
+    'credit' => 'required'
+    ], [
+        'youtube_url.required' => 'Facebook link URL is required.',
+        'youtube_url.url' => 'Please enter a valid Facebook embed URL.'
     ]);
 
     $cinematography->update([

@@ -6,11 +6,11 @@ $home_page_content = DB::table('home_page_contents')->first();
 @endphp
 @section('seo')
 
-<title>{{ $title ?? 'brightvisionbd.com' }}</title>
+<title>{{ $title ?? 'memoryclick.net' }}</title>
 <meta name="description" content="{{ $seo->meta_description ?? 'Default website description for SEO' }}">
-<meta name="keywords" content="{{ $seo->meta_keywords ?? 'real estate, property, rent, buy, sell' }}">
+<meta name="keywords" content="{{ $seo->meta_keywords ?? 'premium wedding photography and cinematography company based in Bangladesh' }}">
 
-<meta property="og:title" content="{{ $seo->meta_title ?? 'brightvisionbd.com' }}">
+<meta property="og:title" content="{{ $seo->meta_title ?? 'memoryclick.net' }}">
 <meta property="og:description" content="{{ $seo->meta_description ?? 'Default website description for SEO' }}">
 <meta property="og:image" content="{{ $seo->meta_image ?? asset('frontend/images/default-image.jpg') }}">
 <meta property="og:url" content="{{ url()->current() }}">
@@ -27,14 +27,14 @@ $home_page_content = DB::table('home_page_contents')->first();
                     <div class="col-6 mb-3">
                         <div class="count_items bg-light p-2 p-lg-5 rounded text-center">
                             <h5 class="text-dark fs-6">Since</h5>
-                            <h2 class="fs-1 fw-bold" data-toggle="counter-up">2013</h2>
+                            <h2 class="fs-1 fw-bold" data-toggle="counter-up">2014</h2>
                         </div>
                     </div>
                     <div class="col-6 mb-3">
                         <div class="count_items bg-light p-2 p-lg-5 rounded text-center">
                             <h5 class="text-dark fs-6">Events</h5>
                             <h2 class="fs-1 fw-bold">
-                                <span data-toggle="counter-up">2036</span>
+                                <span data-toggle="counter-up">3000</span> +
 
                             </h2>
                         </div>
@@ -204,46 +204,91 @@ $home_page_content = DB::table('home_page_contents')->first();
             </div>
             <div class="owl-carousel cinematography-carousel">
 
-                @forelse ($cinematography as $video)
-
-
-                <div class="testimonial-item bg-white text-center">
-                    <div class="ratio ratio-16x9  mb-4">
-                        <iframe width="100%" src="{{$video->youtube_url}}"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
+               @forelse ($cinematography as $video)
+                    <div class="testimonial-item bg-white text-center">
+                        <div class="ratio ratio-16x9 mb-4">
+                            <iframe
+                                width="100%"
+                                height="auto"
+                                src="https://www.facebook.com/plugins/video.php?href={{ urlencode($video->youtube_url) }}&show_text=false&width=560"
+                                title="Facebook video player"
+                                frameborder="0"
+                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <div>
+                            <h5 class="mb-3 fs-5 fw-bold">
+                                <strong>{{ $video->title }}</strong>
+                            </h5>
+                            <p class="m-0">
+                                Film Credits: {{ $video->credit }}
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <h5 class="mb-3 fs-5 fw-bold">
-                            <strong>{{$video->title}}</strong>
-                        </h5>
-                        <p class="m-0">
-                            Film Credits: {{$video->credit}}
-                        </p>
-                    </div>
-                </div>
-
                 @empty
-                <div class="text-center">
-                    <strong class="text-danger">NO DATA FOUND</strong>
-                </div>
-
+                    <div class="text-center">
+                        <strong class="text-danger">NO DATA FOUND</strong>
+                    </div>
                 @endforelse
 
             </div>
         </div>
     </div>
     <!-- Cinematography  End -->
-
+    <!-- WhatsApp Button -->
+<div class="whatsapp-button">
+    <a href="https://wa.me/{{$home_page_content->phone ?? ''}}" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+    </a>
+</div>
     @endsection
     @push('styles')
-    <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .whatsapp-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+    }
 
-    </style>
+    .whatsapp-float {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background-color: #25D366;
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+        background-color: #128C7E;
+        transform: scale(1.1);
+    }
+
+    .whatsapp-icon {
+        font-size: 36px;
+    }
+</style>
     @endpush
 
     @push('scripts')
-
+<script>
+    // Optional: Add animation on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const whatsappButton = document.querySelector('.whatsapp-float');
+        setTimeout(() => {
+            whatsappButton.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                whatsappButton.style.transform = 'scale(1)';
+            }, 300);
+        }, 1000);
+    });
+</script>
     @endpush
