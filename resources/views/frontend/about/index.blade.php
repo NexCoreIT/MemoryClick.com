@@ -1,7 +1,14 @@
 @extends('frontend.layout.app')
 @section('content')
+<style>
+    .mt-5 {
+  margin-top: 3rem !important;   /* 48px */
+}
 
-
+.mb-5 {
+  margin-bottom: 3rem !important; /* 48px */
+}
+</style>
 <!-- breadcrump start -->
 <div class="breadcrumb_sec bg-light py-4">
     <div class="container">
@@ -16,63 +23,93 @@
 </div>
 <!-- breadcrump end -->
 
-  <!-- About Start -->
-  <div class="about_sec section_gap">
+<!-- About Start -->
+<div class="about_sec section_gap bg-white mt-5 mb-5">
     <div class="container">
-        {!!$page->body!!}
+        {{-- {!!$page->body!!} --}}
+        <div class="text-center">
+            <h2>About Our CEO</h2>
+            {{-- <p class="mb-0">This section will hold about us content dynamically.</p> --}}
+        </div>
     </div>
 </div>
 <!-- About End -->
 
-
 <!-- Founder Start -->
-<div class="founder_sec section_gap pt-0">
+<div class="founder_sec section_gap bg-light pt-0">
     <div class="container">
-        <div class="row d-flex allign-items-center">
+        <div class="row d-flex align-items-center">
+            <!-- Image Right -->
             <div class="col-lg-6 mb-4 mb-lg-0 order-lg-2">
                 <div class="about_bx text-center text-lg-end">
-                    <img src="frontend/assets/img/about-2.jpg" class="img-fluid rounded shape-md" alt="">
+                    <img src="{{asset($page->ceo_image)}}" class="img-fluid rounded shape-md mt-5 mb-5" alt="">
                 </div>
             </div>
+            <!-- Content Left -->
             <div class="col-lg-6 order-lg-1">
                 <div>
-                    <p class="text-primary text-uppercase sub_title mb-2">Founder & CEO</p>
-                    <h1 class="title mb-4">Emily R.</h1>
+                    <p class="text-primary text-uppercase sub_title mb-2">{{ $page->ceo_designation  ?? '' }}</p>
+                    <h1 class="title mb-4">{{ $page->ceo_name ?? '' }}</h1>
                     <p class="mb-4 text-justify">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, natus! Vero autem accusantium
-                        ipsam repellendus doloremque ipsum culpa temporibus quidem nesciunt dignissimos, perferendis
-                        veniam expedita animi veritatis corporis deleniti debitis facere sequi. Minima dolore nobis
-                        repellat illo tempora dolorum at temporibus, a consectetur! Ex quibusdam autem a eveniet
-                        nihil, repudiandae recusandae. Veniam, dolor quis aperiam neque explicabo adipisci quam
-                        voluptatum.
+                       {{$page->body ?? ''}}
                     </p>
-                    <p class="m-0">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum commodi placeat odio aperiam
-                        explicabo error. Recusandae sed dolores iste ipsa cumque, quisquam earum veritatis
-                        aspernatur, inventore enim tempora perspiciatis consequuntur?
-                    </p>
-                </div>
+
             </div>
         </div>
     </div>
 </div>
 <!-- Founder End -->
 
+<!-- About Memoryclick (Title Section) -->
+<div class="about_sec bg-white" style="padding-top: 50px; padding-bottom: 50px;">
+    <div class="container">
+        <div class="text-center">
+            <h2>About MemoryClick</h2>
+            {{-- <p class="mb-0">This section will hold about us content dynamically.</p> --}}
+        </div>
+    </div>
+</div>
+<!-- About Memoryclick End -->
+
+<!-- About Memoryclick End -->
+
+<!-- About Memoryclick (Details Section) -->
+<div class="about_memoryclick section_gap bg-light pt-0">
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <!-- Image Left -->
+            <div class="col-lg-6 mb-4 mb-lg-0 order-lg-1">
+                <div class="about_bx text-center text-lg-start">
+                    <img src="{{asset($page->memoryclick_image)}}" class="img-fluid rounded shape-md mt-5" alt="">
+                </div>
+            </div>
+            <!-- Content Right -->
+            <div class="col-lg-6 order-lg-2">
+                <div>
+                    <p class="text-primary text-uppercase sub_title mb-2">Our Journey</p>
+                    <h1 class="title mb-4">Memoryclick Story</h1>
+                    <p class="mb-4 text-justify">
+                        {{$page->about_memoryclick ?? ''}}
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About Memoryclick End -->
+
 <!-- Team Start -->
-<div class="team_sec mb-5">
+<div class="team_sec section_gap bg-white">
     <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width:600px;">
             <p class="text-primary text-uppercase sub_title mb-2">Team Member</p>
             <h1 class="display-6 mb-4">Meet with our Team Member</h1>
         </div>
-
         <div class="row">
-
             @forelse ($teams as $team)
-
-
             <div class="col-sm-6 col-xl-3 my-3">
-                <div class="team-membem shadow-sm bg-white p-3 p-lg-4 rounded text-center">
+                <div class="team-membem shadow-sm bg-light p-3 p-lg-4 rounded text-center">
                     <img src="{{asset($team->image)}}" class="img-fluid rounded mb-3" alt="Photographer">
                     <h4>{{$team->name}}</h4>
                     <p class="m-0 small">{{$team->designation}}</p>
@@ -82,46 +119,10 @@
             <div class="text-center">
                 <strong class="text-danger">NO DATA FOUND</strong>
             </div>
-
             @endforelse
-
         </div>
-
     </div>
 </div>
 <!-- Team End -->
-
-<!-- brand Start -->
-<div class="brand_sec section_gap pt-0">
-    <div class="container">
-        <div class="text-center mx-auto mb-5" style="max-width:600px;">
-            <p class="text-primary text-uppercase sub_title mb-2">Our Memberships</p>
-            <h1 class="display-6 mb-4">Best Memberships for you</h1>
-        </div>
-        <div class="row gy-4 d-flex align-items-center text-center">
-            <div class="col-sm-6 col-lg-3">
-                <div class="membership_logo">
-                    <img src="frontend/assets/img/PPAC.png" class="img-fluid" width="150" alt="">
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="membership_logo">
-                    <img src="frontend/assets/img/AsiaWPA.png" class="img-fluid" width="150" alt="">
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="membership_logo">
-                    <img src="frontend/assets/img/WPPB.png" class="img-fluid" width="150" alt="">
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="membership_logo">
-                    <img src="frontend/assets/img/my-wed.png" class="img-fluid" width="150" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- brand End -->
 
 @endsection
