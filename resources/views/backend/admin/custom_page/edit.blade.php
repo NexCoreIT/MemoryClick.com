@@ -1,7 +1,7 @@
 @extends('backend.layout.app')
 @section('content')
 <div class="col-12 card">
-    <form action="{{ route('custom.page.update',$item->id) }}" method="POST">
+    <form action="{{ route('custom.page.update',$item->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <h3 class="card-title">Edit</h3>
@@ -37,7 +37,7 @@
                                value="{{ old('meta_keywords', $item->meta_keywords) }}" required>
                     </div>
                 </div>
-
+                 @if($item->id !== 1)
                 <div class="col-md-12">
                     <div class="mb-3">
                         <label class="form-label">Body <span class="text-danger">*</span></label>
@@ -45,6 +45,70 @@
                                   placeholder="Body" required>{{ old('body', $item->body) }}</textarea>
                     </div>
                 </div>
+                @endif
+                {{-- ✅ Extra Fields show only if id == 1 --}}
+                @if($item->id == 1)
+                <hr>
+                <h4 class="mt-3">Extra About Section</h4>
+
+               <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label">Name</label>
+                                <input type="text" name="ceo_name" class="form-control" placeholder="CEO Name"
+                                    value="{{ old('ceo_name', $item->ceo_name) }}">
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label">Designation</label>
+                                <input type="text" name="ceo_designation" class="form-control" placeholder="CEO Designation"
+                                    value="{{ old('ceo_designation', $item->ceo_designation) }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About CEO -->
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">About CEO</label>
+                        <textarea name="body" class="form-control" rows="4"
+                                  placeholder="Write about CEO">{{ old('body', $item->body ?? '') }}</textarea>
+                    </div>
+                </div>
+
+                <!-- CEO Image -->
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">CEO Image</label>
+                        <input type="file" name="ceo_image" class="form-control">
+                        @if(!empty($item->ceo_image))
+                            <img src="{{ asset($item->ceo_image) }}" alt="CEO Image" class="img-thumbnail mt-2" width="150">
+                        @endif
+                    </div>
+                </div>
+
+                <!-- About Memoryclick -->
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">About Memoryclick</label>
+                        <textarea name="about_memoryclick" class="form-control" rows="4"
+                                  placeholder="Write about Memoryclick">{{ old('about_memoryclick', $item->about_memoryclick ?? '') }}</textarea>
+                    </div>
+                </div>
+
+                <!-- Memoryclick Image -->
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">Memoryclick Image</label>
+                        <input type="file" name="memoryclick_image" class="form-control">
+                        @if(!empty($item->memoryclick_image))
+                            <img src="{{ asset($item->memoryclick_image) }}" alt="Memoryclick Image" class="img-thumbnail mt-2" width="150">
+                        @endif
+                    </div>
+                </div>
+                @endif
+                {{-- ✅ End Extra Fields --}}
 
                 <div class="col-md-12">
                     <div class="mb-3">
@@ -66,23 +130,17 @@
 
 @push('styles')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
-
 @endpush
 
-
 @push('scripts')
-    <!-- include libraries(jQuery, bootstrap) -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<!-- include summernote css/js -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
-
 <script>
     $('#summernote').summernote({
       placeholder: 'Hello Bootstrap 4',
       tabsize: 4,
       height: 100
     });
-  </script>
+</script>
 @endpush

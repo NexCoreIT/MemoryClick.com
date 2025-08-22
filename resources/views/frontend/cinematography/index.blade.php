@@ -27,11 +27,11 @@
             <div class="col-sm-6 col-lg-4 col-xl-3">
                 <div class="testimonial-item shadow-sm p-3 rounded bg-white text-center">
                     <div class="ratio ratio-16x9  mb-4">
-                        <iframe width="100%" class="rounded" src="{{$video->youtube_url}}"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
+                        <iframe width="100%" height="auto"
+                                src="https://www.facebook.com/plugins/video.php?href={{ urlencode($video->youtube_url) }}&show_text=false&width=560"
+                                title="Facebook video player" frameborder="0"
+                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
                     </div>
                     <div>
                         <h5 class="mb-3 fs-5 fw-bold">
