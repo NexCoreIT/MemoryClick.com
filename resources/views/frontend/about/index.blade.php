@@ -24,11 +24,11 @@
 <!-- breadcrump end -->
 
 <!-- About Start -->
-<div class="about_sec section_gap bg-white mt-5 mb-5">
+<div class="about_sec section_gap bg-white" style="padding-top: 25px; padding-bottom: 25px;">
     <div class="container">
         {{-- {!!$page->body!!} --}}
         <div class="text-center">
-            <h2>About Our CEO</h2>
+            <h2>{{$page->title_1?? 'About CEO'}}</h2>
             {{-- <p class="mb-0">This section will hold about us content dynamically.</p> --}}
         </div>
     </div>
@@ -61,17 +61,16 @@
 <!-- Founder End -->
 
 <!-- About Memoryclick (Title Section) -->
-<div class="about_sec bg-white" style="padding-top: 50px; padding-bottom: 50px;">
+<div class="about_sec bg-white" style="padding-top: 25px; padding-bottom: 25px;">
     <div class="container">
         <div class="text-center">
-            <h2>About MemoryClick</h2>
+            <h2>{{$page->title_2?? 'About MemoryClick'}}</h2>
             {{-- <p class="mb-0">This section will hold about us content dynamically.</p> --}}
         </div>
     </div>
 </div>
 <!-- About Memoryclick End -->
 
-<!-- About Memoryclick End -->
 
 <!-- About Memoryclick (Details Section) -->
 <div class="about_memoryclick section_gap bg-light pt-0">

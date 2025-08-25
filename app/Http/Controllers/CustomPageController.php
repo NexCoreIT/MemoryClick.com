@@ -72,6 +72,8 @@ public function update(Request $request, $id)
         'memoryclick_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
               'ceo_name' => 'nullable|string|max:255',
         'ceo_designation' => 'nullable|string|max:255',
+        'title_1' => 'nullable|string|max:255',
+        'title_2' => 'nullable|string|max:255',
     ]);
 
     // Assign common fields
@@ -81,6 +83,9 @@ public function update(Request $request, $id)
     $item->meta_keywords = $validatedData['meta_keywords'];
     $item->status = $validatedData['status'];
     $item->body = $validatedData['body'];
+    $item->title_1 = $validatedData['title_1'] ?? $item->title_1;
+    $item->title_2 = $validatedData['title_2'] ?? $item->title_2;
+
 
 
     // Extra fields only for id == 1

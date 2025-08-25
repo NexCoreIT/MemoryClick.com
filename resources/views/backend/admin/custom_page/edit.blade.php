@@ -54,12 +54,18 @@
                <div class="row">
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="mb-3 col-md-6">
+                            <div class="mb-3 col-md-4">
+                                <label class="form-label">Title</label>
+                                <input type="text" name="title_1" class="form-control" placeholder="About Our CEO"
+                                    value="{{ old('title_1', $item->title_1) }}">
+                            </div>
+
+                            <div class="mb-3 col-md-4">
                                 <label class="form-label">Name</label>
                                 <input type="text" name="ceo_name" class="form-control" placeholder="CEO Name"
                                     value="{{ old('ceo_name', $item->ceo_name) }}">
                             </div>
-                            <div class="mb-3 col-md-6">
+                            <div class="mb-3 col-md-4">
                                 <label class="form-label">Designation</label>
                                 <input type="text" name="ceo_designation" class="form-control" placeholder="CEO Designation"
                                     value="{{ old('ceo_designation', $item->ceo_designation) }}">
@@ -88,6 +94,27 @@
                     </div>
                 </div>
 
+
+                 <h4 class="mt-3">MemoryClick About Section</h4>
+
+                <!-- Memoryclick Section -->
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Title</label>
+                        <input type="text" name="title_2" class="form-control" placeholder="Memoryclick Title"
+                            value="{{ old('title_2', $item->title_2) }}">
+                    </div>
+
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Memoryclick Image</label>
+                        <input type="file" name="memoryclick_image" class="form-control">
+                        @if(!empty($item->memoryclick_image))
+                            <img src="{{ asset($item->memoryclick_image) }}" alt="Memoryclick Image" class="img-thumbnail mt-2" width="150">
+                        @endif
+                    </div>
+                </div>
+
+
                 <!-- About Memoryclick -->
                 <div class="col-md-12">
                     <div class="mb-3">
@@ -97,16 +124,7 @@
                     </div>
                 </div>
 
-                <!-- Memoryclick Image -->
-                <div class="col-md-12">
-                    <div class="mb-3">
-                        <label class="form-label">Memoryclick Image</label>
-                        <input type="file" name="memoryclick_image" class="form-control">
-                        @if(!empty($item->memoryclick_image))
-                            <img src="{{ asset($item->memoryclick_image) }}" alt="Memoryclick Image" class="img-thumbnail mt-2" width="150">
-                        @endif
-                    </div>
-                </div>
+
                 @endif
                 {{-- ✅ End Extra Fields --}}
 
